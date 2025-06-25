@@ -1,30 +1,136 @@
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <meta name="csrf-token" content="{{ csrf_token() }}">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>@yield('title', 'Mr. EuroFix - Handyman Services in Orange County')</title>
 
-        <title>{{ config('app.name', 'Laravel') }}</title>
+    <!-- SEO Meta Tags -->
+    <meta name="description"
+          content="@yield('description', 'Professional handyman services in Orange County. Expert in plumbing, electrical, carpentry, tile, and drywall. Reliable, affordable, and friendly.')">
+    <meta name="keywords"
+          content="@yield('keywords', 'handyman, Orange County, plumbing, electrical, drywall, tile, home repair, Mr. EuroFix')">
 
-        <!-- Fonts -->
-        <link rel="preconnect" href="https://fonts.bunny.net">
-        <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />
+    <!-- Open Graph -->
+    <meta property="og:title" content="@yield('og:title', 'Mr. EuroFix - Handyman Services in Orange County')">
+    <meta property="og:description"
+          content="@yield('og:description', 'Your go-to expert for home repairs. Plumbing, electrical, tile, drywall, and more. Get a free quote today!')">
+    <meta property="og:image" content="{{ asset('assets/og-image.jpg') }}">
+    <meta property="og:url" content="@yield('og:url', 'https://www.mreurofix.com')">
+    <meta property="og:type" content="website">
 
-        <!-- Scripts -->
-        @vite(['resources/css/app.css', 'resources/js/app.js'])
-    </head>
-    <body class="font-sans text-gray-900 antialiased">
-        <div class="min-h-screen flex flex-col sm:justify-center items-center pt-6 sm:pt-0 bg-gray-100 dark:bg-gray-900">
-            <div>
-                <a href="/">
-                    <x-application-logo class="w-20 h-20 fill-current text-gray-500" />
-                </a>
-            </div>
+     <!-- Наиболее предпочтительный формат: SVG для современных браузеров -->
+    <link rel="icon" type="image/svg+xml" href="/assets/favicon.svg">
+    <!-- PNG-версия как запасной вариант -->
+    <link rel="icon" type="image/png" sizes="96x96" href="/assets/favicon-96x96.png">
+    <!-- Иконка для устройств Apple -->
+    <link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon.png">
+    <!-- Манифест для PWA и Android -->
+    <link rel="manifest" href="/assets/site.webmanifest">
+    <!-- Запасной вариант .ico для очень старых браузеров -->
+    <link rel="icon" type="image/x-icon" href="/assets/favicon.ico">
+    <!-- Название для веб-приложения на Apple -->
+    <meta name="apple-mobile-web-app-title" content="Mr. EuroFix">
 
-            <div class="w-full sm:max-w-md mt-6 px-6 py-4 bg-white dark:bg-gray-800 shadow-md overflow-hidden sm:rounded-lg">
-                {{ $slot }}
+    <link rel="icon" href="{{ asset('assets/favicon.ico') }}" type="image/x-icon">
+
+    <!-- Vite CSS & JS for modern asset bundling -->
+    <!-- Здесь Vite будет инжектировать скомпилированный CSS (с Tailwind) и JS (с Alpine.js) -->
+    @vite(['resources/css/app.css', 'resources/js/app.js'])
+
+    <!-- x-cloak используется Alpine.js, чтобы скрыть элементы до инициализации JS -->
+    <style>
+        [x-cloak] { display: none !important; }
+    </style>
+</head>
+<body class="font-sans antialiased">
+<!-- Навигация (общая для всех страниц) -->
+<!-- x-data="{ open: false }" инициализирует компонент Alpine.js с состоянием 'open' для мобильного меню -->
+<header x-data="{ open: false }" class="relative z-50">
+    <nav class="bg-[#212f42] p-4 fixed top-0 w-full shadow-lg">
+        <div class="container mx-auto flex items-center justify-between">
+            <!-- Логотип бренда -->
+            <a class="flex items-center" href="{{ url('/') }}">
+                <div class="flex">
+                    <span class="text-white text-2xl font-bold">Mr.</span><span class="text-blue-400 text-2xl font-bold">EuroFix</span>
+                    <span class="text-xs text-gray-400 -mt-1 ml-1">®</span>
+                </div>
+                 <div class="flex flex-coll">
+                    <div class="h-0.5 bg-blue-400 w-full mt-1"></div>
+                    <div class="text-sm text-gray-400 mt-1">European Quality. American Efficiency.</div>
+                </div>
+            </a>
+
+            <!-- Кнопка-переключатель для мобильного меню -->
+            <!-- @click="open = !open" переключает состояние 'open' при клике -->
+            <button @click="open = !open" class="lg:hidden text-white focus:outline-none">
+                <svg class="h-8 w-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                </svg>
+            </button>
+
+            <!-- Основное навигационное меню -->
+            <!-- x-cloak предотвращает мигание до загрузки Alpine.js -->
+            <!-- :class динамически применяет классы hidden/flex для адаптивности -->
+            <!-- @click.outside="open = false" закрывает меню при клике вне его -->
+            <div x-cloak :class="{ 'block': open, 'hidden': !open }" @click.outside="open = false"
+                 class="absolute top-full left-0 w-full bg-[#212f42] lg:static lg:block lg:w-auto lg:shadow-none shadow-xl
+                        transform origin-top transition-transform ease-out duration-300 scale-y-0 lg:scale-y-100"
+                 x-transition:enter="transition ease-out duration-300"
+                 x-transition:enter-start="opacity-0 transform scale-y-0"
+                 x-transition:enter-end="opacity-100 transform scale-y-100"
+                 x-transition:leave="transition ease-in duration-200"
+                 x-transition:leave-start="opacity-100 transform scale-y-100"
+                 x-transition:leave-end="opacity-0 transform scale-y-0"
+            >
+                <ul class="flex flex-col lg:flex-row lg:space-x-6 py-4 lg:py-0">
+                    <li class="px-4 py-2 lg:p-0"><a class="text-white hover:text-blue-300 transition-colors duration-200" href="#hero">Home</a></li>
+                    <li class="px-4 py-2 lg:p-0"><a class="text-white hover:text-blue-300 transition-colors duration-200" href="#about">About</a></li>
+
+                    <!-- Dropdown для услуг -->
+                    <!-- x-data="{ dropdownOpen: false }" для управления состоянием дропдауна -->
+                    <li x-data="{ dropdownOpen: false }" @click.outside="dropdownOpen = false" class="relative px-4 py-2 lg:p-0">
+                        <a @click="dropdownOpen = !dropdownOpen" class="text-white hover:text-blue-300 transition-colors duration-200 flex items-center cursor-pointer" id="navbarDropdownServices" role="button">
+                            Services
+                            <svg class="ml-1 w-4 h-4 transform transition-transform duration-200" :class="{ 'rotate-180': dropdownOpen }" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                                <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"></path>
+                            </svg>
+                        </a>
+                        <!-- Выпадающее меню -->
+                        <div x-show="dropdownOpen" x-transition:enter="transition ease-out duration-200" x-transition:enter-start="opacity-0 scale-95" x-transition:enter-end="opacity-100 scale-100"
+                             x-transition:leave="transition ease-in duration-75" x-transition:leave-start="opacity-100 scale-100" x-transition:leave-end="opacity-0 scale-95"
+                             class="absolute lg:top-full lg:left-0 mt-2 w-full lg:w-48 bg-gray-700 rounded-md shadow-lg py-1 z-20"
+                             x-cloak
+                        >
+                            <a href="{{ url('/') }}#services" class="block px-4 py-2 text-white hover:bg-gray-600 transition-colors duration-200">All Services</a>
+                            <hr class="border-t border-gray-600 my-1">
+                            <a class="block px-4 py-2 text-white hover:bg-gray-600 transition-colors duration-200" href="orange-county-flooring-handyman.html">Flooring</a>
+                            <a class="block px-4 py-2 text-white hover:bg-gray-600 transition-colors duration-200" href="orange-county-tile-handyman.html">Tile</a>
+                            <a class="block px-4 py-2 text-white hover:bg-gray-600 transition-colors duration-200" href="orange-county-furniture-handyman.html">Furniture Handyman</a>
+                            <a class="block px-4 py-2 text-white hover:bg-gray-600 transition-colors duration-200" href="orange-county-painting-handyman.html">Painting</a>
+                            <a class="block px-4 py-2 text-white hover:bg-gray-600 transition-colors duration-200" href="{{ url('/painting-drywall') }}">Drywall</a>
+                        </div>
+                    </li>
+                    <li class="px-4 py-2 lg:p-0"><a class="text-white hover:text-blue-300 transition-colors duration-200" href="#portfolio">Portfolio</a></li>
+                    <li class="px-4 py-2 lg:p-0"><a class="text-white hover:text-blue-300 transition-colors duration-200" href="#testimonials">Testimonials</a></li>
+                    <li class="px-4 py-2 lg:p-0"><a class="text-white hover:text-blue-300 transition-colors duration-200" href="#contact">Contact</a></li>
+                </ul>
             </div>
         </div>
-    </body>
+    </nav>
+</header>
+
+<!-- Секция основного контента, которая будет меняться для каждой страницы -->
+<main class="mt-20"> <!-- Добавлен верхний отступ, чтобы контент не перекрывался фиксированным навбаром -->
+    @yield('content')
+    {{ $slot }}
+</main>
+
+<!-- Футер (общий для всех страниц) -->
+<footer class="text-center text-white py-3 bg-[#343a40]">
+    <p class="mb-0">&copy; 2025 Mr. EuroFix. All rights reserved.</p>
+</footer>
+
+</body>
 </html>
+
