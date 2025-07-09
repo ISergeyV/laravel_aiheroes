@@ -39,7 +39,7 @@
 </head>
 <body class="bg-slate-100 antialiased">
 
-<div class="container mx-auto px-4 py-8 md:py-16">
+<div class="container mx-auto px-4 py-8 md:py-16" id="freeOnlineEstimate">
     <div class="max-w-3xl mx-auto bg-white rounded-2xl shadow-lg overflow-hidden">
         <div class="p-8">
             <!-- Form Header -->
@@ -230,17 +230,6 @@
 
         </div>
     </div>
-
-    <!-- Success Message (Hidden by default) -->
-    <div id="successMessage"
-         class="hidden max-w-3xl mx-auto mt-8 bg-green-100 border-l-4 border-green-500 text-green-700 p-6 rounded-lg shadow-md">
-        <h2 class="text-2xl font-bold">Thank You!</h2>
-        <p class="mt-2">Your estimate request has been submitted successfully.</p>
-        <p class="mt-2">We have received your information and will review it shortly. You can expect to receive your
-            **preliminary online estimate** via email within 1-2 business days. Please check your spam folder.</p>
-        <p class="mt-2">If your project requires an on-site visit for a firm quote, we will contact you to schedule a
-            convenient time.</p>
-    </div>
 </div>
 
 <script>
@@ -248,7 +237,6 @@
         // --- Get all necessary elements from the page ---
         const form = document.getElementById('estimateForm');
         const submitButton = document.getElementById('submitButton');
-        const successMessage = document.getElementById('successMessage');
         const formErrorsContainer = document.getElementById('formErrors');
         const errorList = document.getElementById('errorList');
         const disclaimerCheckbox = document.getElementById('disclaimer');
@@ -309,11 +297,10 @@
                         // Other server error types (500, 404, etc.)
                         alert(`Server error: ${result.message || 'Please try again.'}`);
                     }
+                    submitButton.disabled = !disclaimerCheckbox.checked;
+                    submitButton.innerHTML = originalButtonText;
                 } else {
-                    // EVERYTHING IS OK: successful response (status 2xx)
-                    form.parentElement.parentElement.style.display = 'none';
-                    successMessage.style.display = 'block';
-                    window.scrollTo(0, 0); // Scroll to top
+                    window.location.href = response.url;
                 }
 
             } catch (error) {
@@ -362,11 +349,11 @@
          * Clears all error messages and highlights.
          */
         function clearValidationErrors() {
-             // **FIX:** Add a check here. If the element doesn't exist, do nothing.
+            // **FIX:** Add a check here. If the element doesn't exist, do nothing.
             if (formErrorsContainer) {
                 formErrorsContainer.style.display = 'none';
             }
-            if(errorList){
+            if (errorList) {
                 errorList.innerHTML = '';
             }
 
