@@ -1,11 +1,32 @@
-@import 'tailwindcss';
+html {
+    scroll-behavior: smooth;
+}
 
-@source '../../vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php';
-@source '../../storage/framework/views/*.php';
-@source '../**/*.blade.php';
-@source '../**/*.js';
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
-@theme {
-    --font-sans: 'Instrument Sans', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
-        'Segoe UI Symbol', 'Noto Color Emoji';
+
+.text-shadow {
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+}
+
+.logo-container .mr {
+    color: #e67e22;
+}
+
+.logo-container .eurofix {
+    color: #ffffff;
+}
+
+.logo-container .trademark {
+    color: #ffffff;
+}
+
+.logo-container .underline {
+    background-color: #e67e22;
+}
+
+.logo-container .slogan {
+    color: #ffffff;
 }

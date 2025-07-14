@@ -9,7 +9,19 @@ Route::get('/', function () {
     return view('pages.index'); // или название вашей главной страницы
 })->name('home');
 
-Route::get('/tile-flooring', fn() => view('pages.tile-flooring'))->name('pages.tile');
+// Pages
+Route::get('/contact', function () {
+    return view('pages.contact');
+})->name('contact');
+
+Route::get('/about', function () {
+    return view('pages.about');
+})->name('about');
+
+Route::get('/orange-county-flooring-handyman', fn() => view('pages.flooring'))->name('pages.flooring');
+Route::get('/orange-county-painting-handyman', fn() => view('pages.painting'))->name('pages.painting');
+Route::get('/orange-county-furniture-handyman', fn() => view('pages.furniture'))->name('pages.furniture');
+Route::get('/orange-county-tile-handyman', fn() => view('pages.tile'))->name('pages.tile');
 
 Route::get('/estimate', [LeadController::class, 'show'])->name('lead.form');
 Route::post('/estimate', [LeadController::class, 'submit'])->name('lead.submit');

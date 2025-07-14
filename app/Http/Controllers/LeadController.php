@@ -72,7 +72,7 @@ class LeadController extends Controller
         }
 
         // 3. Сохранение данных в базу, сопоставляя поля формы с колонками таблицы
-        Lead::create([
+        $lead = Lead::create([
             'client_full_name' => $validatedData['fullName'],
             'client_phone' => $validatedData['phone'],
             'client_email' => $validatedData['email'],

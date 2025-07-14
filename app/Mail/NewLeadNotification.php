@@ -19,7 +19,7 @@ class NewLeadNotification extends Mailable
      *
      * @var \App\Models\Lead
      */
-    public $lead;
+    public Lead $lead;
 
     /**
      * Create a new message instance.
