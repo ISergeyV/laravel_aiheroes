@@ -5,28 +5,3 @@ html {
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-
-
-.text-shadow {
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
-}
-
-.logo-container .mr {
-    color: #e67e22;
-}
-
-.logo-container .eurofix {
-    color: #ffffff;
-}
-
-.logo-container .trademark {
-    color: #ffffff;
-}
-
-.logo-container .underline {
-    background-color: #e67e22;
-}
-
-.logo-container .slogan {
-    color: #ffffff;
-}

@@ -50,24 +50,20 @@
     <nav class="bg-[#212f42] p-4 fixed top-0 w-full shadow-lg">
         <div class="container mx-auto flex items-center justify-between">
             <!-- Logo -->
-            {{--
-                Главный контейнер теперь 'flex-col', чтобы расположить дочерние элементы
-                (название и слоган) друг под другом.
-            --}}
             <a class="flex flex-col" href="{{ route('home') }}">
 
                 {{-- Первый элемент: Основное название. Используем 'items-baseline' для
                      идеального выравнивания текста разного размера. --}}
                 <div class="flex items-baseline">
-                    <span class="text-brand-orange text-2xl font-bold">Mr.</span>
-                    <span class="text-white text-2xl font-bold">EuroFix</span>
+                    <span class="text-brand-orange text-lg font-bold">Mr.</span>
+                    <span class="text-white text-lg font-bold">EuroFix</span>
                     <span class="text-xs text-gray-400 ml-1">®</span>
                 </div>
 
                 {{-- Второй элемент: Линия и слоган. Небольшой отступ сверху. --}}
                 <div class="mt-1">
                     <div class="h-0.5 bg-brand-orange w-full"></div>
-                    <div class="text-sm text-gray-400 mt-1">European Quality. American Efficiency.</div>
+                    <div class="text-xs text-gray-400 mt-1">European Quality. American Efficiency.</div>
                 </div>
             </a>
 
@@ -144,14 +140,16 @@
                         </div>
                     </li>
                     <li class="px-4 py-2 lg:p-0"><a
-                            class="text-white hover:text-blue-300 transition-colors duration-200" href="#portfolio">Portfolio</a>
+                            class="text-white hover:text-blue-300 transition-colors duration-200"
+                            href="{{ route('home') }}#portfolio">Portfolio</a>
                     </li>
                     <li class="px-4 py-2 lg:p-0"><a
                             class="text-white hover:text-blue-300 transition-colors duration-200"
-                            href="#testimonials">Testimonials</a>
+                            href="{{ route('home') }}#testimonials">Testimonials</a>
                     </li>
                     <li class="px-4 py-2 lg:p-0"><a
-                            class="text-white hover:text-blue-300 transition-colors duration-200" href="#contact">Contact</a>
+                            class="text-white hover:text-blue-300 transition-colors duration-200"
+                            href="#contact">Contact</a>
                     </li>
                 </ul>
             </div>
@@ -165,9 +163,46 @@
     {{ $slot }}
 </main>
 
-
+<!-- Contact -->
+<section id="contact" class="py-5 text-white bg-[#212529] px-4">
+    <div class="container mx-auto">
+        <h2 class="text-center text-4xl font-bold mb-3">Contact Me</h2>
+        <div class="flex justify-center">
+            <div class="w-full md:w-1/2 lg:w-1/3 text-center">
+                <p class="mb-4">
+                    <svg class="w-6 h-6 inline-block mr-2" fill="currentColor" viewBox="0 0 20 20"
+                         xmlns="http://www.w3.org/2000/svg">
+                        <path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0018 4H2a2 2 0 00-1.997 1.884z"></path>
+                        <path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z"></path>
+                    </svg>
+                    <a href="mailto:info@mreurofix.com"
+                       class="text-orange-500 hover:text-white transition-colors duration-200">info@mreurofix.com</a>
+                </p>
+                <p class="mb-4">
+                    <svg class="w-6 h-6 inline-block mr-2" fill="currentColor" viewBox="0 0 20 20"
+                         xmlns="http://www.w3.org/2000/svg">
+                        <path fill-rule="evenodd"
+                              d="M7 2a2 2 0 00-2 2v12a2 2 0 002 2h6a2 2 0 002-2V4a2 2 0 00-2-2H7zm3 14a1 1 0 100-2 1 1 0 000 2z"
+                              clip-rule="evenodd"></path>
+                    </svg>
+                    <a href="tel:+19494144998"
+                       class="text-orange-500 hover:text-white transition-colors duration-200">(949) 414-4998</a>
+                </p>
+                <p class="mb-4">
+                    <svg class="w-6 h-6 inline-block mr-2" fill="green" viewBox="0 0 20 20"
+                         xmlns="http://www.w3.org/2000/svg">
+                        <path fill-rule="evenodd"
+                              d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z"
+                              clip-rule="evenodd"></path>
+                    </svg>
+                    Orange County, California
+                </p>
+            </div>
+        </div>
+    </div>
+</section>
 <!-- Footer -->
-<footer class="bg-gray-900 text-white text-center py-6">
+<footer class="bg-gray-900 text-blue-200 text-center py-6">
     <p>&copy; 2025 Mr. EuroFix. All rights reserved.</p>
 </footer>
 </body>

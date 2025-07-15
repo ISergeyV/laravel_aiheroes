@@ -34,38 +34,26 @@
     <section id="services" class="container mx-auto py-16 px-4">
         <h2 class="text-center text-4xl font-bold mb-12 text-gray-800">My Expert Services</h2>
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            <!-- Service 1: Drywall & Painting -->
+            <!-- Service 1: Painting -->
             <div class="bg-white rounded-xl shadow-lg overflow-hidden h-full flex flex-col">
-                <img src="{{ asset('assets/img/drywall.jpg') }}" class="w-full h-48 object-cover rounded-t-xl"
-                     alt="Drywall and Painting Services">
+                <img src="{{ asset('assets/img/painting.jpg') }}" class="w-full h-48 object-cover rounded-t-xl"
+                     alt="Painting Services">
                 <div class="p-6 flex flex-col flex-grow">
-                    <h5 class="text-2xl font-bold text-blue-600 mb-3">Drywall & Painting</h5>
+                    <h5 class="text-2xl font-bold text-blue-600 mb-3">Painting</h5>
                     <p class="text-gray-700 mb-4 flex-grow">
                         From flawless drywall repair to a fresh coat of paint, I transform your walls into works of art.
                     </p>
                     <ul class="space-y-2 text-gray-700 mb-6">
                         <li class="flex items-center">
-                            <svg class="w-5 h-5 text-green-500 mr-2" fill="currentColor" viewBox="0 0 20 20">
-                                <path fill-rule="evenodd"
-                                      d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
-                                      clip-rule="evenodd"></path>
-                            </svg>
+                            <x-icon name="check-circle" />
                             Drywall Repair
                         </li>
                         <li class="flex items-center">
-                            <svg class="w-5 h-5 text-green-500 mr-2" fill="currentColor" viewBox="0 0 20 20">
-                                <path fill-rule="evenodd"
-                                      d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
-                                      clip-rule="evenodd"></path>
-                            </svg>
+                            <x-icon name="check-circle" />
                             Drywall Installation
                         </li>
                         <li class="flex items-center">
-                            <svg class="w-5 h-5 text-green-500 mr-2" fill="currentColor" viewBox="0 0 20 20">
-                                <path fill-rule="evenodd"
-                                      d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
-                                      clip-rule="evenodd"></path>
-                            </svg>
+                            <x-icon name="check-circle" />
                             Interior Painting
                         </li>
                     </ul>
@@ -86,27 +74,15 @@
                     </p>
                     <ul class="space-y-2 text-gray-700 mb-6">
                         <li class="flex items-center">
-                            <svg class="w-5 h-5 text-green-500 mr-2" fill="currentColor" viewBox="0 0 20 20">
-                                <path fill-rule="evenodd"
-                                      d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
-                                      clip-rule="evenodd"></path>
-                            </svg>
+                            <x-icon name="check-circle" />
                             Laminate Installation
                         </li>
                         <li class="flex items-center">
-                            <svg class="w-5 h-5 text-green-500 mr-2" fill="currentColor" viewBox="0 0 20 20">
-                                <path fill-rule="evenodd"
-                                      d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
-                                      clip-rule="evenodd"></path>
-                            </svg>
+                            <x-icon name="check-circle" />
                             Vinyl Installation
                         </li>
                         <li class="flex items-center">
-                            <svg class="w-5 h-5 text-green-500 mr-2" fill="currentColor" viewBox="0 0 20 20">
-                                <path fill-rule="evenodd"
-                                      d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
-                                      clip-rule="evenodd"></path>
-                            </svg>
+                            <x-icon name="check-circle" />
                             Flooring Repair
                         </li>
                     </ul>
@@ -126,27 +102,15 @@
                     </p>
                     <ul class="space-y-2 text-gray-700 mb-6">
                         <li class="flex items-center">
-                            <svg class="w-5 h-5 text-green-500 mr-2" fill="currentColor" viewBox="0 0 20 20">
-                                <path fill-rule="evenodd"
-                                      d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
-                                      clip-rule="evenodd"></path>
-                            </svg>
+                            <x-icon name="check-circle" />
                             Tile Installation
                         </li>
                         <li class="flex items-center">
-                            <svg class="w-5 h-5 text-green-500 mr-2" fill="currentColor" viewBox="0 0 20 20">
-                                <path fill-rule="evenodd"
-                                      d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
-                                      clip-rule="evenodd"></path>
-                            </svg>
+                            <x-icon name="check-circle" />
                             Tile Repair
                         </li>
                         <li class="flex items-center">
-                            <svg class="w-5 h-5 text-green-500 mr-2" fill="currentColor" viewBox="0 0 20 20">
-                                <path fill-rule="evenodd"
-                                      d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
-                                      clip-rule="evenodd"></path>
-                            </svg>
+                            <x-icon name="check-circle" />
                             Grouting & Sealing
                         </li>
                     </ul>
@@ -167,27 +131,15 @@
                     </p>
                     <ul class="space-y-2 text-gray-700 mb-6">
                         <li class="flex items-center">
-                            <svg class="w-5 h-5 text-green-500 mr-2" fill="currentColor" viewBox="0 0 20 20">
-                                <path fill-rule="evenodd"
-                                      d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
-                                      clip-rule="evenodd"></path>
-                            </svg>
+                            <x-icon name="check-circle" />
                             New Furniture Assembly
                         </li>
                         <li class="flex items-center">
-                            <svg class="w-5 h-5 text-green-500 mr-2" fill="currentColor" viewBox="0 0 20 20">
-                                <path fill-rule="evenodd"
-                                      d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
-                                      clip-rule="evenodd"></path>
-                            </svg>
+                            <x-icon name="check-circle" />
                             Furniture Repair
                         </li>
                         <li class="flex items-center">
-                            <svg class="w-5 h-5 text-green-500 mr-2" fill="currentColor" viewBox="0 0 20 20">
-                                <path fill-rule="evenodd"
-                                      d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
-                                      clip-rule="evenodd"></path>
-                            </svg>
+                            <x-icon name="check-circle" />
                             Wall Mounting
                         </li>
                     </ul>
@@ -207,27 +159,15 @@
                     </p>
                     <ul class="space-y-2 text-gray-700 mb-6">
                         <li class="flex items-center">
-                            <svg class="w-5 h-5 text-green-500 mr-2" fill="currentColor" viewBox="0 0 20 20">
-                                <path fill-rule="evenodd"
-                                      d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
-                                      clip-rule="evenodd"></path>
-                            </svg>
+                            <x-icon name="check-circle" />
                             Faucet Repair
                         </li>
                         <li class="flex items-center">
-                            <svg class="w-5 h-5 text-green-500 mr-2" fill="currentColor" viewBox="0 0 20 20">
-                                <path fill-rule="evenodd"
-                                      d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
-                                      clip-rule="evenodd"></path>
-                            </svg>
+                            <x-icon name="check-circle" />
                             Toilet Replacement
                         </li>
                         <li class="flex items-center">
-                            <svg class="w-5 h-5 text-green-500 mr-2" fill="currentColor" viewBox="0 0 20 20">
-                                <path fill-rule="evenodd"
-                                      d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
-                                      clip-rule="evenodd"></path>
-                            </svg>
+                            <x-icon name="check-circle" />
                             Drain Clogs
                         </li>
                     </ul>
@@ -247,27 +187,15 @@
                     </p>
                     <ul class="space-y-2 text-gray-700 mb-6">
                         <li class="flex items-center">
-                            <svg class="w-5 h-5 text-green-500 mr-2" fill="currentColor" viewBox="0 0 20 20">
-                                <path fill-rule="evenodd"
-                                      d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
-                                      clip-rule="evenodd"></path>
-                            </svg>
+
                             Light Fixture Installation
                         </li>
                         <li class="flex items-center">
-                            <svg class="w-5 h-5 text-green-500 mr-2" fill="currentColor" viewBox="0 0 20 20">
-                                <path fill-rule="evenodd"
-                                      d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
-                                      clip-rule="evenodd"></path>
-                            </svg>
+                            <x-icon name="check-circle" />
                             Outlet Replacement
                         </li>
                         <li class="flex items-center">
-                            <svg class="w-5 h-5 text-green-500 mr-2" fill="currentColor" viewBox="0 0 20 20">
-                                <path fill-rule="evenodd"
-                                      d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
-                                      clip-rule="evenodd"></path>
-                            </svg>
+                            <x-icon name="check-circle" />
                             Ceiling Fan Mounting
                         </li>
                     </ul>
@@ -286,11 +214,7 @@
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
                 <div class="mb-8">
                     <!-- Example icon for tools - replace with actual icon if using a library like Font Awesome/Lucide -->
-                    <svg class="w-16 h-16 mx-auto mb-4 text-blue-400" fill="currentColor" viewBox="0 0 20 20"
-                         xmlns="http://www.w3.org/2000/svg">
-                        <path
-                            d="M11.414 1.586a2 2 0 00-2.828 0L3 7.172V17a2 2 0 002 2h10a2 2 0 002-2V7.172l-5.586-5.586zM9 4.414A1 1 0 0110 3v2a1 1 0 11-2 0V4.414zM8 8a1 1 0 011-1h2a1 1 0 110 2H9a1 1 0 01-1-1zm0 4a1 1 0 011-1h2a1 1 0 110 2H9a1 1 0 01-1-1z"></path>
-                    </svg>
+                    <x-icon name="check-circle" />
                     <h5 class="text-2xl font-semibold mt-3">Experienced & Versatile</h5>
                     <p class="mt-2 text-gray-300">Over 7 years of hands-on experience in plumbing, tile, electrical,
                         drywall, painting, and general repairs.</p>
@@ -354,55 +278,6 @@
                     <img src="{{ asset('images/about/me.jpg') }}" alt="Mr. EuroFix"
                          class="w-full h-auto rounded-full max-w-xs mx-auto shadow-xl"
                          onerror="this.onerror=null;this.src='https://placehold.co/400x400/cccccc/333333?text=Mr.+EuroFix';">
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Services (Second instance, simplified) -->
-    <section id="services-alt" class="py-16 bg-gray-100 px-4">
-        <div class="container mx-auto">
-            <h2 class="text-center text-4xl font-bold mb-12 text-gray-800">Services</h2>
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
-                <div class="mb-8">
-                    <svg class="w-16 h-16 mx-auto mb-4 text-gray-600" fill="currentColor" viewBox="0 0 20 20"
-                         xmlns="http://www.w3.org/2000/svg">
-                        <path d="M10 12a2 2 0 100-4 2 2 0 000 4z"></path>
-                        <path fill-rule="evenodd"
-                              d="M.458 10C1.732 5.943 5.522 3 10 3s8.268 2.943 9.542 7c-1.274 4.057-5.064 7-9.542 7S1.732 14.057.458 10zM14 10a4 4 0 11-8 0 4 4 0 018 0z"
-                              clip-rule="evenodd"></path>
-                    </svg>
-                    <h5 class="text-2xl font-semibold mt-3">
-                        <a href="orange-county-tile-flooring-handyman.html" class="text-blue-600 hover:underline">Tile &
-                            Flooring</a>
-                    </h5>
-                    <p class="mt-2 text-gray-700">Bathroom tile, kitchen backsplashes, floor installation, and grout
-                        repair.</p>
-                </div>
-                <div class="mb-8">
-                    <svg class="w-16 h-16 mx-auto mb-4 text-gray-600" fill="currentColor" viewBox="0 0 20 20"
-                         xmlns="http://www.w3.org/2000/svg">
-                        <path
-                            d="M10 2a8 8 0 100 16 8 8 0 000-16zm-1 9a1 1 0 01-2 0V7a1 1 0 112 0v4zm4-4a1 1 0 01-2 0V7a1 1 0 112 0v4z"></path>
-                    </svg>
-                    <h5 class="text-2xl font-semibold mt-3">
-                        <a href="orange-county-painting-handyman.html"
-                           class="text-blue-600 hover:underline">Painting</a>
-                    </h5>
-                    <p class="mt-2 text-gray-700">Patch holes, install drywall, interior painting, and touch-ups.</p>
-                </div>
-                <div class="mb-8">
-                    <svg class="w-16 h-16 mx-auto mb-4 text-gray-600" fill="currentColor" viewBox="0 0 20 20"
-                         xmlns="http://www.w3.org/2000/svg">
-                        <path
-                            d="M7 3a1 1 0 00-1 1v12a1 1 0 102 0V4a1 1 0 00-1-1zm6 0a1 1 0 00-1 1v12a1 1 0 102 0V4a1 1 0 00-1-1z"></path>
-                    </svg>
-                    <h5 class="text-2xl font-semibold mt-3">
-                        <a href="orange-county-furniture-handyman.html" class="text-blue-600 hover:underline">General
-                            Repairs & Furniture Assembly</a>
-                    </h5>
-                    <p class="mt-2 text-gray-700">Furniture assembly, door and window repairs, mounting TVs, shelves,
-                        and more.</p>
                 </div>
             </div>
         </div>
@@ -550,45 +425,4 @@
             </div>
         </div>
     </section>
-
-    <!-- Contact -->
-    <section id="contact" class="py-16 text-white bg-[#212529] px-4">
-        <div class="container mx-auto">
-            <h2 class="text-center text-4xl font-bold mb-12">Contact Me</h2>
-            <div class="flex justify-center">
-                <div class="w-full md:w-1/2 lg:w-1/3 text-center">
-                    <p class="mb-4">
-                        <svg class="w-6 h-6 inline-block mr-2" fill="currentColor" viewBox="0 0 20 20"
-                             xmlns="http://www.w3.org/2000/svg">
-                            <path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0018 4H2a2 2 0 00-1.997 1.884z"></path>
-                            <path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z"></path>
-                        </svg>
-                        <a href="mailto:info@mreurofix.com"
-                           class="text-white hover:text-blue-300 transition-colors duration-200">info@mreurofix.com</a>
-                    </p>
-                    <p class="mb-4">
-                        <svg class="w-6 h-6 inline-block mr-2" fill="currentColor" viewBox="0 0 20 20"
-                             xmlns="http://www.w3.org/2000/svg">
-                            <path fill-rule="evenodd"
-                                  d="M7 2a2 2 0 00-2 2v12a2 2 0 002 2h6a2 2 0 002-2V4a2 2 0 00-2-2H7zm3 14a1 1 0 100-2 1 1 0 000 2z"
-                                  clip-rule="evenodd"></path>
-                        </svg>
-                        <a href="tel:+19494144998"
-                           class="text-white hover:text-blue-300 transition-colors duration-200">(949) 414-4998</a>
-                    </p>
-                    <p class="mb-4">
-                        <svg class="w-6 h-6 inline-block mr-2" fill="currentColor" viewBox="0 0 20 20"
-                             xmlns="http://www.w3.org/2000/svg">
-                            <path fill-rule="evenodd"
-                                  d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z"
-                                  clip-rule="evenodd"></path>
-                        </svg>
-                        Orange County, California
-                    </p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-
 </x-guest-layout>
