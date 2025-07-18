@@ -13,7 +13,7 @@
             <!-- Hero Section -->
             <section class="text-center py-16 px-6 bg-white rounded-lg shadow-xl mb-16">
                 <h1 class="text-4xl md:text-5xl font-bold text-gray-800 mb-4">
-                    Expert Furniture Handyman in <span class="text-blue-600">Orange County</span>
+                    Expert Furniture Handyman in <span class="text-orange-700">Orange County</span>
                 </h1>
                 <p class="text-xl text-gray-600 max-w-3xl mx-auto">
                     Assembly, Repair & Installation You Can Trust. Tired of wobbly tables and confusing manuals? Mr.
@@ -22,10 +22,93 @@
                 <p class="mt-4 text-xl text-gray-700 font-semibold">
                     European Quality. American Efficiency.
                 </p>
-                <a href="{{ route('home') }}#freeOnlineEstimate"
-                   class="mt-8 inline-block bg-blue-600 text-white px-8 py-3 rounded-full font-semibold text-lg hover:bg-blue-700 transition transform hover:scale-105 shadow-lg">
+                <a href="#freeOnlineEstimate"
+                   class="mt-8 inline-block bg-orange-600 text-white px-8 py-3 rounded-full font-semibold text-lg hover:bg-gray-500 transition transform hover:scale-105 shadow-lg">
                     Get a Free Quote
                 </a>
+            </section>
+
+            <!-- Section "Specializing" -->
+            <section class="mb-12 p-8 bg-white rounded-lg shadow-lg">
+                <div class="grid md:grid-cols-2 gap-8 items-center">
+                    <div class="order-2 md:order-1">
+                        <h2 class="text-3xl font-bold text-gray-800 mb-4">Furniture Assembly Services in Orange County,
+                            CA</h2>
+                        <p class="text-gray-700 leading-relaxed mb-4">
+                            As trusted <span class="font-semibold">handyman furniture assembly</span> experts in Orange County, we specialize in assembling
+                            all types of furniture with speed, accuracy, and care. From flat-pack systems to custom
+                            pieces, we ensure each item is securely built and properly positioned—ready to use and built
+                            to last.
+                        </p>
+                        <p class="text-gray-700 leading-relaxed">
+                            Our service includes everything from unpacking and setup to final adjustments and cleanup.
+                            Whether you're furnishing a new space or replacing old pieces, we bring the tools,
+                            experience, and attention to detail to make sure your furniture is safe, stable, and
+                            perfectly assembled.
+                        </p>
+                    </div>
+                    <div class="order-1 md:order-2">
+                        <img src="{{ asset('assets/img/furniture/furniture-assembly-service.jpg') }}"
+                             alt="Handyman installing laminate flooring" class="w-full h-auto rounded-lg shadow-md"
+                             onerror="this.onerror=null;this.src='https://placehold.co/600x400/F0F0F0/333333?text=Image+Not+Found';">
+                    </div>
+                </div>
+            </section>
+
+            <!-- Галерея с модальным окном -->
+            <section class="mb-12 p-8 bg-white rounded-lg shadow-lg" x-data="{ open: false, currentImage: '' }">
+                <h2 class="text-3xl font-bold text-gray-800 mb-8 text-center">Our Flooring Work in Action</h2>
+                <div class="grid md:grid-cols-3 gap-8">
+                    <!-- Изображение 1 -->
+                    <div class="cursor-pointer group"
+                         @click="open = true; currentImage = '{{ asset('assets/img/furniture/diy_whiteboard_wall_mount.jpg') }}'">
+                        <div class="overflow-hidden rounded-lg shadow-md">
+                            <img src="{{ asset('assets/img/furniture/diy_whiteboard_wall_mount.jpg') }}"
+                                 alt="Finished laminate flooring installation"
+                                 class="w-full h-64 object-cover transform group-hover:scale-110 transition-transform duration-300"
+                                 onerror="this.onerror=null;this.src='https://placehold.co/600x400/E0E0E0/333333?text=Image+Not+Found';">
+                        </div>
+                        <p class="mt-3 text-center text-gray-600">Assembling a wall-mounted marker board.</p>
+                    </div>
+                    <!-- Изображение 2 -->
+                    <div class="cursor-pointer group"
+                         @click="open = true; currentImage = '{{ asset('assets/img/furniture/outdoor_furniture_assembly.jpg') }}'">
+                        <div class="overflow-hidden rounded-lg shadow-md">
+                            <img src="{{ asset('assets/img/furniture/outdoor_furniture_assembly.jpg') }}"
+                                 alt="Vinyl planks repair"
+                                 class="w-full h-64 object-cover transform group-hover:scale-110 transition-transform duration-300"
+                                 onerror="this.onerror=null;this.src='https://placehold.co/600x400/D0D0D0/333333?text=Image+Not+Found';">
+                        </div>
+                        <p class="mt-3 text-center text-gray-600">Assembling outdoor patio furniture.</p>
+                    </div>
+                    <!-- Изображение 3 -->
+                    <div class="cursor-pointer group"
+                         @click="open = true; currentImage = '{{ asset('assets/img/furniture/bar-cabinet-assembly-with-lighting.jpg') }}'">
+                        <div class="overflow-hidden rounded-lg shadow-md">
+                            <img src="{{ asset('assets/img/furniture/bar-cabinet-assembly-with-lighting.jpg') }}" alt="Newly installed flooring"
+                                 class="w-full h-64 object-cover transform group-hover:scale-110 transition-transform duration-300"
+                                 onerror="this.onerror=null;this.src='https://placehold.co/600x400/C0C0C0/333333?text=Image+Not+Found';">
+                        </div>
+                        <p class="mt-3 text-center text-gray-600">Assembling a bar cabinet with built-in lighting.</p>
+                    </div>
+                </div>
+
+                <!-- Модальное окно для изображений -->
+                <div x-show="open" x-transition:enter="transition ease-out duration-300"
+                     x-transition:enter-start="opacity-0" x-transition:enter-end="opacity-100"
+                     x-transition:leave="transition ease-in duration-200" x-transition:leave-start="opacity-100"
+                     x-transition:leave-end="opacity-0"
+                     class="fixed inset-0 bg-black bg-opacity-75 flex items-center justify-center p-4 z-50" x-cloak
+                     @click.outside="open = false">
+                    <div class="relative max-w-4xl max-h-full">
+                        <button @click="open = false"
+                                class="absolute -top-4 -right-4 text-white text-3xl p-2 rounded-full bg-gray-800 hover:bg-gray-700 focus:outline-none">
+                            &times;
+                        </button>
+                        <img :src="currentImage" alt="Zoomed Image"
+                             class="max-w-full max-h-[90vh] rounded-lg shadow-xl">
+                    </div>
+                </div>
             </section>
 
             <!-- Why Choose Us Section -->

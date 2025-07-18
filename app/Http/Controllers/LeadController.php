@@ -1,28 +1,4 @@
 <?php
-//
-//namespace App\Http\Controllers;
-//
-//use Illuminate\Http\Request;
-//
-//class EstimateController extends Controller
-//{
-//    /**
-//     * Показывает страницу с формой.
-//     */
-//    public function show()
-//    {
-//        return view('estimate');
-//    }
-//
-//    /**
-//     * Обрабатывает данные, отправленные из формы.
-//     */
-//    public function submit(Request $request)
-//    {
-//        // Временно выводим все данные на экран для проверки
-//        dd($request->all());
-//    }
-//}
 
 namespace App\Http\Controllers;
 
@@ -90,7 +66,7 @@ class LeadController extends Controller
         //return response()->json(['message' => 'Estimate request submitted successfully!']);
 
         // Отправляем email-уведомление
-        Mail::to('admin@mreurofix.com')->send(new NewLeadNotification($lead));
+        Mail::to(config('mail.to_admin_address'))->send(new NewLeadNotification($lead));
 
         // Вместо JSON, делаем редирект на страницу "Спасибо"
         return redirect()->route('lead.thankyou');

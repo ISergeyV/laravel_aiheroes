@@ -1,11 +1,11 @@
 <x-guest-layout>
     {{-- SEO и OpenGraph мета-теги для страницы --}}
-    @section('title', 'Painting & Drywall Services in Orange County | Mr. EuroFix')
-    @section('description', 'Showroom-quality interior painting and drywall repair services in Orange County. We deliver flawless finishes, meticulous prep work, and guaranteed satisfaction.')
-    @section('keywords', 'interior painting, drywall repair, handyman Orange County, painter, drywall contractor')
+    @section('title', 'Drywall Services in Orange County | Mr. EuroFix')
+    @section('description', 'Showroom-quality drywall repair services in Orange County. We deliver flawless finishes, meticulous prep work, and guaranteed satisfaction.')
+    @section('keywords', 'drywall repair, handyman Orange County, painter, drywall contractor')
     @section('og:title', 'Expert Painting & Drywall Services | Mr. EuroFix')
-    @section('og:description', 'Increase your home\'s value and beauty with our expert drywall and painting services. Mr. EuroFix delivers showroom-quality results for homes across Orange County.')
-    @section('og:url', route('pages.painting')) {{-- Используем именованный роут --}}
+    @section('og:description', 'Increase your home\'s value and beauty with our expert drywall services. Mr. EuroFix delivers showroom-quality results for homes across Orange County.')
+    @section('og:url', route('pages.drywall'))
 
     <div class="bg-slate-50">
         <div class="container mx-auto px-4 py-8">
@@ -17,7 +17,8 @@
                 </h1>
                 <p class="text-xl text-gray-600 max-w-3xl mx-auto">
                     Increase your home's value and beauty with our expert drywall and painting services. Mr. EuroFix
-                    delivers <span class="font-semibold text-orange-700">showroom-quality results</span> for homes across
+                    delivers <span class="font-semibold text-orange-700">showroom-quality results</span> for homes
+                    across
                     Orange County.
                 </p>
                 <a href="#freeOnlineEstimate"
@@ -45,7 +46,7 @@
                         </p>
                     </div>
                     <div class="order-1 md:order-2">
-                        <img src="{{ asset('assets/img/painting/painting_specializing.jpg') }}"
+                        <img src="{{ asset('assets/img/drywall/drywall_services.jpeg') }}"
                              alt="Handyman installing laminate flooring" class="w-full h-auto rounded-lg shadow-md"
                              onerror="this.onerror=null;this.src='https://placehold.co/600x400/F0F0F0/333333?text=Image+Not+Found';">
                     </div>
@@ -268,7 +269,7 @@
             </section>
 
             <!-- Before and After Gallery with Alpine.js -->
-            {{--<section class="mb-16 p-8 bg-white rounded-lg shadow-lg" x-data="{ view: 'before' }">
+            <section class="mb-16 p-8 bg-white rounded-lg shadow-lg" x-data="{ view: 'before' }">
                 <h2 class="text-3xl font-bold text-gray-800 mb-8 text-center">See the Difference We Make</h2>
                 <div class="relative max-w-4xl mx-auto">
                     <!-- Image container with transition -->
@@ -296,7 +297,7 @@
                         </button>
                     </div>
                 </div>
-            </section>--}}
+            </section>
 
             <!-- Final CTA with Estimate Form -->
             <section id="estimate" class="py-16 bg-slate-100 rounded-lg">

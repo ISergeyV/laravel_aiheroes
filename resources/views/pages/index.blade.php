@@ -8,7 +8,7 @@
     <section id="hero"
              class="relative h-screen flex items-center justify-center text-white text-center overflow-hidden">
         <img src="{{ asset('assets/img/bg/hero-bg.jpg') }}" alt="Hero Image"
-             class="absolute inset-0 w-full h-full object-cover object-center"
+             class="absolute inset-0 w-full h-full object-cover object-top"
              onerror="this.onerror=null;this.src='https://placehold.co/1920x1080/343a40/ffffff?text=Mr.+EuroFix';">
 
         <div
@@ -31,178 +31,216 @@
     </section>
 
     <!-- Services Section -->
-    <section id="services" class="container mx-auto py-16 px-4">
-        <h2 class="text-center text-4xl font-bold mb-12 text-gray-800">My Expert Services</h2>
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            <!-- Service 1: Painting -->
-            <div class="bg-white rounded-xl shadow-lg overflow-hidden h-full flex flex-col">
-                <img src="{{ asset('assets/img/painting.jpg') }}" class="w-full h-48 object-cover rounded-t-xl"
-                     alt="Painting Services">
-                <div class="p-6 flex flex-col flex-grow">
-                    <h5 class="text-2xl font-bold text-blue-600 mb-3">Painting</h5>
-                    <p class="text-gray-700 mb-4 flex-grow">
-                        From flawless drywall repair to a fresh coat of paint, I transform your walls into works of art.
-                    </p>
-                    <ul class="space-y-2 text-gray-700 mb-6">
-                        <li class="flex items-center">
-                            <x-icon name="check-circle" />
-                            Drywall Repair
-                        </li>
-                        <li class="flex items-center">
-                            <x-icon name="check-circle" />
-                            Drywall Installation
-                        </li>
-                        <li class="flex items-center">
-                            <x-icon name="check-circle" />
-                            Interior Painting
-                        </li>
-                    </ul>
-                    <a href="{{ route('pages.painting') }}"
-                       class="inline-block bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-5 rounded-full transition duration-300 self-start">Learn
-                        More</a>
+    <section id="services" class="py-16 bg-white">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-center text-4xl font-bold mb-12 text-gray-800">My Expert Services</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+                <!-- Service 1: Furniture Assembly -->
+                <div class="bg-white rounded-xl shadow-lg overflow-hidden h-full flex flex-col">
+                    <img src="{{ asset('assets/img/index/services/furniture-assembly-service.jpg') }}"
+                         class="w-full h-48 object-cover rounded-t-xl"
+                         alt="Furniture Assembly Services">
+                    <div class="p-6 flex flex-col flex-grow">
+                        <h5 class="text-2xl font-bold text-blue-600 mb-3">Furniture Assembly</h5>
+                        <p class="text-gray-700 mb-4 flex-grow">
+                            Save time and frustration with my professional assembly of any furniture, from shelves to
+                            complex sets.
+                        </p>
+                        <ul class="space-y-2 text-gray-700 mb-6">
+                            <li class="flex items-center">
+                                <x-icon name="check-circle"/>
+                                New Furniture Assembly
+                            </li>
+                            <li class="flex items-center">
+                                <x-icon name="check-circle"/>
+                                Furniture Repair
+                            </li>
+                            <li class="flex items-center">
+                                <x-icon name="check-circle"/>
+                                Wall Mounting
+                            </li>
+                        </ul>
+                        <a href="{{ route('pages.furniture') }}"
+                           class="inline-block bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-5 rounded-full transition duration-300 self-start">
+                            Learn More</a>
+                    </div>
                 </div>
-            </div>
-            <!-- Service 2: Flooring -->
-            <div class="bg-white rounded-xl shadow-lg overflow-hidden h-full flex flex-col">
-                <img src="{{ asset('images/services/flooring.jpg') }}" class="w-full h-48 object-cover rounded-t-xl"
-                     alt="Flooring Services">
-                <div class="p-6 flex flex-col flex-grow">
-                    <h5 class="text-2xl font-bold text-blue-600 mb-3">Flooring Services</h5>
-                    <p class="text-gray-700 mb-4 flex-grow">
-                        Professional installation and repair of laminate, vinyl, and other flooring for a beautiful
-                        finish to your home.
-                    </p>
-                    <ul class="space-y-2 text-gray-700 mb-6">
-                        <li class="flex items-center">
-                            <x-icon name="check-circle" />
-                            Laminate Installation
-                        </li>
-                        <li class="flex items-center">
-                            <x-icon name="check-circle" />
-                            Vinyl Installation
-                        </li>
-                        <li class="flex items-center">
-                            <x-icon name="check-circle" />
-                            Flooring Repair
-                        </li>
-                    </ul>
-                    <a href="{{ route('pages.flooring') }}"
-                       class="inline-block bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-5 rounded-full transition duration-300 self-start">Learn
-                        More</a>
+                <!-- Service 2: Painting -->
+                <div class="bg-white rounded-xl shadow-lg overflow-hidden h-full flex flex-col">
+                    <img src="{{ asset('assets/img/index/services/painting.jpg') }}"
+                         class="w-full h-48 object-cover rounded-t-xl"
+                         alt="Painting Services">
+                    <div class="p-6 flex flex-col flex-grow">
+                        <h5 class="text-2xl font-bold text-blue-600 mb-3">Painting</h5>
+                        <p class="text-gray-700 mb-4 flex-grow">
+                            A fresh coat of paint can completely transform your space—I deliver clean lines, even
+                            coverage,
+                            and a flawless finish every time.
+                        </p>
+                        <ul class="space-y-2 text-gray-700 mb-6">
+                            <li class="flex items-center">
+                                <x-icon name="check-circle"/>
+                                Wall & Ceiling Painting
+                            </li>
+                            <li class="flex items-center">
+                                <x-icon name="check-circle"/>
+                                Accent Walls
+                            </li>
+                            <li class="flex items-center">
+                                <x-icon name="check-circle"/>
+                                Color Matching
+                            </li>
+                        </ul>
+                        <a href="{{ route('pages.painting') }}"
+                           class="inline-block bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-5 rounded-full transition duration-300 self-start">
+                            Learn More</a>
+                    </div>
                 </div>
-            </div>
-            <!-- Service 3: Tile Installation & Repair -->
-            <div class="bg-white rounded-xl shadow-lg overflow-hidden h-full flex flex-col">
-                <img src="{{ asset('images/services/tile.jpg') }}" class="w-full h-48 object-cover rounded-t-xl"
-                     alt="Tile Installation and Repair Services">
-                <div class="p-6 flex flex-col flex-grow">
-                    <h5 class="text-2xl font-bold text-blue-600 mb-3">Tile Installation & Repair</h5>
-                    <p class="text-gray-700 mb-4 flex-grow">
-                        From kitchen backsplashes to bathroom floors, flawless tiling that stands the test of time.
-                    </p>
-                    <ul class="space-y-2 text-gray-700 mb-6">
-                        <li class="flex items-center">
-                            <x-icon name="check-circle" />
-                            Tile Installation
-                        </li>
-                        <li class="flex items-center">
-                            <x-icon name="check-circle" />
-                            Tile Repair
-                        </li>
-                        <li class="flex items-center">
-                            <x-icon name="check-circle" />
-                            Grouting & Sealing
-                        </li>
-                    </ul>
-                    <a href="{{ route('pages.tile') }}"
-                       class="inline-block bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-5 rounded-full transition duration-300 self-start">Learn
-                        More</a>
+                <!-- Service 3: Flooring -->
+                <div class="bg-white rounded-xl shadow-lg overflow-hidden h-full flex flex-col">
+                    <img src="{{ asset('assets/img/flooring/door-trim.jpg') }}"
+                         class="w-full h-48 object-cover rounded-t-xl"
+                         alt="Flooring Services">
+                    <div class="p-6 flex flex-col flex-grow">
+                        <h5 class="text-2xl font-bold text-blue-600 mb-3">Flooring Services</h5>
+                        <p class="text-gray-700 mb-4 flex-grow">
+                            Professional installation and repair of laminate, vinyl, and other flooring for a beautiful
+                            finish to your home.
+                        </p>
+                        <ul class="space-y-2 text-gray-700 mb-6">
+                            <li class="flex items-center">
+                                <x-icon name="check-circle"/>
+                                Laminate Installation
+                            </li>
+                            <li class="flex items-center">
+                                <x-icon name="check-circle"/>
+                                Vinyl Installation
+                            </li>
+                            <li class="flex items-center">
+                                <x-icon name="check-circle"/>
+                                Flooring Repair
+                            </li>
+                        </ul>
+                        <a href="{{ route('pages.flooring') }}"
+                           class="inline-block bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-5 rounded-full transition duration-300 self-start">Learn
+                            More</a>
+                    </div>
                 </div>
-            </div>
-            <!-- Service 4: Furniture Assembly -->
-            <div class="bg-white rounded-xl shadow-lg overflow-hidden h-full flex flex-col">
-                <img src="{{ asset('images/services/furniture.jpg') }}" class="w-full h-48 object-cover rounded-t-xl"
-                     alt="Furniture Assembly Services">
-                <div class="p-6 flex flex-col flex-grow">
-                    <h5 class="text-2xl font-bold text-blue-600 mb-3">Furniture Assembly</h5>
-                    <p class="text-gray-700 mb-4 flex-grow">
-                        Save time and frustration with my professional assembly of any furniture, from shelves to
-                        complex sets.
-                    </p>
-                    <ul class="space-y-2 text-gray-700 mb-6">
-                        <li class="flex items-center">
-                            <x-icon name="check-circle" />
-                            New Furniture Assembly
-                        </li>
-                        <li class="flex items-center">
-                            <x-icon name="check-circle" />
-                            Furniture Repair
-                        </li>
-                        <li class="flex items-center">
-                            <x-icon name="check-circle" />
-                            Wall Mounting
-                        </li>
-                    </ul>
-                    <a href="{{ route('pages.furniture') }}"
-                       class="inline-block bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-5 rounded-full transition duration-300 self-start">Learn
-                        More</a>
+                <!-- Service 4: Tile Installation & Repair -->
+                <div class="bg-white rounded-xl shadow-lg overflow-hidden h-full flex flex-col">
+                    <img src="{{ asset('assets/img/index/services/tile_Installation_repair.jpg') }}"
+                         class="w-full h-48 object-cover rounded-t-xl"
+                         alt="Tile Installation and Repair Services">
+                    <div class="p-6 flex flex-col flex-grow">
+                        <h5 class="text-2xl font-bold text-blue-600 mb-3">Tile Installation & Repair</h5>
+                        <p class="text-gray-700 mb-4 flex-grow">
+                            From kitchen backsplashes to bathroom floors, flawless tiling that stands the test of time.
+                        </p>
+                        <ul class="space-y-2 text-gray-700 mb-6">
+                            <li class="flex items-center">
+                                <x-icon name="check-circle"/>
+                                Tile Installation
+                            </li>
+                            <li class="flex items-center">
+                                <x-icon name="check-circle"/>
+                                Tile Repair
+                            </li>
+                            <li class="flex items-center">
+                                <x-icon name="check-circle"/>
+                                Grouting & Sealing
+                            </li>
+                        </ul>
+                        <a href="{{ route('pages.tile') }}"
+                           class="inline-block bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-5 rounded-full transition duration-300 self-start">Learn
+                            More</a>
+                    </div>
                 </div>
-            </div>
-            <!-- Service 5: Minor Plumbing -->
-            <div class="bg-white rounded-xl shadow-lg overflow-hidden h-full flex flex-col">
-                <img src="{{ asset('images/services/plumbing.jpg') }}" class="w-full h-48 object-cover rounded-t-xl"
-                     alt="Minor Plumbing Services">
-                <div class="p-6 flex flex-col flex-grow">
-                    <h5 class="text-2xl font-bold text-blue-600 mb-3">Minor Plumbing</h5>
-                    <p class="text-gray-700 mb-4 flex-grow">
-                        From leaky faucets to new fixture installations, I handle your minor plumbing needs efficiently.
-                    </p>
-                    <ul class="space-y-2 text-gray-700 mb-6">
-                        <li class="flex items-center">
-                            <x-icon name="check-circle" />
-                            Faucet Repair
-                        </li>
-                        <li class="flex items-center">
-                            <x-icon name="check-circle" />
-                            Toilet Replacement
-                        </li>
-                        <li class="flex items-center">
-                            <x-icon name="check-circle" />
-                            Drain Clogs
-                        </li>
-                    </ul>
-                    <a href="#"
-                       class="inline-block bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-5 rounded-full transition duration-300 self-start">Learn
-                        More</a>
+                <!-- Service 5: Drywall Services -->
+                <div class="bg-white rounded-xl shadow-lg overflow-hidden h-full flex flex-col">
+                    <img src="{{ asset('assets/img/index/services/drywall_services.jpg') }}"
+                         class="w-full h-48 object-cover rounded-t-xl"
+                         alt="Drywall Services Services">
+                    <div class="p-6 flex flex-col flex-grow">
+                        <h5 class="text-2xl font-bold text-blue-600 mb-3">Drywall Services</h5>
+                        <p class="text-gray-700 mb-4 flex-grow">
+                            From minor repairs to full drywall installations, I provide smooth, seamless results that
+                            make
+                            your walls look brand new.
+                        </p>
+                        <ul class="space-y-2 text-gray-700 mb-6">
+                            <li class="flex items-center">
+                                Drywall Repair
+                            </li>
+                            <li class="flex items-center">
+                                <x-icon name="check-circle"/>
+                                Drywall Installation
+                            </li>
+                            <li class="flex items-center">
+                                <x-icon name="check-circle"/>
+                                Patching & Finishing
+                            </li>
+                        </ul>
+                        <a href="#"
+                           class="inline-block bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-5 rounded-full transition duration-300 self-start">Learn
+                            More</a>
+                    </div>
                 </div>
-            </div>
-            <!-- Service 6: Minor Electrical -->
-            <div class="bg-white rounded-xl shadow-lg overflow-hidden h-full flex flex-col">
-                <img src="{{ asset('images/services/electrical.jpg') }}" class="w-full h-48 object-cover rounded-t-xl"
-                     alt="Minor Electrical Services">
-                <div class="p-6 flex flex-col flex-grow">
-                    <h5 class="text-2xl font-bold text-blue-600 mb-3">Minor Electrical</h5>
-                    <p class="text-gray-700 mb-4 flex-grow">
-                        Safe and reliable installation of light fixtures, outlets, and small electrical appliances.
-                    </p>
-                    <ul class="space-y-2 text-gray-700 mb-6">
-                        <li class="flex items-center">
+                <!-- Service 6: Minor Plumbing -->
+                <div class="bg-white rounded-xl shadow-lg overflow-hidden h-full flex flex-col">
+                    <img src="{{ asset('assets/img/index/services/minor_plumbing.jpg') }}"
+                         class="w-full h-48 object-cover rounded-t-xl"
+                         alt="Minor Plumbing Services">
+                    <div class="p-6 flex flex-col flex-grow">
+                        <h5 class="text-2xl font-bold text-blue-600 mb-3">Minor Plumbing</h5>
+                        <p class="text-gray-700 mb-4 flex-grow">
+                            From leaky faucets to new fixture installations, I handle your minor plumbing needs
+                            efficiently.
+                        </p>
+                        <ul class="space-y-2 text-gray-700 mb-6">
+                            <li class="flex items-center">
+                                <x-icon name="check-circle"/>
+                                Faucet Repair
+                            </li>
+                            <li class="flex items-center">
+                                <x-icon name="check-circle"/>
+                                Toilet Replacement
+                            </li>
+                            <li class="flex items-center">
+                                <x-icon name="check-circle"/>
+                                Drain Clogs
+                            </li>
+                        </ul>
 
-                            Light Fixture Installation
-                        </li>
-                        <li class="flex items-center">
-                            <x-icon name="check-circle" />
-                            Outlet Replacement
-                        </li>
-                        <li class="flex items-center">
-                            <x-icon name="check-circle" />
-                            Ceiling Fan Mounting
-                        </li>
-                    </ul>
-                    <a href="#"
-                       class="inline-block bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-5 rounded-full transition duration-300 self-start">Learn
-                        More</a>
+                    </div>
                 </div>
+                <!-- Service 7: Minor Electrical -->
+                <div class="bg-white rounded-xl shadow-lg overflow-hidden h-full flex flex-col">
+                    <img src="{{ asset('assets/img/index/services/minor_electrical.jpg') }}"
+                         class="w-full h-48 object-cover rounded-t-xl"
+                         alt="Minor Electrical Services">
+                    <div class="p-6 flex flex-col flex-grow">
+                        <h5 class="text-2xl font-bold text-blue-600 mb-3">Minor Electrical</h5>
+                        <p class="text-gray-700 mb-4 flex-grow">
+                            Safe and reliable installation of light fixtures, outlets, and small electrical appliances.
+                        </p>
+                        <ul class="space-y-2 text-gray-700 mb-6">
+                            <li class="flex items-center">
+
+                                Light Fixture Installation
+                            </li>
+                            <li class="flex items-center">
+                                <x-icon name="check-circle"/>
+                                Outlet Replacement
+                            </li>
+                            <li class="flex items-center">
+                                <x-icon name="check-circle"/>
+                                Ceiling Fan Mounting
+                            </li>
+                        </ul>
+
+                    </div>
+                </div>
+
             </div>
         </div>
     </section>
@@ -211,30 +249,50 @@
     <section id="why" class="py-16 bg-gray-800 text-white px-4">
         <div class="container mx-auto">
             <h2 class="text-center text-4xl font-bold mb-12">Why Choose Mr. EuroFix?</h2>
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
-                <div class="mb-8">
-                    <!-- Example icon for tools - replace with actual icon if using a library like Font Awesome/Lucide -->
-                    <x-icon name="check-circle" />
+
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-12 text-center">
+                <!-- Item 1: Experienced -->
+                <div class="flex flex-col items-center">
+                    <div
+                        class="flex items-center justify-center h-24 w-24 mb-6 bg-indigo-700 bg-opacity-50 rounded-full ring-2 ring-indigo-500 shadow-lg">
+                        <!-- НОВАЯ ИКОНКА: Инструменты (Опыт и универсальность) -->
+                        <svg class="h-12 w-12 text-indigo-300" xmlns="http://www.w3.org/2000/svg" fill="none"
+                             viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round"
+                                  d="M11.42 15.17 17.25 21A2.652 2.652 0 0 0 21 17.25l-5.877-5.877M11.42 15.17l2.496-3.03c.317-.384.74-.626 1.208-.766M11.42 15.17l-4.655 5.653a2.548 2.548 0 1 1-3.586-3.586l6.837-5.63m5.108-.233c.55-.164 1.163-.188 1.743-.14a4.5 4.5 0 0 0 4.486-6.336l-3.276 3.277a3.004 3.004 0 0 1-4.243-4.243l3.275-3.275a4.5 4.5 0 0 0-6.336 4.486c.046.58.143 1.163.328 1.743m-.21 2.242a3.75 3.75 0 0 0-5.303-5.303l-1.21 1.21a3.75 3.75 0 0 0 5.304 5.303l1.21-1.21z"/>
+                        </svg>
+                    </div>
                     <h5 class="text-2xl font-semibold mt-3">Experienced & Versatile</h5>
                     <p class="mt-2 text-gray-300">Over 7 years of hands-on experience in plumbing, tile, electrical,
                         drywall, painting, and general repairs.</p>
                 </div>
-                <div class="mb-8">
-                    <svg class="w-16 h-16 mx-auto mb-4 text-green-400" fill="currentColor" viewBox="0 0 20 20"
-                         xmlns="http://www.w3.org/2000/svg">
-                        <path
-                            d="M10 2a8 8 0 100 16 8 8 0 000-16zM7.707 9.293a1 1 0 00-1.414 1.414L9 13.586l4.707-4.707a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293z"></path>
-                    </svg>
+                <!-- Item 2: Pricing -->
+                <div class="flex flex-col items-center">
+                    <div
+                        class="flex items-center justify-center h-24 w-24 mb-6 bg-green-700 bg-opacity-50 rounded-full ring-2 ring-green-500">
+                        <!-- Icon for Pricing -->
+                        <svg class="h-12 w-12 text-green-300" xmlns="http://www.w3.org/2000/svg" fill="none"
+                             viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round"
+                                  d="M2.25 18.75a60.07 60.07 0 0115.797 2.101c.727.198 1.453-.342 1.453-1.096V18.75M3.75 4.5v.75A.75.75 0 013 6h-.75m0 0v-.375c0-.621.504-1.125 1.125-1.125H20.25M2.25 6v9m18-10.5v.75c0 .414.336.75.75.75h.75m-1.5-1.5h.375c.621 0 1.125.504 1.125 1.125v9.75c0 .621-.504 1.125-1.125 1.125h-.375m1.5-1.5H21a.75.75 0 00-.75.75v.75m0 0H3.75m0 0h-.375a1.125 1.125 0 01-1.125-1.125V6.375c0-.621.504-1.125 1.125-1.125h.375m18 3.75v.75a.75.75 0 01-.75.75h-.75a.75.75 0 01-.75-.75v-.75m0 0h.375c.621 0 1.125.504 1.125 1.125v.75c0 .621-.504 1.125-1.125 1.125h-.375m0 0h-.75a.75.75 0 00-.75.75v.75c0 .414.336.75.75.75h.75m0 0h-.75a.75.75 0 00-.75.75v.75c0 .414.336.75.75.75h.75M4.5 12v.75a.75.75 0 00.75.75h.75a.75.75 0 00.75-.75v-.75m0 0h-.375c-.621 0-1.125.504-1.125 1.125v.75c0 .621.504 1.125 1.125 1.125h.375m0 0h.75a.75.75 0 01.75.75v.75c0 .414-.336.75-.75.75h-.75m0 0h.75a.75.75 0 01.75.75v.75c0 .414-.336.75-.75.75h-.75"/>
+                        </svg>
+                    </div>
                     <h5 class="text-2xl font-semibold mt-3">Affordable Pricing</h5>
                     <p class="mt-2 text-gray-300">Clear, honest quotes with no hidden fees. We offer quality workmanship
                         at fair prices.</p>
                 </div>
-                <div class="mb-8">
-                    <svg class="w-16 h-16 mx-auto mb-4 text-purple-400" fill="currentColor" viewBox="0 0 20 20"
-                         xmlns="http://www.w3.org/2000/svg">
-                        <path
-                            d="M10 2a8 8 0 100 16 8 8 0 000-16zm-1 9a1 1 0 01-2 0V7a1 1 0 112 0v4zm4-4a1 1 0 01-2 0V7a1 1 0 112 0v4z"></path>
-                    </svg>
+                <!-- Item 3: On Time -->
+                <div class="flex flex-col items-center">
+                    <div
+                        class="flex items-center justify-center h-24 w-24 mb-6 bg-blue-700 bg-opacity-50 rounded-full ring-2 ring-blue-500">
+                        <!-- Icon for Time -->
+                        <svg class="h-12 w-12 text-blue-300" xmlns="http://www.w3.org/2000/svg" fill="none"
+                             viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round"
+                                  d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                        </svg>
+                    </div>
                     <h5 class="text-2xl font-semibold mt-3">On Time, Every Time</h5>
                     <p class="mt-2 text-gray-300">We respect your schedule and always show up on time, ready to
                         work.</p>
@@ -243,41 +301,70 @@
         </div>
     </section>
 
+
+    {{--<!-- About Section with Image -->--}}
+    {{--    <section class="mb-12 p-8 bg-white rounded-lg shadow-lg" x-data="{ imageLoaded: false }">--}}
+    {{--        <div class="grid md:grid-cols-2 gap-8 items-center">--}}
+    {{--            <div class="relative overflow-hidden rounded-lg">--}}
+    {{--                <img src="{{ asset('images/flooring/laminate-floor-fitting-closeup.jpg') }}"--}}
+    {{--                     alt="Handyman installing laminate flooring"--}}
+    {{--                     class="w-full h-auto transition-transform duration-700 hover:scale-105"--}}
+    {{--                     @load="imageLoaded = true"--}}
+    {{--                     :class="{ 'opacity-0': !imageLoaded, 'opacity-100': imageLoaded }"--}}
+    {{--                     onerror="this.onerror=null;this.src='https://placehold.co/600x400/F0F0F0/3333?text=Image+Not+Found';">--}}
+    {{--            </div>--}}
+    {{--            <div>--}}
+    {{--                <h2 class="text-3xl font-bold text-gray-800 mb-4">Specializing in Laminate & Vinyl Flooring</h2>--}}
+    {{--                <p class="text-gray-600 mb-4">--}}
+    {{--                    As expert <span class="font-semibold">handyman flooring installers</span>, we specialize in the--}}
+    {{--                    precise and efficient installation of both laminate and vinyl flooring. These materials offer--}}
+    {{--                    durability, style, and affordability, making them popular choices for modern homes.--}}
+    {{--                </p>--}}
+    {{--                <p class="text-gray-600">--}}
+    {{--                    Whether you're updating a single room or your entire house, our team ensures a flawless--}}
+    {{--                    installation, paying close attention to detail for a beautiful and long-lasting result.--}}
+    {{--                </p>--}}
+    {{--            </div>--}}
+    {{--        </div>--}}
+    {{--    </section>--}}
+
     <!-- About Me -->
-    <section id="about" class="py-16 px-4">
-        <div class="container mx-auto">
-            <h2 class="text-center text-4xl font-bold mb-12 text-gray-800">About Me</h2>
-            <div class="grid grid-cols-1 md:grid-cols-12 gap-8 items-center">
-                <div class="md:col-span-8 md:order-1 text-gray-700 leading-relaxed">
-                    <h3 class="text-3xl font-bold mb-4">My Story: How a Passion for Home Became a Profession</h3>
-                    <p class="mb-4">For many of us in California, a home is more than just a place to live—it's part of
-                        the dream. My journey into this craft began in 2013 when I bought my own home. It was a place
-                        with great bones, but it needed a lot of work to truly shine. I saw its potential and set an
-                        ambitious goal: to handle the entire renovation myself, from the ground up.</p>
-                    <p class="mb-4">It was a challenge I dove into headfirst. I spent countless hours learning,
-                        planning, and getting my hands dirty—from rewiring the electrical systems to getting the final
-                        coat of paint just right. I wasn't just renovating a house; I was building a home for my family,
-                        and I poured all my energy and passion into making sure every detail was perfect.</p>
-                    <p class="mb-4">When the project was complete, the result was better than I could have imagined. But
-                        the real surprise came from the reactions of my friends and neighbors. They were impressed not
-                        just by the final look, but by the quality of the work, the thoughtful details, and the
-                        craftsmanship they could see and feel.</p>
-                    <p class="mb-4">Soon, the requests started coming in. "Can you help me with my bathroom?" "What's
-                        the best way to tackle a kitchen remodel?" I loved helping out, and with every project I
-                        completed for others, I felt a deep sense of satisfaction. I realized that helping people
-                        transform their living spaces into places they truly love was what I was meant to do.</p>
-                    <p class="mb-4">What started as a personal project born out of necessity has since grown into my
-                        full-time craft.</p>
-                    <p class="mb-4">Today, I bring that same level of passion, dedication, and attention to detail to
-                        every client's home. I believe there are no small jobs, because every detail contributes to the
-                        final result. Your home is your sanctuary, and I’m here to help you make it the best it can
-                        be.</p>
-                    <p class="font-bold">Let's work together to bring your vision for your home to life.</p>
+    <section id="about" class="py-16 bg-white">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-3xl md:text-4xl font-bold text-center mb-12">About Me</h2>
+            <div class="flex flex-col-reverse lg:flex-row items-center gap-10 lg:gap-16">
+                <!-- Text Block -->
+                <div class="w-full lg:w-1/2">
+                    <h3 class="text-2xl font-bold mb-4">My Story: How a Passion for Home Became a Profession</h3>
+                    <div class="space-y-4 text-gray-700 text-base leading-relaxed">
+                        <p>For me, a home is more than just a place to live—it's part of the dream. My journey began in
+                            2013, renovating my own house from the ground up. I learned every step, from rewiring to the
+                            final coat of paint, pouring passion into every detail.</p>
+                        <p>Friends and neighbors noticed the quality and care in my work, soon asking for help with
+                            their own projects. Each new job brought satisfaction and a sense of purpose—helping others
+                            create spaces they love.</p>
+                        <p>What started as a personal challenge has grown into my full-time craft. Today, I bring that
+                            same dedication and attention to detail to every client’s home. There are no small
+                            jobs—every detail matters.</p>
+                        <p class="font-semibold">Let’s work together to bring your vision to life.</p>
+                    </div>
                 </div>
-                <div class="md:col-span-4 md:order-2 text-center">
-                    <img src="{{ asset('images/about/me.jpg') }}" alt="Mr. EuroFix"
-                         class="w-full h-auto rounded-full max-w-xs mx-auto shadow-xl"
-                         onerror="this.onerror=null;this.src='https://placehold.co/400x400/cccccc/333333?text=Mr.+EuroFix';">
+                <!-- Photo Block -->
+                <div class="w-full lg:w-1/2 flex justify-center items-center">
+                    <div
+                        x-data="{ hover: false }"
+                        @mouseenter="hover = true"
+                        @mouseleave="hover = false"
+                        class="transition-transform duration-300"
+                        :class="{ 'scale-105 shadow-2xl': hover }"
+                    >
+                        <img
+                            src="{{ url('/images/about/me.jpg') }}"
+                            alt="Mr. EuroFix"
+                            class="w-80 h-80 md:w-96 md:h-96 rounded-2xl object-cover border-4 border-gray-200 shadow-lg"
+                            onerror="this.onerror=null;this.src='https://placehold.co/400x400/cccccc/333333?text=Mr.+EuroFix';"
+                        >
+                    </div>
                 </div>
             </div>
         </div>

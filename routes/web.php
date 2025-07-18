@@ -20,6 +20,7 @@ Route::get('/about', function () {
 
 Route::get('/orange-county-flooring-handyman', fn() => view('pages.flooring'))->name('pages.flooring');
 Route::get('/orange-county-painting-handyman', fn() => view('pages.painting'))->name('pages.painting');
+Route::get('/orange-county-drywall-handyman', fn() => view('pages.drywall'))->name('pages.drywall');
 Route::get('/orange-county-furniture-handyman', fn() => view('pages.furniture'))->name('pages.furniture');
 Route::get('/orange-county-tile-handyman', fn() => view('pages.tile'))->name('pages.tile');
 

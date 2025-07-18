@@ -17,7 +17,7 @@
                  x-transition:enter-start="opacity-0 transform translate-y-4"
                  x-transition:enter-end="opacity-100 transform translate-y-0">
                 <h1 class="text-4xl md:text-5xl font-bold text-gray-800 mb-4">
-                    Expert Flooring Services by Your Trusted Handyman
+                    Expert Tile Services by Your Trusted Handyman
                 </h1>
                 <p class="text-xl text-gray-600 max-w-3xl mx-auto">
                     As your dedicated <span class="font-semibold text-blue-600">floor handyman</span>, Mr. EuroFix
@@ -31,7 +31,7 @@
         <section class="mb-12 p-8 bg-white rounded-lg shadow-lg">
             <div class="grid md:grid-cols-2 gap-8 items-center">
                 <div class="order-2 md:order-1">
-                    <h2 class="text-3xl font-bold text-gray-800 mb-4">Specializing in Laminate & Vinyl Flooring</h2>
+                    <h2 class="text-3xl font-bold text-gray-800 mb-4">Specializing in Tile</h2>
                     <p class="text-gray-700 leading-relaxed mb-4">
                         As expert <span class="font-semibold">handyman flooring installers</span>, we specialize in the
                         precise and efficient installation of both laminate and vinyl flooring. These materials offer
@@ -43,7 +43,7 @@
                     </p>
                 </div>
                 <div class="order-1 md:order-2">
-                    <img src="{{ asset('assets/img/flooring/laminate-floor-fitting-closeup.jpg') }}"
+                    <img src="{{ asset('assets/img/tile/tile_sevices.jpg') }}"
                          alt="Handyman installing laminate flooring" class="w-full h-auto rounded-lg shadow-md"
                          onerror="this.onerror=null;this.src='https://placehold.co/600x400/F0F0F0/333333?text=Image+Not+Found';">
                 </div>

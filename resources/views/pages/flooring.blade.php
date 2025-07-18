@@ -25,9 +25,13 @@
                             class="font-semibold text-orange-800">floor repair</span> to complete installations.
                 </p>
             </div>
+            <a href="#freeOnlineEstimate"
+               class="mt-8 inline-block bg-orange-600 text-white px-8 py-3 rounded-full font-semibold text-lg hover:bg-gray-500 transition transform hover:scale-105 shadow-lg">
+                Get a Free Quote
+            </a>
         </section>
 
-        <!-- Секция "Специализация" -->
+        <!-- Section "Specializing" -->
         <section class="mb-12 p-8 bg-white rounded-lg shadow-lg">
             <div class="grid md:grid-cols-2 gap-8 items-center">
                 <div class="order-2 md:order-1">
