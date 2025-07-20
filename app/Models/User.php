@@ -3,14 +3,25 @@
 namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
+use Filament\Models\Contracts\FilamentUser;
+use Filament\Panel;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 
-class User extends Authenticatable
+// 1. Добавьте "implements FilamentUser"
+class User extends Authenticatable implements FilamentUser
 {
     /** @use HasFactory<\Database\Factories\UserFactory> */
     use HasFactory, Notifiable;
+
+    // 2. Добавьте этот метод
+    public function canAccessPanel(Panel $panel): bool
+    {
+        // Здесь вы можете добавить логику, например, проверку email
+        // return str_ends_with($this->email, '@yourdomain.com') && $this->hasVerifiedEmail();
+        return true; // Пока разрешаем доступ всем аутентифицированным пользователям
+    }
 
     /**
      * The attributes that are mass assignable.
