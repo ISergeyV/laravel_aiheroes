@@ -12,13 +12,12 @@
 
             <!-- Hero Section -->
             <section class="text-center py-16 px-6 bg-white rounded-lg shadow-xl mb-16">
-                <h1 class="text-4xl md:text-5xl font-bold text-gray-800 mb-4">
-                    Transform Your Home with a Flawless Finish
-                </h1>
+                <h1 class="text-4xl md:text-5xl font-bold text-gray-800 mb-4">Perfect Walls, Perfect Results Every
+                    Time</h1>
                 <p class="text-xl text-gray-600 max-w-3xl mx-auto">
-                    Increase your home's value and beauty with our expert drywall and painting services. Mr. EuroFix
-                    delivers <span class="font-semibold text-orange-700">showroom-quality results</span> for homes
-                    across
+                    Get flawless walls and ceilings with our expert drywall installation and repair services. Mr.
+                    EuroFix delivers <span class="font-semibold text-orange-700">professional drywall solutions</span>
+                    that prepare your home for the perfect finish across
                     Orange County.
                 </p>
                 <a href="#freeOnlineEstimate"
@@ -31,18 +30,19 @@
             <section class="mb-12 p-8 bg-white rounded-lg shadow-lg">
                 <div class="grid md:grid-cols-2 gap-8 items-center">
                     <div class="order-2 md:order-1">
-                        <h2 class="text-3xl font-bold text-gray-800 mb-4">Professional Painting Services in Orange
+                        <h2 class="text-3xl font-bold text-gray-800 mb-4">Expert Drywall & Handyman Services in Orange
                             County, CA</h2>
                         <p class="text-gray-700 leading-relaxed mb-4">
-                            Our team provides reliable, high-quality <span class="font-semibold">interior and exterior painting services</span>
-                            in throughout
-                            Orange County. With a focus on clean finishes and long-lasting results, we handle every
-                            step—from surface preparation and priming to expert brushwork and final touch-ups.
+                            Our experienced team provides complete drywall installation, repair, and finishing services
+                            throughout Orange County. From small patches and hole repairs to full room installations, we
+                            deliver smooth, even surfaces ready for paint or wallpaper.
                         </p>
                         <p class="text-gray-700 leading-relaxed">
-                            We use premium materials and proven techniques to deliver a smooth, even coat that
-                            transforms your space. Whether you're refreshing a room or updating the entire property, we
-                            ensure a flawless, professional result that enhances both beauty and value.
+                            We specialize in drywall hanging, taping, mudding, and texturing, ensuring seamless joints
+                            and professional-grade finishes. Whether you're dealing with cracks, water damage, or need
+                            new construction drywall, our skilled handymen use industry-leading techniques and materials
+                            to restore your walls to perfection. Every project includes thorough cleanup and surface
+                            preparation for your final finish.
                         </p>
                     </div>
                     <div class="order-1 md:order-2">
@@ -286,7 +286,8 @@
                              x-transition:enter-start="opacity-0" x-transition:enter-end="opacity-100" x-cloak>
                     </div>
                     <!-- Toggle Switch -->
-                    <div class="absolute bottom-4 left-1/2 -translate-x-1/2 flex items-center p-1 bg-gray-800 bg-opacity-50 rounded-full">
+                    <div
+                        class="absolute bottom-4 left-1/2 -translate-x-1/2 flex items-center p-1 bg-gray-800 bg-opacity-50 rounded-full">
                         <button @click="view = 'before'"
                                 :class="{ 'bg-white text-gray-800': view === 'before', 'text-white': view !== 'before' }"
                                 class="px-6 py-2 text-sm font-semibold rounded-full transition">Before

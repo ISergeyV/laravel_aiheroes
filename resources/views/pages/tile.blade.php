@@ -17,29 +17,33 @@
                  x-transition:enter-start="opacity-0 transform translate-y-4"
                  x-transition:enter-end="opacity-100 transform translate-y-0">
                 <h1 class="text-4xl md:text-5xl font-bold text-gray-800 mb-4">
-                    Expert Tile Services by Your Trusted Handyman
+                    Transform Your Home with Expert Tile Installation
                 </h1>
                 <p class="text-xl text-gray-600 max-w-3xl mx-auto">
-                    As your dedicated <span class="font-semibold text-blue-600">floor handyman</span>, Mr. EuroFix
-                    provides top-tier solutions, from meticulous <span
-                            class="font-semibold text-blue-600">floor repair</span> to complete installations.
+                    Elevate your space with stunning, durable tile work that adds lasting value and beauty to your home.
+                    Mr. EuroFix delivers <span class="font-semibold text-orange-600">premium tile installation and repair services</span>
+                    for homes across Orange County.
+
                 </p>
             </div>
         </section>
 
-        <!-- Секция "Специализация" -->
+        <!-- Services Section -->
         <section class="mb-12 p-8 bg-white rounded-lg shadow-lg">
             <div class="grid md:grid-cols-2 gap-8 items-center">
                 <div class="order-2 md:order-1">
-                    <h2 class="text-3xl font-bold text-gray-800 mb-4">Specializing in Tile</h2>
+                    <h2 class="text-3xl font-bold text-gray-800 mb-4">Professional Tile Installation Services in Orange
+                        County, CA</h2>
                     <p class="text-gray-700 leading-relaxed mb-4">
-                        As expert <span class="font-semibold">handyman flooring installers</span>, we specialize in the
-                        precise and efficient installation of both laminate and vinyl flooring. These materials offer
-                        durability, style, and affordability, making them popular choices for modern homes.
+                        Our skilled craftsmen provide comprehensive tile installation and repair services throughout
+                        Orange County. Specializing in kitchens, bathrooms, flooring, and backsplashes, we combine
+                        precision workmanship with premium materials to create beautiful, long-lasting results.
                     </p>
                     <p class="text-gray-700 leading-relaxed">
-                        Whether you're updating a single room or your entire house, our team ensures a flawless
-                        installation, paying close attention to detail for a beautiful and long-lasting result.
+                        From ceramic and porcelain to natural stone and luxury vinyl tile, we handle every project with
+                        meticulous attention to detail. Whether you're renovating a single bathroom or tiling an entire
+                        home, our experienced team ensures perfect alignment, proper waterproofing, and flawless grout
+                        work that stands the test of time.
                     </p>
                 </div>
                 <div class="order-1 md:order-2">
