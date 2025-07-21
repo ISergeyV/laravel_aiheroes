@@ -19,7 +19,7 @@
                 solution for your home.</p>
             <div class="flex flex-col md:flex-row space-y-4 md:space-y-0 md:space-x-4">
                 <a href="#services"
-                   class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-8 rounded-full transition duration-300 shadow-lg">
+                   class="bg-orange-600 hover:bg-orange-700 text-white font-bold py-3 px-8 rounded-full transition duration-300 shadow-lg">
                     Our Services
                 </a>
                 <a href="{{ route('home') }}#freeOnlineEstimate"
@@ -33,7 +33,7 @@
     <!-- Services Section -->
     <section id="services" class="py-16 bg-white">
         <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-            <h2 class="text-center text-4xl font-bold mb-12 text-gray-800">My Expert Services</h2>
+            <h2 class="text-center text-4xl font-bold mb-12 text-orange-950">My Expert Services</h2>
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
                 <!-- Service 1: Furniture Assembly -->
                 <div class="bg-white rounded-xl shadow-lg overflow-hidden h-full flex flex-col">
@@ -41,27 +41,27 @@
                          class="w-full h-48 object-cover rounded-t-xl"
                          alt="Furniture Assembly Services">
                     <div class="p-6 flex flex-col flex-grow">
-                        <h5 class="text-2xl font-bold text-blue-600 mb-3">Furniture Assembly</h5>
+                        <h5 class="text-2xl font-bold text-orange-700 mb-3">Furniture Assembly</h5>
                         <p class="text-gray-700 mb-4 flex-grow">
                             Save time and frustration with my professional assembly of any furniture, from shelves to
                             complex sets.
                         </p>
                         <ul class="space-y-2 text-gray-700 mb-6">
                             <li class="flex items-center">
-                                <x-icon name="check-circle"/>
+                                <x-heroicon-s-check-badge class="w-5 h-5 text-orange-600 mr-2 flex-shrink-0"/>
                                 New Furniture Assembly
                             </li>
                             <li class="flex items-center">
-                                <x-icon name="check-circle"/>
+                                <x-heroicon-s-check-badge class="w-5 h-5 text-orange-600 mr-2 flex-shrink-0"/>
                                 Furniture Repair
                             </li>
                             <li class="flex items-center">
-                                <x-icon name="check-circle"/>
+                                <x-heroicon-s-check-badge class="w-5 h-5 text-orange-600 mr-2 flex-shrink-0"/>
                                 Wall Mounting
                             </li>
                         </ul>
                         <a href="{{ route('pages.furniture') }}"
-                           class="inline-block bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-5 rounded-full transition duration-300 self-start">
+                           class="inline-block bg-orange-500 hover:bg-orange-600 text-white font-bold py-2 px-5 rounded-full transition duration-300 self-start">
                             Learn More</a>
                     </div>
                 </div>
@@ -71,7 +71,7 @@
                          class="w-full h-48 object-cover rounded-t-xl"
                          alt="Painting Services">
                     <div class="p-6 flex flex-col flex-grow">
-                        <h5 class="text-2xl font-bold text-blue-600 mb-3">Painting</h5>
+                        <h5 class="text-2xl font-bold text-orange-700 mb-3">Painting</h5>
                         <p class="text-gray-700 mb-4 flex-grow">
                             A fresh coat of paint can completely transform your space—I deliver clean lines, even
                             coverage,
@@ -79,20 +79,20 @@
                         </p>
                         <ul class="space-y-2 text-gray-700 mb-6">
                             <li class="flex items-center">
-                                <x-icon name="check-circle"/>
+                                <x-heroicon-s-check-badge class="w-5 h-5 text-orange-600 mr-2 flex-shrink-0"/>
                                 Wall & Ceiling Painting
                             </li>
                             <li class="flex items-center">
-                                <x-icon name="check-circle"/>
+                                <x-heroicon-s-check-badge class="w-5 h-5 text-orange-600 mr-2 flex-shrink-0"/>
                                 Accent Walls
                             </li>
                             <li class="flex items-center">
-                                <x-icon name="check-circle"/>
+                                <x-heroicon-s-check-badge class="w-5 h-5 text-orange-600 mr-2 flex-shrink-0"/>
                                 Color Matching
                             </li>
                         </ul>
                         <a href="{{ route('pages.painting') }}"
-                           class="inline-block bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-5 rounded-full transition duration-300 self-start">
+                           class="inline-block bg-orange-500 hover:bg-orange-600 text-white font-bold py-2 px-5 rounded-full transition duration-300 self-start">
                             Learn More</a>
                     </div>
                 </div>
@@ -102,27 +102,27 @@
                          class="w-full h-48 object-cover rounded-t-xl"
                          alt="Flooring Services">
                     <div class="p-6 flex flex-col flex-grow">
-                        <h5 class="text-2xl font-bold text-blue-600 mb-3">Flooring Services</h5>
+                        <h5 class="text-2xl font-bold text-orange-700 mb-3">Flooring Services</h5>
                         <p class="text-gray-700 mb-4 flex-grow">
                             Professional installation and repair of laminate, vinyl, and other flooring for a beautiful
                             finish to your home.
                         </p>
                         <ul class="space-y-2 text-gray-700 mb-6">
                             <li class="flex items-center">
-                                <x-icon name="check-circle"/>
+                                <x-heroicon-s-check-badge class="w-5 h-5 text-orange-600 mr-2 flex-shrink-0"/>
                                 Laminate Installation
                             </li>
                             <li class="flex items-center">
-                                <x-icon name="check-circle"/>
+                                <x-heroicon-s-check-badge class="w-5 h-5 text-orange-600 mr-2 flex-shrink-0"/>
                                 Vinyl Installation
                             </li>
                             <li class="flex items-center">
-                                <x-icon name="check-circle"/>
+                                <x-heroicon-s-check-badge class="w-5 h-5 text-orange-600 mr-2 flex-shrink-0"/>
                                 Flooring Repair
                             </li>
                         </ul>
                         <a href="{{ route('pages.flooring') }}"
-                           class="inline-block bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-5 rounded-full transition duration-300 self-start">Learn
+                           class="inline-block bg-orange-500 hover:bg-orange-600 text-white font-bold py-2 px-5 rounded-full transition duration-300 self-start">Learn
                             More</a>
                     </div>
                 </div>
@@ -132,26 +132,26 @@
                          class="w-full h-48 object-cover rounded-t-xl"
                          alt="Tile Installation and Repair Services">
                     <div class="p-6 flex flex-col flex-grow">
-                        <h5 class="text-2xl font-bold text-blue-600 mb-3">Tile Installation & Repair</h5>
+                        <h5 class="text-2xl font-bold text-orange-700 mb-3">Tile Installation & Repair</h5>
                         <p class="text-gray-700 mb-4 flex-grow">
                             From kitchen backsplashes to bathroom floors, flawless tiling that stands the test of time.
                         </p>
                         <ul class="space-y-2 text-gray-700 mb-6">
                             <li class="flex items-center">
-                                <x-icon name="check-circle"/>
+                                <x-heroicon-s-check-badge class="w-5 h-5 text-orange-600 mr-2 flex-shrink-0"/>
                                 Tile Installation
                             </li>
                             <li class="flex items-center">
-                                <x-icon name="check-circle"/>
+                                <x-heroicon-s-check-badge class="w-5 h-5 text-orange-600 mr-2 flex-shrink-0"/>
                                 Tile Repair
                             </li>
                             <li class="flex items-center">
-                                <x-icon name="check-circle"/>
+                                <x-heroicon-s-check-badge class="w-5 h-5 text-orange-600 mr-2 flex-shrink-0"/>
                                 Grouting & Sealing
                             </li>
                         </ul>
                         <a href="{{ route('pages.tile') }}"
-                           class="inline-block bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-5 rounded-full transition duration-300 self-start">Learn
+                           class="inline-block bg-orange-500 hover:bg-orange-600 text-white font-bold py-2 px-5 rounded-full transition duration-300 self-start">Learn
                             More</a>
                     </div>
                 </div>
@@ -161,7 +161,7 @@
                          class="w-full h-48 object-cover rounded-t-xl"
                          alt="Drywall Services Services">
                     <div class="p-6 flex flex-col flex-grow">
-                        <h5 class="text-2xl font-bold text-blue-600 mb-3">Drywall Services</h5>
+                        <h5 class="text-2xl font-bold text-orange-700 mb-3">Drywall Services</h5>
                         <p class="text-gray-700 mb-4 flex-grow">
                             From minor repairs to full drywall installations, I provide smooth, seamless results that
                             make
@@ -169,19 +169,20 @@
                         </p>
                         <ul class="space-y-2 text-gray-700 mb-6">
                             <li class="flex items-center">
+                                <x-heroicon-s-check-badge class="w-5 h-5 text-orange-600 mr-2 flex-shrink-0"/>
                                 Drywall Repair
                             </li>
                             <li class="flex items-center">
-                                <x-icon name="check-circle"/>
+                                <x-heroicon-s-check-badge class="w-5 h-5 text-orange-600 mr-2 flex-shrink-0"/>
                                 Drywall Installation
                             </li>
                             <li class="flex items-center">
-                                <x-icon name="check-circle"/>
+                                <x-heroicon-s-check-badge class="w-5 h-5 text-orange-600 mr-2 flex-shrink-0"/>
                                 Patching & Finishing
                             </li>
                         </ul>
                         <a href="#"
-                           class="inline-block bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-5 rounded-full transition duration-300 self-start">Learn
+                           class="inline-block bg-orange-500 hover:bg-orange-600 text-white font-bold py-2 px-5 rounded-full transition duration-300 self-start">Learn
                             More</a>
                     </div>
                 </div>
@@ -191,22 +192,22 @@
                          class="w-full h-48 object-cover rounded-t-xl"
                          alt="Minor Plumbing Services">
                     <div class="p-6 flex flex-col flex-grow">
-                        <h5 class="text-2xl font-bold text-blue-600 mb-3">Minor Plumbing</h5>
+                        <h5 class="text-2xl font-bold text-orange-700 mb-3">Minor Plumbing</h5>
                         <p class="text-gray-700 mb-4 flex-grow">
                             From leaky faucets to new fixture installations, I handle your minor plumbing needs
                             efficiently.
                         </p>
                         <ul class="space-y-2 text-gray-700 mb-6">
                             <li class="flex items-center">
-                                <x-icon name="check-circle"/>
+                                <x-heroicon-s-check-badge class="w-5 h-5 text-orange-600 mr-2 flex-shrink-0"/>
                                 Faucet Repair
                             </li>
                             <li class="flex items-center">
-                                <x-icon name="check-circle"/>
+                                <x-heroicon-s-check-badge class="w-5 h-5 text-orange-600 mr-2 flex-shrink-0"/>
                                 Toilet Replacement
                             </li>
                             <li class="flex items-center">
-                                <x-icon name="check-circle"/>
+                                <x-heroicon-s-check-badge class="w-5 h-5 text-orange-600 mr-2 flex-shrink-0"/>
                                 Drain Clogs
                             </li>
                         </ul>
@@ -219,21 +220,21 @@
                          class="w-full h-48 object-cover rounded-t-xl"
                          alt="Minor Electrical Services">
                     <div class="p-6 flex flex-col flex-grow">
-                        <h5 class="text-2xl font-bold text-blue-600 mb-3">Minor Electrical</h5>
+                        <h5 class="text-2xl font-bold text-orange-700 mb-3">Minor Electrical</h5>
                         <p class="text-gray-700 mb-4 flex-grow">
                             Safe and reliable installation of light fixtures, outlets, and small electrical appliances.
                         </p>
                         <ul class="space-y-2 text-gray-700 mb-6">
                             <li class="flex items-center">
-
+                                <x-heroicon-s-check-badge class="w-5 h-5 text-orange-600 mr-2 flex-shrink-0"/>
                                 Light Fixture Installation
                             </li>
                             <li class="flex items-center">
-                                <x-icon name="check-circle"/>
+                                <x-heroicon-s-check-badge class="w-5 h-5 text-orange-600 mr-2 flex-shrink-0"/>
                                 Outlet Replacement
                             </li>
                             <li class="flex items-center">
-                                <x-icon name="check-circle"/>
+                                <x-heroicon-s-check-badge class="w-5 h-5 text-orange-600 mr-2 flex-shrink-0"/>
                                 Ceiling Fan Mounting
                             </li>
                         </ul>
@@ -285,9 +286,9 @@
                 <!-- Item 3: On Time -->
                 <div class="flex flex-col items-center">
                     <div
-                        class="flex items-center justify-center h-24 w-24 mb-6 bg-blue-700 bg-opacity-50 rounded-full ring-2 ring-blue-500">
+                        class="flex items-center justify-center h-24 w-24 mb-6 bg-orange-700 bg-opacity-50 rounded-full ring-2 ring-orange-500">
                         <!-- Icon for Time -->
-                        <svg class="h-12 w-12 text-blue-300" xmlns="http://www.w3.org/2000/svg" fill="none"
+                        <svg class="h-12 w-12 text-orange-300" xmlns="http://www.w3.org/2000/svg" fill="none"
                              viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
                             <path stroke-linecap="round" stroke-linejoin="round"
                                   d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z"/>
