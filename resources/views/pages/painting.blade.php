@@ -58,35 +58,35 @@
                 <div class="grid md:grid-cols-3 gap-8">
                     <!-- Изображение 1 -->
                     <div class="cursor-pointer group"
-                         @click="open = true; currentImage = '{{ asset('assets/img/painting/painting_work_1.jpg') }}'">
+                         @click="open = true; currentImage = '{{ asset('assets/img/painting/interior-decorative-wall-painting-orange-county.jpg') }}'">
                         <div class="overflow-hidden rounded-lg shadow-md">
-                            <img src="{{ asset('assets/img/painting/painting_work_1.jpg') }}"
-                                 alt="Finished laminate flooring installation"
+                            <img src="{{ asset('assets/img/painting/interior-decorative-wall-painting-orange-county.jpg') }}"
+                                 alt="Decorative wall and trim painting in Orange County by Mr. EuroFix"
                                  class="w-full h-64 object-cover transform group-hover:scale-110 transition-transform duration-300"
                                  onerror="this.onerror=null;this.src='https://placehold.co/600x400/E0E0E0/333333?text=Image+Not+Found';">
                         </div>
-                        <p class="mt-3 text-center text-gray-600">Seamless laminate floor installation.</p>
+                        <p class="mt-3 text-center text-gray-600">Accent wall and decorative elements painted for a stylish interior in Orange County</p>
                     </div>
                     <!-- Изображение 2 -->
                     <div class="cursor-pointer group"
-                         @click="open = true; currentImage = '{{ asset('assets/img/flooring/door-opening-floor.jpg') }}'">
+                         @click="open = true; currentImage = '{{ asset('assets/img/painting/window-shutters-painting-orange-county.jpg') }}'">
                         <div class="overflow-hidden rounded-lg shadow-md">
-                            <img src="{{ asset('assets/img/flooring/door-opening-floor.jpg') }}"
-                                 alt="Vinyl planks repair"
+                            <img src="{{ asset('assets/img/painting/window-shutters-painting-orange-county.jpg') }}"
+                                 alt="Window shutters painting and restoration in Orange County by Mr. EuroFix"
                                  class="w-full h-64 object-cover transform group-hover:scale-110 transition-transform duration-300"
                                  onerror="this.onerror=null;this.src='https://placehold.co/600x400/D0D0D0/333333?text=Image+Not+Found';">
                         </div>
-                        <p class="mt-3 text-center text-gray-600">Detail of vinyl flooring repair.</p>
+                        <p class="mt-3 text-center text-gray-600">Restored and painted window shutters – expert house painting in Orange County</p>
                     </div>
                     <!-- Изображение 3 -->
                     <div class="cursor-pointer group"
-                         @click="open = true; currentImage = '{{ asset('assets/img/flooring/door-trim.jpg') }}'">
+                         @click="open = true; currentImage = '{{ asset('assets/img/painting/house-painting-garage-door-orange-county.jpg') }}'">
                         <div class="overflow-hidden rounded-lg shadow-md">
-                            <img src="{{ asset('assets/img/flooring/door-trim.jpg') }}" alt="Newly installed flooring"
+                            <img src="{{ asset('assets/img/painting/house-painting-garage-door-orange-county.jpg') }}" alt="Professional house painting around garage door in Orange County by Mr. EuroFix"
                                  class="w-full h-64 object-cover transform group-hover:scale-110 transition-transform duration-300"
                                  onerror="this.onerror=null;this.src='https://placehold.co/600x400/C0C0C0/333333?text=Image+Not+Found';">
                         </div>
-                        <p class="mt-3 text-center text-gray-600">Close-up of newly installed flooring.</p>
+                        <p class="mt-3 text-center text-gray-600">Freshly painted garage door area – quality exterior painting service in Orange County</p>
                     </div>
                 </div>
 

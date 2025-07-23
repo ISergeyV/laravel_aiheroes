@@ -91,34 +91,34 @@
             <div class="grid md:grid-cols-3 gap-8">
                 <!-- Изображение 1 -->
                 <div class="cursor-pointer group"
-                     @click="open = true; currentImage = '{{ asset('assets/img/flooring/flooring-by-door.jpg') }}'">
+                     @click="open = true; currentImage = '{{ asset('assets/img/tile/shower-tile-installation-doorway-orange-county.jpg') }}'">
                     <div class="overflow-hidden rounded-lg shadow-md">
-                        <img src="{{ asset('assets/img/flooring/flooring-by-door.jpg') }}"
-                             alt="Finished laminate flooring installation"
+                        <img src="{{ asset('assets/img/tile/shower-tile-installation-doorway-orange-county.jpg') }}"
+                             alt="Shower tile installation and tiled doorway in Orange County by Mr. EuroFix"
                              class="w-full h-64 object-cover transform group-hover:scale-110 transition-transform duration-300"
                              onerror="this.onerror=null;this.src='https://placehold.co/600x400/E0E0E0/333333?text=Image+Not+Found';">
                     </div>
-                    <p class="mt-3 text-center text-gray-600">Seamless laminate floor installation.</p>
+                    <p class="mt-3 text-center text-gray-600">Expert shower tile installation and custom tiled doorway for a modern bathroom in Orange County</p>
                 </div>
                 <!-- Изображение 2 -->
                 <div class="cursor-pointer group"
-                     @click="open = true; currentImage = '{{ asset('assets/img/flooring/door-opening-floor.jpg') }}'">
+                     @click="open = true; currentImage = '{{ asset('assets/img/tile/shower-tile-installation-orange-county.jpg') }}'">
                     <div class="overflow-hidden rounded-lg shadow-md">
-                        <img src="{{ asset('assets/img/flooring/door-opening-floor.jpg') }}" alt="Vinyl planks repair"
+                        <img src="{{ asset('assets/img/tile/shower-tile-installation-orange-county.jpg') }}" alt="Shower tile installation in Orange County by Mr. EuroFix"
                              class="w-full h-64 object-cover transform group-hover:scale-110 transition-transform duration-300"
                              onerror="this.onerror=null;this.src='https://placehold.co/600x400/D0D0D0/333333?text=Image+Not+Found';">
                     </div>
-                    <p class="mt-3 text-center text-gray-600">Detail of vinyl flooring repair.</p>
+                    <p class="mt-3 text-center text-gray-600">Professional shower tile installation for a modern bathroom in Orange County</p>
                 </div>
                 <!-- Изображение 3 -->
                 <div class="cursor-pointer group"
-                     @click="open = true; currentImage = '{{ asset('assets/img/flooring/door-trim.jpg') }}'">
+                     @click="open = true; currentImage = '{{ asset('assets/img/tile/bathroom-shower-tiling-orange-county.jpg') }}'">
                     <div class="overflow-hidden rounded-lg shadow-md">
-                        <img src="{{ asset('assets/img/flooring/door-trim.jpg') }}" alt="Newly installed flooring"
+                        <img src="{{ asset('assets/img/tile/bathroom-shower-tiling-orange-county.jpg') }}" alt="Light-colored bathroom shower tiling in Orange County by Mr. EuroFix"
                              class="w-full h-64 object-cover transform group-hover:scale-110 transition-transform duration-300"
                              onerror="this.onerror=null;this.src='https://placehold.co/600x400/C0C0C0/333333?text=Image+Not+Found';">
                     </div>
-                    <p class="mt-3 text-center text-gray-600">Close-up of newly installed flooring.</p>
+                    <p class="mt-3 text-center text-gray-600">Bright and modern light-tiled shower installation in Orange County</p>
                 </div>
             </div>
 
