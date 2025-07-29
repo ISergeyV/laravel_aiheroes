@@ -12,8 +12,9 @@ use Filament\Tables\Table;
 use Filament\Infolists;
 use Filament\Infolists\Infolist;
 use Illuminate\Database\Eloquent\Collection;
-use Illuminate\Support\Facades\Storage; // <-- Убедитесь, что этот use на месте!
+use Illuminate\Support\Facades\Storage;
 
+// <-- Убедитесь, что этот use на месте!
 
 class LeadResource extends Resource
 {
@@ -201,7 +202,13 @@ class LeadResource extends Resource
                                     Infolists\Components\ImageEntry::make('')
                                         ->label('') // Убираем лишний заголовок для каждого фото
                                         ->height(150)
-                                        ->disk('public') // Указываем, что файлы в public диске
+                                        ->disk('private') // Указываем, что файлы в private диске
+                                        ->visibility('private')
+                                        ->url(fn($state) => Storage::disk('private')->temporaryUrl(
+                                            "leads_attachments/{$state}",
+                                            now()->addMinutes(5)
+                                        )
+                                        )
                                         ->extraImgAttributes([
                                             'loading' => 'lazy', // Ленивая загрузка для скорости
                                         ]),

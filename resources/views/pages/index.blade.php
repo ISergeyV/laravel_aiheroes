@@ -250,8 +250,6 @@
     <section id="why" class="py-16 bg-gray-800 text-white px-4">
         <div class="container mx-auto">
             <h2 class="text-center text-4xl font-bold mb-12">Why Choose Mr. EuroFix?</h2>
-
-
             <div class="grid grid-cols-1 md:grid-cols-3 gap-12 text-center">
                 <!-- Item 1: Experienced -->
                 <div class="flex flex-col items-center">
@@ -303,32 +301,6 @@
     </section>
 
 
-    {{--<!-- About Section with Image -->--}}
-    {{--    <section class="mb-12 p-8 bg-white rounded-lg shadow-lg" x-data="{ imageLoaded: false }">--}}
-    {{--        <div class="grid md:grid-cols-2 gap-8 items-center">--}}
-    {{--            <div class="relative overflow-hidden rounded-lg">--}}
-    {{--                <img src="{{ asset('images/flooring/laminate-floor-fitting-closeup.jpg') }}"--}}
-    {{--                     alt="Handyman installing laminate flooring"--}}
-    {{--                     class="w-full h-auto transition-transform duration-700 hover:scale-105"--}}
-    {{--                     @load="imageLoaded = true"--}}
-    {{--                     :class="{ 'opacity-0': !imageLoaded, 'opacity-100': imageLoaded }"--}}
-    {{--                     onerror="this.onerror=null;this.src='https://placehold.co/600x400/F0F0F0/3333?text=Image+Not+Found';">--}}
-    {{--            </div>--}}
-    {{--            <div>--}}
-    {{--                <h2 class="text-3xl font-bold text-gray-800 mb-4">Specializing in Laminate & Vinyl Flooring</h2>--}}
-    {{--                <p class="text-gray-600 mb-4">--}}
-    {{--                    As expert <span class="font-semibold">handyman flooring installers</span>, we specialize in the--}}
-    {{--                    precise and efficient installation of both laminate and vinyl flooring. These materials offer--}}
-    {{--                    durability, style, and affordability, making them popular choices for modern homes.--}}
-    {{--                </p>--}}
-    {{--                <p class="text-gray-600">--}}
-    {{--                    Whether you're updating a single room or your entire house, our team ensures a flawless--}}
-    {{--                    installation, paying close attention to detail for a beautiful and long-lasting result.--}}
-    {{--                </p>--}}
-    {{--            </div>--}}
-    {{--        </div>--}}
-    {{--    </section>--}}
-
     <!-- About Me -->
     <section id="about" class="py-16 bg-white">
         <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -378,27 +350,30 @@
             <h2 class="text-center text-4xl font-bold mb-12 text-gray-800">Portfolio</h2>
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
                 <div class="mb-8 cursor-pointer transform hover:scale-105 transition-transform duration-300"
-                     @click="open = true; currentImage = '{{ asset('images/projects/shower-tile.jpg') }}'">
-                    <img src="{{ asset('images/projects/shower-tile.jpg') }}"
-                         class="w-full h-64 object-cover rounded-lg shadow-md" alt="Shower Tile Installation"
+                     @click="open = true; currentImage = '{{ asset('images/projects/shower-tile-installation-orange-county.jpg') }}'">
+                    <img src="{{ asset('images/projects/shower-tile-installation-orange-county.jpg') }}"
+                         class="w-full h-64 object-cover rounded-lg shadow-md"
+                         alt="Shower tile installation by Mr. EuroFix handyman in Orange County"
                          onerror="this.onerror=null;this.src='https://placehold.co/600x400/E0E0E0/333333?text=Shower+Tile';">
-                    <h6 class="text-lg font-semibold mt-4 text-center text-gray-800">Shower Tile Installation</h6>
+                    <h6 class="text-lg font-semibold mt-4 text-center text-gray-800">Expert shower tile installation for
+                        a modern, clean look.</h6>
                 </div>
                 <div class="mb-8 cursor-pointer transform hover:scale-105 transition-transform duration-300"
-                     @click="open = true; currentImage = '{{ asset('images/projects/laminate-flooring.jpg') }}'">
-                    <img src="{{ asset('images/projects/laminate-flooring.jpg') }}"
+                     @click="open = true; currentImage = '{{ asset('images/projects/laminate-flooring-installation-orange-county.jpg') }}'">
+                    <img src="{{ asset('images/projects/laminate-flooring-installation-orange-county.jpg') }}"
                          class="w-full h-64 object-cover rounded-lg shadow-md"
-                         alt="Laminate Flooring Installation"
+                         alt="Laminate flooring installation by Mr. EuroFix handyman in Orange County"
                          onerror="this.onerror=null;this.src='https://placehold.co/600x400/E0E0E0/333333?text=Laminate+Flooring';">
-                    <h6 class="text-lg font-semibold mt-4 text-center text-gray-800">Laminate Flooring Installation</h6>
+                    <h6 class="text-lg font-semibold mt-4 text-center text-gray-800">Professional laminate flooring
+                        installation for a stylish and durable finish.</h6>
                 </div>
                 <div class="mb-8 cursor-pointer transform hover:scale-105 transition-transform duration-300"
-                     @click="open = true; currentImage = '{{ asset('images/projects/interior-painting.jpg') }}'">
-                    <img src="{{ asset('images/projects/interior-painting.jpg') }}"
+                     @click="open = true; currentImage = '{{ asset('images/projects/interior-painting-orange-county.jpg') }}'">
+                    <img src="{{ asset('images/projects/interior-painting-orange-county.jpg') }}"
                          class="w-full h-64 object-cover rounded-lg shadow-md"
-                         alt="Professional Interior Painting"
+                         alt="Interior painting by Mr. EuroFix handyman in Orange County"
                          onerror="this.onerror=null;this.src='https://placehold.co/600x400/E0E0E0/333333?text=Interior+Painting';">
-                    <h6 class="text-lg font-semibold mt-4 text-center text-gray-800">Professional Interior Painting</h6>
+                    <h6 class="text-lg font-semibold mt-4 text-center text-gray-800">High-quality interior painting to refresh and brighten your home.</h6>
                 </div>
             </div>
         </div>
