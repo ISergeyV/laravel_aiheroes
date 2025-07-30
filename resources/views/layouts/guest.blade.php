@@ -61,7 +61,12 @@
                     <div class="text-xs text-gray-400 mt-1">European Quality. American Efficiency.</div>
                 </div>
             </a>
-
+            <div class="hidden lg:flex items-center ml-auto mr-6">
+                <x-protected-phone
+                    encoded="KzE5NDk0MTQ0OTk4"
+                    class="text-white hover:text-brand-orange transition-colors"
+                />
+            </div>
             <!-- Кнопка-переключатель для мобильного меню -->
             <button @click="open = !open" class="lg:hidden text-white focus:outline-none">
                 <svg class="h-8 w-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -72,9 +77,6 @@
                 </svg>
             </button>
 
-            <!-- ========================================================== -->
-            <!-- === 2. ИСПРАВЛЕННЫЙ БЛОК МЕНЮ (ДЕСКТОП И МОБАЙЛ) === -->
-            <!-- ========================================================== -->
             <div
                 @click.outside="open = false; dropdownOpen = false"
                 class="hidden lg:flex lg:items-center lg:w-auto">
@@ -130,6 +132,13 @@
         <div x-show="open" x-transition x-cloak
              class="lg:hidden absolute top-full left-0 w-full bg-[#212f42] shadow-xl">
             <ul class="flex flex-col py-4">
+                <li class="px-4 py-3">
+                    <x-protected-phone
+                        encoded="KzE5NDk0MTQ0OTk4"
+                        class="text-white"
+                    />
+                </li>
+                <hr class="border-gray-700">
                 <li><a href="{{ route('home') }}"
                        class="block px-4 py-3 text-white hover:bg-gray-700 transition-colors">Home</a></li>
                 <li><a href="#about" class="block px-4 py-3 text-white hover:bg-gray-700 transition-colors">About</a>
@@ -180,21 +189,28 @@
         <h2 class="text-center text-4xl font-bold mb-3">Contact Me</h2>
         <div class="flex justify-center">
             <div class="w-full md:w-1/2 lg:w-1/3 text-center">
-                <p class="mb-4 flex items-center justify-center">
-                    <svg class="w-6 h-6 mr-2" fill="currentColor" viewBox="0 0 20 20">
-                        <path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0018 4H2a2 2 0 00-1.997 1.884z"></path>
-                        <path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z"></path>
-                    </svg>
-                    <a href="mailto:info@mreurofix.com" class="text-orange-500 hover:text-white">info@mreurofix.com</a>
-                </p>
-                <p class="mb-4 flex items-center justify-center">
-                    <svg class="w-6 h-6 mr-2" fill="currentColor" viewBox="0 0 20 20">
-                        <path fill-rule="evenodd"
-                              d="M7 2a2 2 0 00-2 2v12a2 2 0 002 2h6a2 2 0 002-2V4a2 2 0 00-2-2H7zm3 14a1 1 0 100-2 1 1 0 000 2z"
-                              clip-rule="evenodd"></path>
-                    </svg>
-                    <a href="tel:+19494144998" class="text-orange-500 hover:text-white">(949) 414-4998</a>
-                </p>
+
+                {{-- Заменяем старый незащищенный блок на наш новый компонент --}}
+                <div class="mb-4 flex items-center justify-center">
+                    <x-protected-email
+                        {{--
+                            mail закодированный в Base64.
+                            (Как кодировать: в консоли браузера (F12) выполните btoa('name@mail'))
+                        --}}
+                        encoded="aW5mb0BtcmV1cm9maXguY29t"
+                        class="text-orange-500 hover:text-white transition-colors"
+                        icon="heroicon-s-envelope" {{-- Используем solid-иконку для акцента --}}
+                    />
+                </div>
+
+                {{-- Заменяем старый незащищенный блок на наш новый компонент --}}
+                <div class="mb-4 flex items-center justify-center">
+                    <x-protected-phone
+                        encoded="KzE5NDk0MTQ0OTk4"
+                        class="text-orange-500 hover:text-white transition-colors"
+                        icon="heroicon-s-phone" {{-- Используем solid-иконку для акцента --}}
+                    />
+                </div>
                 <p class="mb-4 flex items-center justify-center">
                     <svg class="w-6 h-6 mr-2" fill="green" viewBox="0 0 20 20">
                         <path fill-rule="evenodd"
