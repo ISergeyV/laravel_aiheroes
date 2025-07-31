@@ -228,5 +228,25 @@
 <footer class="bg-gray-900 text-blue-200 text-center py-6">
     <p>&copy; {{ date('Y') }} Mr. EuroFix. All rights reserved.</p>
 </footer>
+<div
+    x-data="{
+        phone: '',
+        init() {
+            // Используем тот же метод защиты: декодируем номер на лету
+            this.phone = atob('KzE5NDk0MTQ0OTk4');
+        }
+    }"
+    x-cloak {{-- Скрываем элемент, пока Alpine.js не инициализируется --}}
+    class="lg:hidden fixed bottom-0 left-0 right-0 bg-gray-800 bg-opacity-90 backdrop-blur-sm p-3 shadow-[0_-4px_15px_rgba(0,0,0,0.2)] z-50"
+>
+    <a
+        :href="phone ? 'tel:' + phone.replace(/\D/g, '') : '#'"
+        class="flex items-center justify-center w-full bg-brand-orange text-white font-bold py-3 px-4 rounded-lg hover:bg-orange-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-orange-500 transition-all transform active:scale-95 text-center"
+        style="min-height: 48px;" {{-- Гарантируем минимальный размер для удобного нажатия --}}
+    >
+        <x-heroicon-s-phone class="w-6 h-6 mr-3 flex-shrink-0"/>
+        <span class="text-lg">Talk to an Expert</span>
+    </a>
+</div>
 </body>
 </html>
