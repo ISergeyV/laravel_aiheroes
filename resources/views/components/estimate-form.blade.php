@@ -39,8 +39,7 @@
                             <label for="fullName" class="block text-sm font-medium text-slate-700 mb-1">Full
                                 Name</label>
                             <input type="text" id="fullName" name="fullName" value="{{ old('fullName') }}"
-                                   class="w-full px-4 py-2 border @error('fullName') border-red-500 @else border-slate-300 @enderror rounded-lg focus:ring-indigo-500 focus:border-indigo-500"
-                                   required>
+                                   class="w-full px-4 py-2 border @error('fullName') border-red-500 @else border-slate-300 @enderror rounded-lg focus:ring-indigo-500 focus:border-indigo-500">
                         </div>
                         <div>
                             <label for="phone" class="block text-sm font-medium text-slate-700 mb-1">Phone
@@ -55,7 +54,7 @@
                             Address</label>
                         <input type="email" id="email" name="email" value="{{ old('email') }}"
                                class="w-full px-4 py-2 border @error('email') border-red-500 @else border-slate-300 @enderror rounded-lg focus:ring-indigo-500 focus:border-indigo-500"
-                               required placeholder="you@example.com">
+                                placeholder="you@example.com">
                     </div>
                 </fieldset>
 
@@ -68,8 +67,7 @@
                             <label for="serviceType" class="block text-sm font-medium text-slate-700 mb-1">Type of
                                 Service</label>
                             <select id="serviceType" name="serviceType"
-                                    class="w-full px-4 py-2 border border-slate-300 rounded-lg focus:ring-indigo-500 focus:border-indigo-500"
-                                    required>
+                                    class="w-full px-4 py-2 border border-slate-300 rounded-lg focus:ring-indigo-500 focus:border-indigo-500">
                                 <option value="" disabled selected>Select a service...</option>
                                 <option value="general_repair">General Repair & Maintenance</option>
                                 <option value="carpentry">Carpentry</option>
@@ -83,8 +81,7 @@
                             <label for="urgency"
                                    class="block text-sm font-medium text-slate-700 mb-1">Urgency</label>
                             <select id="urgency" name="urgency"
-                                    class="w-full px-4 py-2 border border-slate-300 rounded-lg focus:ring-indigo-500 focus:border-indigo-500"
-                                    required>
+                                    class="w-full px-4 py-2 border border-slate-300 rounded-lg focus:ring-indigo-500 focus:border-indigo-500">
                                 <option value="flexible">Flexible / Within a few weeks</option>
                                 <option value="soon">Soon / Within 1-2 weeks</option>
                                 <option value="asap">As soon as possible</option>
@@ -98,7 +95,7 @@
                         <textarea id="jobDescription" name="jobDescription" rows="5"
                                   class="w-full px-4 py-2 border border-slate-300 rounded-lg focus:ring-indigo-500 focus:border-indigo-500"
                                   placeholder="Please describe the issue in detail. For example: 'My garbage disposal is making a humming noise but not spinning.' or 'I need three ceiling fans installed in rooms with existing light fixtures.'"
-                                  required></textarea>
+                                  ></textarea>
                     </div>
                     <div class="mt-6">
                         <label for="budget" class="block text-sm font-medium text-slate-700 mb-1">Estimated Budget
@@ -140,36 +137,38 @@
                             or Area</label>
                         <input type="text" id="address" name="address"
                                class="w-full px-4 py-2 border border-slate-300 rounded-lg focus:ring-indigo-500 focus:border-indigo-500"
-                               placeholder="e.g., Irvine, CA 92618 or 123 Main St, Irvine" required>
+                               placeholder="e.g., Irvine, CA 92618 or 123 Main St, Irvine">
                     </div>
                 </fieldset>
 
-                <!-- Section 5: Disclaimer and Agreement -->
-                <fieldset>
-                    <legend class="text-xl font-semibold text-slate-700 mb-4 border-b pb-2 w-full">5. Important
-                        Disclaimers & Agreement
-                    </legend>
-                    <div
-                        class="p-4 bg-slate-50 rounded-lg border border-slate-200 text-sm text-slate-600 space-y-2">
-                        <p><strong>This is a Preliminary Estimate:</strong> The estimate provided online is a
-                            preliminary calculation based solely on the information and photos you provide. It is
-                            not a final or legally binding quote.</p>
-                        <p><strong>On-Site Verification Required:</strong> The final cost is subject to change. A
-                            firm, fixed-price quote can only be provided after a physical, on-site inspection to
-                            assess the full scope of work, identify any unforeseen issues, and confirm measurements.
-                        </p>
-                        <p><strong>Factors Affecting Price:</strong> The final price may be affected by factors
-                            including, but not limited to, changes in material costs, hidden damages (e.g., water
-                            damage, pests, structural issues), code compliance requirements, or changes to the
-                            project scope requested by you.</p>
-                        <p><strong>On-Site Assessment Fee:</strong> For most projects, a detailed on-site assessment
-                            is necessary. This visit is **free if you proceed with the quoted work**. If you decline
-                            the quote after the on-site visit, a nominal service fee of $75 will be charged to cover
-                            our time and travel expenses. This policy helps us focus on serious inquiries.</p>
-                        <p><strong>Validity:</strong> All estimates and quotes are valid for 30 days from the date
-                            of issue.</p>
+                {{-- resources/views/components/estimate-form.blade.php --}}
+
+                <!-- Section 5: Disclaimer and Agreement (IMPROVED) -->
+                <fieldset x-data="{ open: false }">
+                    <legend class="text-xl font-semibold text-slate-700 mb-4 border-b pb-2 w-full">5. Agreement</legend>
+
+                    {{-- Скрытый блок с деталями, который будет раскрываться --}}
+                    <div x-show="open" x-collapse x-cloak
+                         class="p-4 bg-slate-50 rounded-lg border border-slate-200 text-sm text-slate-600 space-y-2 mb-4">
+                        <p><strong>Preliminary Estimate:</strong> This is a preliminary calculation based on the
+                            information you
+                            provide, not a final quote.</p>
+                        <p><strong>On-Site Verification:</strong> A firm, fixed-price quote can only be provided after a
+                            physical,
+                            on-site inspection to assess the full scope of work.</p>
+                        <p><strong>Factors Affecting Price:</strong> The final price may be affected by hidden damages,
+                            code
+                            compliance, or changes to the project scope.</p>
+                        <p><strong>On-Site Assessment:</strong> This visit is **free if you proceed with the work**. If
+                            you decline
+                            the quote after the visit, a nominal service fee of $75 is charged to cover time and travel.
+                            This helps
+                            us focus on serious inquiries.</p>
+                        <p><strong>Validity:</strong> All quotes are valid for 30 days.</p>
                     </div>
-                    <div class="mt-6">
+
+                    {{-- Чекбокс и ссылка для раскрытия/скрытия --}}
+                    <div class="mt-4">
                         <div class="flex items-start">
                             <div class="flex items-center h-5">
                                 <input id="disclaimer" name="disclaimer" type="checkbox"
@@ -177,8 +176,12 @@
                                        required>
                             </div>
                             <div class="ml-3 text-sm">
-                                <label for="disclaimer" class="font-medium text-slate-700">I have read, understood,
-                                    and agree to the terms and disclaimers above.</label>
+                                <label for="disclaimer" class="font-medium text-slate-700">I agree to the terms of the
+                                    estimate
+                                    policy.</label>
+                                {{-- Ссылка-триггер для аккордеона --}}
+                                <span @click="open = !open"
+                                      class="ml-2 text-indigo-600 hover:text-indigo-800 cursor-pointer underline text-xs">(View Details)</span>
                             </div>
                         </div>
                     </div>

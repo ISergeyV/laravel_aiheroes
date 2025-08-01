@@ -23,14 +23,14 @@ class LeadController extends Controller
     {
         // 1. Валидация данных
         $validatedData = $request->validate([
-            'fullName' => 'required|string|max:255',
+            'fullName' => 'nullable|string|max:255',
             'phone' => 'required|string|max:20',
-            'email' => 'required|email|max:255',
-            'serviceType' => 'required|string',
-            'urgency' => 'required|string',
-            'jobDescription' => 'required|string',
+            'email' => 'nullable|email|max:255',
+            'serviceType' => 'nullable|string',
+            'urgency' => 'nullable|string',
+            'jobDescription' => 'nullable|string',
             'budget' => 'nullable|string|max:255',
-            'address' => 'required|string|max:255',
+            'address' => 'nullable|string|max:255',
             'disclaimer' => 'required|accepted',
             'fileUpload' => 'nullable|array',
             'fileUpload.*' => 'file|mimes:jpg,jpeg,png,mp4,mov,avi|max:250600', // 250MB
@@ -49,14 +49,14 @@ class LeadController extends Controller
 
         // 3. Сохранение данных в базу, сопоставляя поля формы с колонками таблицы
         $lead = Lead::create([
-            'client_full_name' => $validatedData['fullName'],
+            'client_full_name' => $validatedData['fullName'] ?? null,
             'client_phone' => $validatedData['phone'],
-            'client_email' => $validatedData['email'],
-            'service_type' => $validatedData['serviceType'],
-            'urgency_level' => $validatedData['urgency'],
-            'job_description' => $validatedData['jobDescription'],
+            'client_email' => $validatedData['email'] ?? null,
+            'service_type' => $validatedData['serviceType'] ?? null,
+            'urgency_level' => $validatedData['urgency'] ?? null,
+            'job_description' => $validatedData['jobDescription'] ?? null,
             'estimated_budget' => $validatedData['budget'] ?? null,
-            'service_address' => $validatedData['address'],
+            'service_address' => $validatedData['address'] ?? null,
             'uploaded_files_urls' => $filePaths,
             'status' => 'new', // Статус по умолчанию
         ]);
