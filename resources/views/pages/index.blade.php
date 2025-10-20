@@ -7,7 +7,7 @@
     <!-- Hero Section -->
     <section id="hero"
              class="relative h-screen flex items-center justify-center text-white text-center overflow-hidden">
-        <img src="{{ asset('assets/img/bg/hero-bg.jpg') }}" alt="Hero Image"
+        <img src="{{ asset('assets/img/bg/hero-bg.png') }}" alt="Hero Image"
              class="absolute inset-0 w-full h-full object-cover object-top"
              onerror="this.onerror=null;this.src='https://placehold.co/1920x1080/343a40/ffffff?text=Mr.+EuroFix';">
 
@@ -332,7 +332,7 @@
                         :class="{ 'scale-105 shadow-2xl': hover }"
                     >
                         <img
-                            src="{{ url('/images/about/me.jpg') }}"
+                            src="{{ url('/images/about/me.png') }}"
                             alt="Mr. EuroFix"
                             class="w-80 h-80 md:w-96 md:h-96 rounded-2xl object-cover border-4 border-gray-200 shadow-lg"
                             onerror="this.onerror=null;this.src='https://placehold.co/400x400/cccccc/333333?text=Mr.+EuroFix';"
