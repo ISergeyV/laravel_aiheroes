@@ -3,8 +3,8 @@
 namespace Database\Seeders;
 
 use App\Models\User;
-// use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\Hash;
 
 class DatabaseSeeder extends Seeder
 {
@@ -18,10 +18,14 @@ class DatabaseSeeder extends Seeder
             MenuItemSeeder::class,
         ]);
 
-        // The default user creation can remain.
-        User::factory()->create([
-            'name' => 'Test User',
-            'email' => 'test@example.com',
-        ]);
+        // Use firstOrCreate to prevent duplicate user errors on subsequent seeding.
+        // It checks for a user with the given email and only creates one if it doesn't exist.
+        User::firstOrCreate(
+            ['email' => 'test@example.com'], // The unique attribute to find the user by.
+            [
+                'name' => 'Test User', // Data to use if creating a new user.
+                'password' => Hash::make('password'), // Always set a default password.
+            ]
+        );
     }
 }
