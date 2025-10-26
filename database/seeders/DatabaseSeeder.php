@@ -13,8 +13,12 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        // User::factory(10)->create();
+        // We are calling our newly created seeder here.
+        $this->call([
+            MenuItemSeeder::class,
+        ]);
 
+        // The default user creation can remain.
         User::factory()->create([
             'name' => 'Test User',
             'email' => 'test@example.com',
