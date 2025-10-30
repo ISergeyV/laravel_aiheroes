@@ -19,7 +19,7 @@
     <meta property="og:description"
           content="@yield('og:description', 'Your go-to expert for home repairs. Plumbing, electrical, tile, drywall, and more. Get a free quote today!')">
     <meta property="og:image" content="{{ asset('assets/og-image.jpg') }}">
-    <meta property="og:url" content="@yield('og:url', 'https://www.mreurofix.com')">
+    <meta property="og:url" content="@yield('og:url', settings('site.site_url'))">
     <meta property="og:type" content="website">
 
     <!-- Favicons -->
@@ -63,7 +63,7 @@
             </a>
             <div class="hidden lg:flex items-center ml-auto mr-6">
                 <x-protected-phone
-                    encoded="KzE5NDk0MTQ0OTk4"
+                    :encoded="base64_encode(settings('site.contact_phone'))"
                     class="text-white hover:text-brand-orange transition-colors"
                 />
             </div>
@@ -118,7 +118,7 @@
             <ul class="flex flex-col py-4">
                 <li class="px-4 py-3">
                     <x-protected-phone
-                        encoded="KzE5NDk0MTQ0OTk4"
+                        :encoded="base64_encode(settings('site.contact_phone'))"
                         class="text-white"
                     />
                 </li>
@@ -168,7 +168,7 @@
 
                 <div class="mb-4 flex items-center justify-center">
                     <x-protected-email
-                        encoded="aW5mb0BtcmV1cm9maXguY29t"
+                        :encoded="base64_encode(settings('site.contact_email'))"
                         class="text-orange-500 hover:text-white transition-colors"
                         icon="heroicon-s-envelope"
                     />
@@ -176,7 +176,7 @@
 
                 <div class="mb-4 flex items-center justify-center">
                     <x-protected-phone
-                        encoded="KzE5NDk0MTQ0OTk4"
+                        :encoded="base64_encode(settings('site.contact_phone'))"
                         class="text-orange-500 hover:text-white transition-colors"
                         icon="heroicon-s-phone"
                     />
@@ -187,7 +187,7 @@
                               d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z"
                               clip-rule="evenodd"></path>
                     </svg>
-                    Orange County, California
+                    {{ settings('site.contact_address') }}
                 </p>
             </div>
         </div>
@@ -202,7 +202,7 @@
     x-data="{
         phone: '',
         init() {
-            this.phone = atob('KzE5NDk0MTQ0OTk4');
+            this.phone = atob('{{ base64_encode(settings("site.contact_phone")) }}');
         }
     }"
     x-cloak

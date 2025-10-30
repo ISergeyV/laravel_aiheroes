@@ -6,19 +6,18 @@ use Spatie\LaravelSettings\Settings;
 
 class SiteSettings extends Settings
 {
-    // Default values are defined here.
+    // Site-wide contact information
+    public string $contact_phone;
+    public string $contact_email;
+    public string $contact_address;
+    public string $site_url;
 
-    public string $site_name;
-    public string $phone;
-    public string $email;
-    public string $address;
-
+    // Promotional banner settings
     public bool $promo_banner_enabled;
     public string $promo_banner_text;
 
     /**
-     * This is a special method that tells the settings package
-     * what group name to use in the database.
+     * This static method defines the group key under which the settings are stored.
      */
     public static function group(): string
     {
