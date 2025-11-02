@@ -55,7 +55,12 @@ This is a more robust method than relying on the global helper.
 
 <!-- Navigation -->
 <header x-data="{ open: false }" class="relative z-50">
-    <nav class="bg-[#212f42] p-4 fixed top-10 w-full shadow-lg">
+    {{-- The navigation bar's position is now conditional on the promo banner being enabled. --}}
+    <nav @class([
+        'bg-[#212f42] p-4 fixed w-full shadow-lg',
+        'top-10' => $siteSettings->promo_banner_enabled, // This class is applied only if the banner is enabled.
+        'top-0' => !$siteSettings->promo_banner_enabled, // This class is applied if the banner is disabled.
+    ])>
         <div class="container mx-auto flex items-center justify-between">
             <!-- Logo -->
             <a class="flex flex-col" href="{{ route('home') }}">

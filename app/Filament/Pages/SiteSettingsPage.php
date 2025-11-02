@@ -10,7 +10,6 @@ use Filament\Pages\SettingsPage;
 class SiteSettingsPage extends SettingsPage
 {
     // This links the page to our settings class.
-    // The type must be a non-nullable string to match the parent class.
     protected static string $settings = SiteSettings::class;
 
     protected static ?string $navigationIcon = 'heroicon-o-cog-6-tooth';
@@ -26,7 +25,9 @@ class SiteSettingsPage extends SettingsPage
                     ->schema([
                         Forms\Components\TextInput::make('contact_phone')
                             ->label('Contact Phone')
-                            ->tel()
+                            ->mask('+1 (999) 999-9999') // Added input mask for consistent formatting.
+                            ->placeholder('+1 (949) 414-4998') // Added a placeholder for better UX.
+                            ->tel() // Keep the tel type for mobile keyboards.
                             ->required(),
                         Forms\Components\TextInput::make('contact_email')
                             ->label('Contact Email')
