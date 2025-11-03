@@ -90,6 +90,17 @@ class LeadResource extends Resource
                             ->label('Internal Notes (Visible only to admin)')
                             ->columnSpanFull(),
                     ])->columns(2),
+
+                Forms\Components\Section::make('AI Assistance')
+                    ->schema([
+                        Forms\Components\Textarea::make('ai_response')
+                            ->label('AI Generated Response')
+                            ->disabled()
+                            ->columnSpanFull(),
+                        Forms\Components\Textarea::make('master_response')
+                            ->label('Master Response (for AI training)')
+                            ->columnSpanFull(),
+                    ])->columns(1),
             ]);
     }
 
@@ -222,6 +233,11 @@ class LeadResource extends Resource
                         Infolists\Components\TextEntry::make('internal_notes')
                             ->columnSpanFull(),
                     ])->columns(2),
+                Infolists\Components\Section::make('AI Assistance')
+                    ->schema([
+                        Infolists\Components\TextEntry::make('ai_response'),
+                        Infolists\Components\TextEntry::make('master_response'),
+                    ])
             ]);
     }
 

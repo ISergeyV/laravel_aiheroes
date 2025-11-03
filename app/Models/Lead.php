@@ -25,6 +25,8 @@ class Lead extends Model
         'service_address',
         'status',
         'internal_notes',
+        'ai_response',
+        'master_response',
     ];
 
     /**

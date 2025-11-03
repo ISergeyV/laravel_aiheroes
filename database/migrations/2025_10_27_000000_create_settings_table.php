@@ -22,7 +22,7 @@ return new class extends SettingsMigration
         });
 
         // The migrator is used for adding/updating properties.
-        $this->migrator->add('site.contact_phone', '+1 (949) 414-4998');
+        $this->migrator->add('site.contact_phone', '+1 949 414-4998');
         $this->migrator->add('site.contact_email', 'info@mreurofix.com');
         $this->migrator->add('site.contact_address', 'Orange County, California');
         $this->migrator->add('site.site_url', 'https://www.mreurofix.com');
