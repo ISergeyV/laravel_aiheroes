@@ -6,6 +6,7 @@ use App\Settings\SiteSettings;
 use Filament\Forms;
 use Filament\Forms\Form;
 use Filament\Pages\SettingsPage;
+use Illuminate\Support\Str;
 
 class SiteSettingsPage extends SettingsPage
 {
@@ -26,9 +27,19 @@ class SiteSettingsPage extends SettingsPage
                         Forms\Components\TextInput::make('contact_phone')
                             ->label('Contact Phone')
                             ->mask('+1 (999) 999-9999') // Added input mask for consistent formatting.
-                            ->placeholder('+1 (949) 414-4998') // Added a placeholder for better UX.
-                            ->tel() // Keep the tel type for mobile keyboards.
-                            ->required(),
+                            ->placeholder('+1 (949) 414-4998')
+                            // We replace ->tel() with explicit attributes to avoid its implicit validation rule.
+                            // We use extraInputAttributes to target the <input> tag directly,
+                            // not its wrapper div. This is the correct method for this task.
+                            ->extraInputAttributes(['type' => 'tel'])
+                            ->required()
+                            // This rule validates the RAW masked input. It must exactly match the mask format.
+                            ->rule('regex:/^\+1 \(\d{3}\) \d{3}-\d{4}$/')
+                            // Dehydration runs AFTER successful validation to clean the data for storage.
+                            ->dehydrateStateUsing(static function (string $state): string {
+                                // We strip all non-digit characters to store a clean number.
+                                return Str::of($state)->replaceMatches('/\D/', '');
+                            }),
                         Forms\Components\TextInput::make('contact_email')
                             ->label('Contact Email')
                             ->email()
