@@ -7,14 +7,16 @@ use Spatie\LaravelSettings\Settings;
 class SiteSettings extends Settings
 {
     // Site-wide contact information
-    public string $contact_phone;
-    public string $contact_email;
-    public string $contact_address;
-    public string $site_url;
+    public string $contact_phone='';
+    public string $contact_email='';
+    public string $contact_address = '';
+    public string $site_url = '';
+    public ?string $company_name = null;
+    public ?string $notification_recipient_email = null;
 
     // Promotional banner settings
-    public bool $promo_banner_enabled;
-    public string $promo_banner_text;
+    public bool $promo_banner_enabled = true;
+    public string $promo_banner_text = '';
 
     /**
      * This static method defines the group key under which the settings are stored.

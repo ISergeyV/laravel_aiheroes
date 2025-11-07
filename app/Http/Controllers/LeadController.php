@@ -3,9 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Models\Lead;
-use Illuminate\Support\Facades\Mail;
-use App\Mail\NewLeadNotification;
-
 
 // Импортируем нашу модель
 use Illuminate\Http\Request;
@@ -48,7 +45,7 @@ class LeadController extends Controller
         }
 
         // 3. Сохранение данных в базу, сопоставляя поля формы с колонками таблицы
-        $lead = Lead::create([
+        Lead::create([
             'client_full_name' => $validatedData['fullName'] ?? null,
             'client_phone' => $validatedData['phone'],
             'client_email' => $validatedData['email'] ?? null,
@@ -60,13 +57,6 @@ class LeadController extends Controller
             'uploaded_files_urls' => $filePaths,
             'status' => 'new', // Статус по умолчанию
         ]);
-
-        //OLD:
-        // 4. Возвращаем успешный ответ для JavaScript
-        //return response()->json(['message' => 'Estimate request submitted successfully!']);
-
-        // Отправляем email-уведомление
-        Mail::to(config('mail.to_admin_address'))->send(new NewLeadNotification($lead));
 
         // Вместо JSON, делаем редирект на страницу "Спасибо"
         return redirect()->route('lead.thankyou');

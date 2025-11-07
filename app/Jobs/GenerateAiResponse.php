@@ -4,6 +4,7 @@ namespace App\Jobs;
 
 use App\Models\Lead;
 use App\Settings\AiSettings;
+use App\Settings\SiteSettings;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Bus\Dispatchable;
@@ -22,16 +23,18 @@ class GenerateAiResponse implements ShouldQueue
      */
     public function __construct(
         public Lead $lead
-    ) {
+    )
+    {
         //
     }
 
     /**
      * Execute the job.
      */
-    public function handle(AiSettings $aiSettings): void
+    public function handle(AiSettings $aiSettings, SiteSettings $siteSettings): void
     {
         $apiKey = $aiSettings->google_gemini_api_key;
+        $companyName = $siteSettings->company_name ?? 'your company'; // Fallback in case the name is not set
 
         if (empty($apiKey)) {
             Log::error('Google Gemini API key is not set. Cannot generate AI response for Lead ID: ' . $this->lead->id);
@@ -39,10 +42,9 @@ class GenerateAiResponse implements ShouldQueue
             return;
         }
 
-        $prompt = $this->buildPrompt();
+        $prompt = $this->buildPrompt($companyName);
 
         try {
-            // ИСПРАВЛЕНИЕ: Используем URL, подтвержденный пользователем из Google AI Studio
             $response = Http::withOptions([
                 'timeout' => 60,
             ])->post("https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key={$apiKey}", [
@@ -56,7 +58,7 @@ class GenerateAiResponse implements ShouldQueue
             ]);
 
             if ($response->successful()) {
-                $generatedText = $response->json('candidates.0.content.parts.0.text', 'Sorry, I could not generate a response at the moment.');
+                $generatedText = $response->json('candidates.0.content.parts.0.text', 'Sorry, we could not generate a response at the moment. A technician will contact you shortly.');
 
                 $this->lead->update([
                     'ai_response' => $generatedText,
@@ -80,17 +82,23 @@ class GenerateAiResponse implements ShouldQueue
     /**
      * Build the prompt for the AI model.
      */
-    private function buildPrompt(): string
+    private function buildPrompt(string $companyName): string
     {
+        // Sanitize variables to be injected into the prompt
+        $serviceType = addslashes($this->lead->service_type);
+        $jobDescription = addslashes($this->lead->job_description);
+        $urgencyLevel = addslashes($this->lead->urgency_level);
+
         return <<<PROMPT
-Ты — вежливый и опытный помощник в компании по ремонту "Handyman CRM". Твоя задача — написать первоначальный ответ клиенту на его заявку. Ответ должен быть профессиональным, но дружелюбным. Не указывай точную цену или сроки, вместо этого заверь клиента, что мастер скоро свяжется с ним для уточнения деталей.
+You are a polite and experienced assistant for a repair company called "{$companyName}". Your task is to write an initial response to a customer's request. The response should be professional but friendly. Do not provide an exact price or timeline; instead, assure the customer that a technician will contact them soon to clarify the details.
 
-Вот информация из заявки клиента:
-- **Тип услуги:** {$this->lead->service_type}
-- **Описание проблемы:** {$this->lead->job_description}
-- **Срочность:** {$this->lead->urgency_level}
+Here is the information from the customer's request:
+- **Service Type:** {$serviceType}
+- **Problem Description:** {$jobDescription}
+- **Urgency Level:** {$urgencyLevel}
 
-Сформируй ответ на основе этих данных.
+Formulate a response based on this data.
+Using English.
 PROMPT;
     }
 }

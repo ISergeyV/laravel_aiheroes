@@ -96,10 +96,12 @@ class LeadResource extends Resource
                         Forms\Components\Textarea::make('ai_response')
                             ->label('AI Generated Response')
                             ->disabled()
-                            ->columnSpanFull(),
+                            ->columnSpanFull()
+                            ->rows(16),
                         Forms\Components\Textarea::make('master_response')
                             ->label('Master Response (for AI training)')
-                            ->columnSpanFull(),
+                            ->columnSpanFull()
+                            ->rows(16),
                     ])->columns(1),
             ]);
     }

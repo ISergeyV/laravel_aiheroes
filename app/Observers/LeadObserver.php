@@ -4,6 +4,9 @@ namespace App\Observers;
 
 use App\Models\Lead;
 use App\Jobs\GenerateAiResponse;
+use App\Notifications\NewLeadSubmitted;
+use App\Settings\SiteSettings;
+use Illuminate\Support\Facades\Notification;
 
 class LeadObserver
 {
@@ -12,8 +15,15 @@ class LeadObserver
      */
     public function created(Lead $lead): void
     {
-        // Отправляем нашу задачу в очередь, передавая в нее только что созданный лид.
+        // Dispatch AI response generation job
         GenerateAiResponse::dispatch($lead);
+
+        // Send notification to the admin
+        $siteSettings = app(SiteSettings::class);
+        if (!empty($siteSettings->notification_recipient_email)) {
+            Notification::route('mail', $siteSettings->notification_recipient_email)
+                ->notify(new NewLeadSubmitted($lead));
+        }
     }
 
     /**
