@@ -11,8 +11,8 @@ class SiteSettings extends Settings
     public string $contact_email='';
     public string $contact_address = '';
     public string $site_url = '';
-    public ?string $company_name = null;
-    public ?string $notification_recipient_email = null;
+    public string $company_name = '';
+    public string $notification_recipient_email = '';
 
     // Promotional banner settings
     public bool $promo_banner_enabled = true;
