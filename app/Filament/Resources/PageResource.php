@@ -19,15 +19,10 @@ class PageResource extends Resource
     // Эта иконка будет отображаться в меню админ-панели.
     protected static ?string $navigationIcon = 'heroicon-o-document-text';
 
-    /**
-     * Эта функция описывает форму для создания и редактирования страниц.
-     * Filament автоматически создаст HTML-форму на основе этого.
-     */
     public static function form(Form $form): Form
     {
         return $form
             ->schema([
-                // Поле для заголовка (title)
                 Forms\Components\TextInput::make('title')
                     ->required() // Обязательное для заполнения
                     ->maxLength(255) // Максимальная длина 255 символов
@@ -36,7 +31,6 @@ class PageResource extends Resource
                     ->live(onBlur: true)
                     ->afterStateUpdated(fn (Forms\Set $set, ?string $state) => $set('slug', Str::slug($state))),
 
-                // Поле для slug
                 Forms\Components\TextInput::make('slug')
                     ->required()
                     ->maxLength(255)
@@ -46,7 +40,24 @@ class PageResource extends Resource
                 // Поле для контента с визуальным редактором (WYSIWYG)
                 Forms\Components\RichEditor::make('content')
                     ->required()
-                    ->columnSpanFull(), // Растягивает поле на всю ширину
+                    ->toolbarButtons([
+                        'attachFiles',
+                        'blockquote',
+                        'bold',
+                        'bulletList',
+                        'codeBlock',
+                        'h2',
+                        'h3',
+                        'italic',
+                        'link',
+                        'orderedList',
+                        'redo',
+                        'strike',
+                        'table', // <-- Explicitly enabled table button
+                        'undo',
+                        'source', // <-- Explicitly enabled source view button
+                    ])
+                    ->columnSpanFull(),
             ]);
     }
 
@@ -57,7 +68,6 @@ class PageResource extends Resource
     {
         return $table
             ->columns([
-                // Колонка для заголовка
                 Tables\Columns\TextColumn::make('title')
                     ->searchable(), // По этой колонке можно будет искать
 

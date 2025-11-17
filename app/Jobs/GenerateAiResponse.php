@@ -22,9 +22,8 @@ class GenerateAiResponse implements ShouldQueue
     /**
      * Create a new job instance.
      */
-    public function __construct(
-        public Lead $lead
-    ) {
+    public function __construct(public Lead $lead)
+    {
         //
     }
 
@@ -37,7 +36,7 @@ class GenerateAiResponse implements ShouldQueue
         $companyName = $siteSettings->company_name ?? 'your company';
 
         if (empty($apiKey)) {
-            Log::error('Google Gemini API key is not set. Cannot generate AI response for Lead ID: ' . $this->lead->id);
+            Log::error('Google Gemini API key is not set for Lead ID: ' . $this->lead->id);
             $this->fail('Google Gemini API key is not set.');
             return;
         }
@@ -74,11 +73,8 @@ class GenerateAiResponse implements ShouldQueue
                     'status' => 'pending_master_review'
                 ]);
             } else {
-                Log::error('Google Gemini API request failed for Lead ID: ' . $this->lead->id, [
-                    'status' => $response->status(),
-                    'body' => $response->body(),
-                ]);
-                $this->fail('Google Gemini API request failed with status: ' . $response->status() . ' - Check model name and API endpoint.');
+                Log::error('Google Gemini API request failed for Lead ID: ' . $this->lead->id, ['status' => $response->status(), 'body' => $response->body()]);
+                $this->fail('Google Gemini API request failed with status: ' . $response->status());
             }
         } catch (Throwable $e) {
             Log::critical('An unexpected error occurred while generating AI response for Lead ID: ' . $this->lead->id, [
@@ -93,33 +89,51 @@ class GenerateAiResponse implements ShouldQueue
      */
     private function buildPrompt(string $companyName, Collection $examples): string
     {
-        $serviceType = addslashes($this->lead->service_type);
-        $jobDescription = addslashes($this->lead->job_description);
+        $clientName = $this->lead->client_full_name ? trim($this->lead->client_full_name) : null;
+        $serviceType = $this->lead->service_type;
+        $jobDescription = $this->lead->job_description;
 
         $examplesText = '';
         if ($examples->isNotEmpty()) {
-            $examplesText .= "Here are some examples of how a master technician has responded to similar requests in the past:\n\n";
+            $examplesText .= "Here are some examples of how a master technician has responded to similar requests:\n\n";
             foreach ($examples as $index => $example) {
-                $exampleRequest = addslashes($example->job_description);
-                $exampleResponse = addslashes($example->master_response);
                 $examplesText .= "--- Example " . ($index + 1) . " ---\n";
-                $examplesText .= "**Client's Request:** \"{$exampleRequest}\"\n";
-                $examplesText .= "**Master's Correct Response:** \"{$exampleResponse}\"\n\n";
+                $examplesText .= "**Client's Request:** \"" . addslashes($example->job_description) . "\"\n";
+                $examplesText .= "**Master's Correct Response:** \"" . addslashes($example->master_response) . "\"\n\n";
             }
             $examplesText .= "--- End of Examples ---\n\n";
         }
 
+        $greeting = $clientName ? "Dear {$clientName}," : "Hello,";
+
         return <<<PROMPT
-You are a polite and experienced assistant for a repair company called "{$companyName}".
-Your task is to write an initial response to a new customer's request.
-The response should be professional, friendly, and based on the style of the examples provided.
-Do not provide an exact price or timeline; instead, assure the customer that a technician will contact them soon.
+You are a proactive and intelligent assistant for a repair company called "{$companyName}".
+Your primary goal is to qualify new leads by asking clarifying questions to gather enough information for a technician to create an estimate.
 
-{$examplesText}Now, based on those examples, write a response for the FOLLOWING NEW REQUEST:
-- **Service Type:** {$serviceType}
-- **Problem Description:** {$jobDescription}
+**Your Task:**
+1.  Analyze the customer's request below.
+2.  Determine if there is missing information needed for an estimate.
+    - For **Painting**: We need the approximate square footage (or room dimensions) and the number of rooms.
+    - For **Furniture Assembly**: We need the name of the item (e.g., "IKEA PAX Wardrobe") or a link to the product page.
+    - For **Plumbing/Electrical**: We need more specific details about the issue (e.g., "kitchen sink is clogged," "outlet is not working").
+3.  If information is missing, your response MUST politely ask the necessary clarifying questions.
+4.  If the customer has already provided all necessary details, simply confirm receipt of their request and inform them that a technician will be in touch.
+5.  Always start the response with a proper greeting. Use the customer's name if available.
+6.  Maintain a professional and friendly tone.
 
-Formulate the new response.
+{$examplesText}
+**Now, analyze the following new request and generate a response.**
+
+**Customer's Name:** {$clientName ?? 'Not provided'}
+**Service Type:** {$serviceType}
+**Problem Description:** "{$jobDescription}"
+
+**Instructions for your response:**
+- Start with the greeting: "{$greeting}"
+- If asking questions, be specific. For example: "To help us prepare an accurate estimate for your painting project, could you please provide the approximate square footage of the rooms?"
+- End by assuring them that once they provide the information, we can move forward, or that a technician will be in touch.
+
+Formulate the new response now.
 PROMPT;
     }
 }

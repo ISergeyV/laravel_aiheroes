@@ -50,7 +50,7 @@ class AdminPanelProvider extends PanelProvider
                 SubstituteBindings::class,
                 DisableBladeIconComponents::class,
                 DispatchServingFilamentEvent::class,
-            ])
+            ])->brandName(config('filament.brand'))
             ->authMiddleware([
                 Authenticate::class,
             ]);

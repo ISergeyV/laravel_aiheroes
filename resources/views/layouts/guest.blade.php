@@ -64,15 +64,18 @@ This is a more robust method than relying on the global helper.
         <div class="container mx-auto flex items-center justify-between">
             <!-- Logo -->
             <a class="flex flex-col" href="{{ route('home') }}">
-                <div class="flex items-baseline">
-                    <span class="text-brand-orange text-lg font-bold">Mr.</span>
-                    <span class="text-white text-lg font-bold">EuroFix</span>
-                    <span class="text-xs text-gray-400 ml-1">®</span>
-                </div>
+                @if($siteSettings->company_name)
+                    <div class="flex items-baseline">
+                        <span class="text-white text-lg font-bold">{{ $siteSettings->company_name }}</span>
+                        <span class="text-xs text-gray-400 ml-1">®</span>
+                    </div>
+                @endif
+                @if($siteSettings->company_slogan)
                 <div class="mt-1">
                     <div class="h-0.5 bg-brand-orange w-full"></div>
-                    <div class="text-xs text-gray-400 mt-1">European Quality. American Efficiency.</div>
+                    <div class="text-xs text-gray-400 mt-1">{{ $siteSettings->company_slogan }}</div>
                 </div>
+                @endif
             </a>
             <div class="hidden lg:flex items-center ml-auto mr-6">
                 <x-protected-phone

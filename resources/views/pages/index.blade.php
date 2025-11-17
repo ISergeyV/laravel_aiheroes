@@ -1,3 +1,5 @@
+@inject('siteSettings', 'App\Settings\SiteSettings')
+
 <x-guest-layout>
 
     @section('title', 'Mr. EuroFix - Handyman Services in Orange County')
@@ -7,7 +9,7 @@
     <!-- Hero Section -->
     <section id="hero"
              class="relative h-screen flex items-center justify-center text-white text-center overflow-hidden">
-        <img src="{{ asset('assets/img/bg/hero-bg.png') }}" alt="Hero Image"
+        <img src="{{ $siteSettings->hero_image ? Illuminate\Support\Facades\Storage::url($siteSettings->hero_image) : asset('assets/img/bg/hero-bg.png') }}" alt="Hero Image"
              class="absolute inset-0 w-full h-full object-cover object-top"
              onerror="this.onerror=null;this.src='https://placehold.co/1920x1080/343a40/ffffff?text=Mr.+EuroFix';">
 
