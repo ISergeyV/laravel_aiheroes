@@ -18,8 +18,10 @@ return new class extends Migration
      */
     public function up(): void
     {
-        // Instantiate the settings class. This will be populated with default values.
-        $settings = new SiteSettings();
+        // Instantiate the settings class with an empty array of attributes.
+        // This explicitly tells the package to rely on the default property
+        // values defined within the SiteSettings class itself.
+        $settings = new SiteSettings([]);
 
         // Force a save. This creates the initial record in the `settings` table
         // for the 'site' group with all properties defined in the class.
