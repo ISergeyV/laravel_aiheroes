@@ -26,37 +26,47 @@ class GenerateAiResponse implements ShouldQueue
     {
     }
 
+    /**
+     * Главный метод, который выполняется в фоновом режиме.
+     * Его задача — управлять всем процессом генерации ответа.
+     */
     public function handle(AiSettings $aiSettings, SiteSettings $siteSettings): void
     {
         try {
+            // ШАГ 1: ПОЛУЧИТЬ ИНСТРУМЕНТ (AI-ПРОВАЙДЕРА)
+            // Мы не знаем, какой именно провайдер нам дадут, но мы знаем, что у него будет метод generateResponse.
             $provider = $this->getAiProvider($aiSettings);
-        } catch (\Exception $e) {
-            Log::error('Failed to get AI provider for Lead ID: ' . $this->lead->id, ['error' => $e->getMessage()]);
-            $this->fail($e);
-            return;
-        }
 
-        $companyName = $siteSettings->company_name ?? 'your company';
+            // ШАГ 2: ПОДГОТОВИТЬ ДАННЫЕ ДЛЯ ПРОМПТА
+            // Получаем название компании для персонализации.
+            $companyName = $siteSettings->company_name ?? 'your company';
 
-        $examples = Lead::whereNotNull('master_response')
-            ->where('service_type', $this->lead->service_type)
-            ->where('id', '!=', $this->lead->id)
-            ->latest()
-            ->limit(3)
-            ->get();
+            // Извлекаем из базы данных примеры прошлых ответов мастера (Retrieval-Augmented Generation).
+            $examples = Lead::whereNotNull('master_response')
+                ->where('service_type', $this->lead->service_type)
+                ->where('id', '!=', $this->lead->id)
+                ->latest()
+                ->limit(3)
+                ->get();
 
-        $prompt = $this->buildPrompt($companyName, $examples);
+            // Собираем финальный промпт, передавая в него все данные.
+            $prompt = $this->buildPrompt($companyName, $examples);
 
-        try {
+            // ШАГ 3: ДЕЛЕГИРОВАТЬ РАБОТУ И ПОЛУЧИТЬ РЕЗУЛЬТАТ
+            // Мы вызываем метод generateResponse, не зная, кто его выполнит — Gemini, OpenAI или кто-то еще.
             $generatedText = $provider->generateResponse($prompt);
 
+            // ШАГ 4: СОХРАНИТЬ РЕЗУЛЬТАТ
+            // Обновляем наш лид, записывая ответ ИИ и меняя статус.
             $this->lead->update([
                 'ai_response' => $generatedText,
                 'status' => 'pending_master_review'
             ]);
+
         } catch (Throwable $e) {
+            // Если на любом из шагов произошла ошибка, мы логируем ее и "проваливаем" задачу.
             Log::critical('AI response generation failed for Lead ID: ' . $this->lead->id, [
-                'provider' => $aiSettings->active_provider,
+                'provider' => $aiSettings->active_provider ?? 'unknown',
                 'exception' => $e->getMessage(),
             ]);
             $this->fail($e);
@@ -64,37 +74,48 @@ class GenerateAiResponse implements ShouldQueue
     }
 
     /**
-     * @throws \Exception
+     * Фабричный метод (Factory Method).
+     * Его единственная задача — посмотреть на настройки и "произвести" (создать и вернуть)
+     * правильный объект AI-провайдера. Это реализация паттерна "Стратегия".
+     *
+     * @throws \Exception - если ключ API не найден или выбранный провайдер не поддерживается.
      */
     private function getAiProvider(AiSettings $settings): AiProvider
     {
-        $provider = $settings->active_provider;
-        $apiKey = null;
+        $providerName = $settings->active_provider;
 
-        switch ($provider) {
+        switch ($providerName) {
             case 'gemini':
                 $apiKey = $settings->google_gemini_api_key;
                 if (empty($apiKey)) throw new \Exception('Google Gemini API key is not set.');
                 return new GeminiProvider($apiKey);
+
             case 'openai':
                 $apiKey = $settings->openai_api_key;
                 if (empty($apiKey)) throw new \Exception('OpenAI API key is not set.');
                 return new OpenAiProvider($apiKey);
+
             case 'deepseek':
                 $apiKey = $settings->deepseek_api_key;
                 if (empty($apiKey)) throw new \Exception('DeepSeek API key is not set.');
                 return new DeepSeekProvider($apiKey);
+
             default:
-                throw new \Exception("Unsupported AI provider: {$provider}");
+                throw new \Exception("Unsupported AI provider: {$providerName}");
         }
     }
 
+    /**
+     * Сборщик промпта.
+     * Собирает все части информации в единый, структурированный промпт для языковой модели.
+     */
     private function buildPrompt(string $companyName, Collection $examples): string
     {
         $clientName = $this->lead->client_full_name ? trim($this->lead->client_full_name) : null;
         $serviceType = $this->lead->service_type;
         $jobDescription = $this->lead->job_description;
 
+        // Формируем блок с примерами, если они были найдены в базе данных.
         $examplesText = '';
         if ($examples->isNotEmpty()) {
             $examplesText .= "Here are some examples of how a master technician has responded to similar requests:\n\n";
@@ -108,6 +129,7 @@ class GenerateAiResponse implements ShouldQueue
 
         $greeting = $clientName ? "Dear {$clientName}," : "Hello,";
 
+        // Финальный шаблон промпта, который объединяет все части.
         return <<<PROMPT
 You are a proactive and intelligent assistant for a repair company called "{$companyName}".
 Your primary goal is to qualify new leads by asking clarifying questions to gather enough information for a technician to create an estimate.
