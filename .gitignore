@@ -16,6 +16,7 @@
 /node_modules
 /public/hot
 /public/storage
+/public/build  # если используете Vite
 /storage/*.key
 /storage/pail
 /storage/framework/cache/data/
