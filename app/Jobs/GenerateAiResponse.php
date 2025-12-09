@@ -128,6 +128,7 @@ class GenerateAiResponse implements ShouldQueue
         }
 
         $greeting = $clientName ? "Dear {$clientName}," : "Hello,";
+        $displayClientName = $clientName ?? 'Not provided';
 
         // Финальный шаблон промпта, который объединяет все части.
         return <<<PROMPT
@@ -148,7 +149,7 @@ Your primary goal is to qualify new leads by asking clarifying questions to gath
 {$examplesText}
 **Now, analyze the following new request and generate a response.**
 
-**Customer's Name:** {$clientName ?? 'Not provided'}
+**Customer's Name:** {$displayClientName}
 **Service Type:** {$serviceType}
 **Problem Description:** "{$jobDescription}"
 
