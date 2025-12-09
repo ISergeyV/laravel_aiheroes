@@ -38,13 +38,13 @@
                         <div>
                             <label for="fullName" class="block text-sm font-medium text-slate-700 mb-1">Full
                                 Name</label>
-                            <input type="text" id="fullName" name="fullName" value="{{ old('fullName') }}"
+                            <input type="text" id="fullName" name="fullName" autocomplete="name" value="{{ old('fullName') }}"
                                    class="w-full px-4 py-2 border @error('fullName') border-red-500 @else border-slate-300 @enderror rounded-lg focus:ring-indigo-500 focus:border-indigo-500">
                         </div>
                         <div>
                             <label for="phone" class="block text-sm font-medium text-slate-700 mb-1">Phone
                                 Number</label>
-                            <input type="tel" id="phone" name="phone" value="{{ old('phone') }}"
+                            <input type="tel" id="phone" name="phone" autocomplete="tel" value="{{ old('phone') }}"
                                    class="w-full px-4 py-2 border @error('phone') border-red-500 @else border-slate-300 @enderror rounded-lg focus:ring-indigo-500 focus:border-indigo-500"
                                    required>
                         </div>
@@ -52,7 +52,7 @@
                     <div class="mt-6">
                         <label for="email" class="block text-sm font-medium text-slate-700 mb-1">Email
                             Address</label>
-                        <input type="email" id="email" name="email" value="{{ old('email') }}"
+                        <input type="email" id="email" name="email" autocomplete="email" value="{{ old('email') }}"
                                class="w-full px-4 py-2 border @error('email') border-red-500 @else border-slate-300 @enderror rounded-lg focus:ring-indigo-500 focus:border-indigo-500"
                                 placeholder="you@example.com">
                     </div>
@@ -135,9 +135,10 @@
                     <div>
                         <label for="address" class="block text-sm font-medium text-slate-700 mb-1">Service Address
                             or Area</label>
-                        <input type="text" id="address" name="address"
-                               class="w-full px-4 py-2 border border-slate-300 rounded-lg focus:ring-indigo-500 focus:border-indigo-500"
-                               placeholder="e.g., Irvine, CA 92618 or 123 Main St, Irvine">
+                        <input type="text" id="address" name="address" autocomplete="street-address"
+                               value="{{ old('address') }}"
+                               class="w-full px-4 py-2 border @error('address') border-red-500 @else border-slate-300 @enderror rounded-lg focus:ring-indigo-500 focus:border-indigo-500"
+                               placeholder="e.g., 123 Main St, Irvine, CA 92618" >
                     </div>
                 </fieldset>
 
