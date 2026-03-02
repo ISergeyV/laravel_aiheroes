@@ -21,7 +21,7 @@ return new class extends Migration
             $table->text('job_description'); // Detailed Problem Description from form: jobDescription
             $table->string('estimated_budget')->nullable(); // Estimated Budget from form: budget (optional)
             $table->json('uploaded_files_urls')->nullable(); // URLs of uploaded photos/videos from form: fileUpload (stored as JSON array)
-            $table->string('service_address'); // Service Address or Area from form: address (required in form)
+            $table->string('company_website')->nullable(); // Company Name or Website from form: companyWebsite
             // Поле для согласия с дисклеймером. В БД мы просто фиксируем факт согласия.
             // $table->boolean('disclaimer_agreed')->default(false); // (Можно добавить, если нужно явно хранить согласие, но обычно достаточно, что форма не отправится без него)
 

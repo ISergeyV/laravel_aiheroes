@@ -27,6 +27,8 @@ class Lead extends Model
         'internal_notes',
         'ai_response',
         'master_response',
+        'company_website',
+        'session_token',
     ];
 
     /**

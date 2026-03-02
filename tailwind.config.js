@@ -1,25 +1,49 @@
-export default {
+/** @type {import('tailwindcss').Config} */
+module.exports = {
     content: [
-        "./resources/views/**/*.blade.php",
-        // Путь к стандартным шаблонам пагинации Laravel
-        './vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php',
-        // Путь к кэшированным/скомпилированным шаблонам для надежности
-        './storage/framework/views/*.php',
-        // Путь к вашим JS-файлам
-        './resources/js/**/*.js',
+        "./resources/**/*.blade.php",
+        "./resources/**/*.js",
+        "./resources/**/*.vue",
     ],
-    safelist: [
-        "text-4xl",
-        "test-tailwind"
-    ],
+    corePlugins: {
+        preflight: false,
+    },
     theme: {
         extend: {
             colors: {
-                'brand-orange': '#e67e22', // Даем осмысленное имя
-                // ... другие цвета
+                'accent': '#a3e635', // Match the lime-green accent
+                'accent-hover': '#bef264',
+                'surface': '#f8fafc',
+                'border': '#e2e8f0',
+                'text': '#0f172a',
+                'text-light': '#64748b',
+                'text-dark-bg': '#f8fafc',
+                'bg-dark': '#020617',
+            },
+            fontFamily: {
+                sans: ['Inter', 'sans-serif'],
+            },
+            spacing: {
+                'xs': '0.5rem',
+                'sm': '1rem',
+                'md': '2rem',
+                'lg': '4rem',
+                'xl': '8rem',
+            },
+            borderRadius: {
+                'md': '12px',
+                'lg': '24px',
+            },
+            keyframes: {
+                marquee: {
+                    '0%': { transform: 'translateX(0%)' },
+                    '100%': { transform: 'translateX(-50%)' },
+                }
+            },
+            animation: {
+                marquee: 'marquee 40s linear infinite',
             }
         },
     },
-
     plugins: [],
 }

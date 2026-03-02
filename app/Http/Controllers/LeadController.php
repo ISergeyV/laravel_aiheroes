@@ -3,9 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Lead;
-
-// Импортируем нашу модель
+use App\Jobs\GenerateAiResponse;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 
 class LeadController extends Controller
 {
@@ -27,7 +27,7 @@ class LeadController extends Controller
             'urgency' => 'nullable|string',
             'jobDescription' => 'nullable|string',
             'budget' => 'nullable|string|max:255',
-            'address' => 'nullable|string|max:255',
+            'companyWebsite' => 'nullable|string|max:255',
             'disclaimer' => 'required|accepted',
             'fileUpload' => 'nullable|array',
             'fileUpload.*' => 'file|mimes:jpg,jpeg,png,mp4,mov,avi|max:250600', // 250MB
@@ -53,13 +53,105 @@ class LeadController extends Controller
             'urgency_level' => $validatedData['urgency'] ?? null,
             'job_description' => $validatedData['jobDescription'] ?? null,
             'estimated_budget' => $validatedData['budget'] ?? null,
-            'service_address' => $validatedData['address'] ?? null,
+            'company_website' => $validatedData['companyWebsite'] ?? null,
             'uploaded_files_urls' => $filePaths,
             'status' => 'new', // Статус по умолчанию
         ]);
 
         // Вместо JSON, делаем редирект на страницу "Спасибо"
         return redirect()->route('lead.thankyou');
+    }
+
+    // --- API Methods for Multi-step Wizard ---
+
+    /**
+     * Step 1: Capture Email and Start Session
+     */
+    public function startEstimate(Request $request)
+    {
+        $request->validate([
+            'email' => 'required|email|max:255',
+        ]);
+
+        $token = Str::random(60);
+
+        $lead = Lead::create([
+            'client_email' => $request->email,
+            'session_token' => $token,
+            'status' => 'partial',
+        ]);
+
+        return response()->json([
+            'success' => true,
+            'session_token' => $token,
+            'lead_id' => $lead->id
+        ]);
+    }
+
+    /**
+     * Intermediate Steps: Update partial lead data
+     */
+    public function updateEstimate(Request $request)
+    {
+        $request->validate([
+            'session_token' => 'required|string',
+            'serviceType' => 'nullable|string',
+            'jobDescription' => 'nullable|string',
+            'budget' => 'nullable|string',
+        ]);
+
+        $lead = Lead::where('session_token', $request->session_token)
+                    ->where('status', 'partial')
+                    ->firstOrFail();
+
+        $lead->update([
+            'service_type' => $request->serviceType ?? $lead->service_type,
+            'job_description' => $request->jobDescription ?? $lead->job_description,
+            'estimated_budget' => $request->budget ?? $lead->estimated_budget,
+        ]);
+
+        return response()->json(['success' => true]);
+    }
+
+    /**
+     * Final Step: Complete the lead and trigger AI
+     */
+    public function completeEstimate(Request $request)
+    {
+        $request->validate([
+            'session_token' => 'required|string',
+            'fullName' => 'nullable|string|max:255',
+            'companyWebsite' => 'nullable|string|max:255',
+            'phone' => 'nullable|string|max:20',
+            'fileUpload' => 'nullable|array',
+            'fileUpload.*' => 'file|mimes:jpg,jpeg,png,pdf,doc,docx,xls,xlsx,mp4,mov,avi|max:250600',
+        ]);
+
+        $lead = Lead::where('session_token', $request->session_token)
+                    ->where('status', 'partial')
+                    ->firstOrFail();
+
+        // Process files if any
+        $filePaths = $lead->uploaded_files_urls ?? [];
+        if ($request->hasFile('fileUpload')) {
+            foreach ($request->file('fileUpload') as $file) {
+                $path = $file->store('leads_attachments');
+                $filePaths[] = $path;
+            }
+        }
+
+        $lead->update([
+            'client_full_name' => $request->fullName,
+            'company_website' => $request->companyWebsite,
+            'client_phone' => $request->phone,
+            'uploaded_files_urls' => $filePaths,
+            'status' => 'new',
+        ]);
+
+        // Trigger AI Job
+        GenerateAiResponse::dispatch($lead);
+
+        return response()->json(['success' => true, 'redirect' => route('lead.thankyou')]);
     }
 
     /**

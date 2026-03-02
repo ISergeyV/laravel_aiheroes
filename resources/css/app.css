@@ -1,11 +1,11 @@
-html {
-    scroll-behavior: smooth;
-}
+@import "./custom.css";
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-[id] {
-    scroll-margin: 86px;
+@layer base {
+    body {
+        @apply font-sans bg-white text-text leading-relaxed m-0;
+    }
 }

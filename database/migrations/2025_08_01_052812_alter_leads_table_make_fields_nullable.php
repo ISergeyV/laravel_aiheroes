@@ -19,7 +19,7 @@ return new class extends Migration {
             $table->string('service_type')->nullable()->change();
             $table->string('urgency_level')->nullable()->change();
             $table->text('job_description')->nullable()->change();
-            $table->string('service_address')->nullable()->change();
+            $table->string('company_website')->nullable()->change();
         });
     }
 
@@ -38,7 +38,7 @@ return new class extends Migration {
             $table->string('service_type')->nullable(false)->change();
             $table->string('urgency_level')->nullable(false)->change();
             $table->text('job_description')->nullable(false)->change();
-            $table->string('service_address')->nullable(false)->change();
+            $table->string('company_website')->nullable(false)->change();
         });
     }
 };

@@ -14,7 +14,7 @@ export default defineConfig({
         port: 5173,
         strictPort: true,
         hmr: {
-            host: 'laravel-handyman-crm.ddev.site',
+            host: 'laravel-aiheroes.net.ddev.site',
             protocol: 'wss',
         },
     },
