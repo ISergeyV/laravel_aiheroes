@@ -258,6 +258,56 @@
                 <img src="{{ asset('images/home/portfolio/mro-supply.jpg') }}" alt="MRO Supply Data Migration" class="w-full h-full object-cover">
             </div>
         </div>
+
+        <div
+            class="mt-8 bg-white border border-border rounded-2xl overflow-hidden flex flex-wrap md:flex-nowrap items-stretch shadow-sm hover:shadow-md transition-shadow">
+            
+            <div class="flex-1 min-w-[300px] border-b md:border-b-0 md:border-r border-border flex flex-col items-center justify-center p-12 bg-slate-50 order-2 md:order-1 relative overflow-hidden group">
+                <div class="absolute inset-0 bg-gradient-to-br from-indigo-50/50 to-emerald-50/50 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                <!-- Логотип Ask-CHatGPT -->
+                <img src="{{ asset('images/home/portfolio/ask-chatgpt.png') }}" alt="Ask ChatGPT Extension Logo" class="w-40 h-40 object-contain drop-shadow-lg transform group-hover:scale-105 transition-transform duration-500 relative z-10">
+            </div>
+
+            <div class="flex-1 min-w-[300px] p-8 md:p-12 order-1 md:order-2">
+                <div class="flex items-center flex-wrap gap-4 mb-6">
+                    <span class="font-bold text-[1.1rem] text-slate-900">Ask-CHatGPT</span>
+                    <span
+                        class="bg-[#eff6ff] text-[#1e40af] text-xs px-3 py-1 rounded-full font-semibold border border-[#bfdbfe]">Browser Extension</span>
+                </div>
+                <h3 class="text-[1.75rem] mb-6 leading-tight font-semibold text-slate-900">Seamless Browser-to-LLM Integration</h3>
+
+                <div class="flex flex-wrap gap-8 mb-8 pb-8 border-b border-border">
+                    <div class="flex flex-col">
+                        <span class="text-2xl font-bold text-[#1e40af]">Zero</span>
+                        <span class="text-sm text-text-light mt-1">Context Switching</span>
+                    </div>
+                    <div class="flex flex-col">
+                        <span class="text-2xl font-bold text-[#1e40af]">MV3</span>
+                        <span class="text-sm text-text-light mt-1">Secure Architecture</span>
+                    </div>
+                </div>
+
+                <div class="flex flex-col gap-6 mb-8">
+                    <div>
+                        <h4 class="text-[0.85rem] uppercase tracking-wider text-slate-500 mb-2 font-bold">The Challenge</h4>
+                        <p class="text-[0.95rem] text-text-light leading-relaxed">Fragmented workflows requiring users to constantly context-switch, copy data, and manage tabs just to query ChatGPT.</p>
+                    </div>
+                    <div>
+                        <h4 class="text-[0.85rem] uppercase tracking-wider text-slate-500 mb-2 font-bold">The Solution</h4>
+                        <p class="text-[0.95rem] text-text-light leading-relaxed">A custom Chrome Extension leveraging asynchronous Service Workers and resilient React UI injection for instant LLM access.</p>
+                    </div>
+                </div>
+
+                <div class="flex flex-wrap gap-2 mt-8">
+                    <span class="bg-slate-100 text-slate-600 px-3 py-1 rounded-md text-[0.85rem] font-medium border border-slate-200">JavaScript (ES6+)</span>
+                    <span class="bg-slate-100 text-slate-600 px-3 py-1 rounded-md text-[0.85rem] font-medium border border-slate-200">Manifest V3</span>
+                    <span class="bg-slate-100 text-slate-600 px-3 py-1 rounded-md text-[0.85rem] font-medium border border-slate-200">DOM Manipulation</span>
+                </div>
+
+                <a href="{{ route('pages.ask-chatgpt-case-study') }}"
+                    class="inline-flex mt-10 bg-slate-900 text-white font-medium text-[0.95rem] px-8 py-3 rounded-lg hover:bg-slate-800 transition-colors">Read Case Study &rarr;</a>
+            </div>
+        </div>
     </div>
 </section>
 
