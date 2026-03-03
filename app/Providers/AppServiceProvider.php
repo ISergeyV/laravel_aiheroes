@@ -23,7 +23,7 @@ class AppServiceProvider extends ServiceProvider
     {
         // We use a View Composer to bind logic to a specific template when it's rendered.
         // Now, it targets 'layouts.guest' to make the menu available on the public-facing site.
-        View::composer('layouts.guest', function ($view) {
+        View::composer(['layouts.guest', 'partials.header'], function ($view) {
             // We fetch only top-level menu items (where parent_id is null).
             // with('children') eager-loads all descendant items to prevent N+1 query issues.
             // orderBy('order') ensures the menu items are displayed in the specified order.

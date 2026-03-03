@@ -17,11 +17,11 @@ Route::get('/about', function () {
     return view('pages.about');
 })->name('about');
 
-Route::get('/orange-county-flooring-handyman', fn() => view('pages.flooring'))->name('pages.flooring');
-Route::get('/orange-county-painting-handyman', fn() => view('pages.painting'))->name('pages.painting');
-Route::get('/orange-county-drywall-handyman', fn() => view('pages.drywall'))->name('pages.drywall');
-Route::get('/orange-county-furniture-handyman', fn() => view('pages.furniture'))->name('pages.furniture');
-Route::get('/orange-county-tile-handyman', fn() => view('pages.tile'))->name('pages.tile');
+Route::get('/orange-county-flooring-handyman', fn() => redirect('/'))->name('pages.flooring');
+Route::get('/orange-county-painting-handyman', fn() => redirect('/'))->name('pages.painting');
+Route::get('/orange-county-drywall-handyman', fn() => redirect('/'))->name('pages.drywall');
+Route::get('/orange-county-furniture-handyman', fn() => redirect('/'))->name('pages.furniture');
+Route::get('/orange-county-tile-handyman', fn() => redirect('/'))->name('pages.tile');
 
 Route::get('/mro-case-study', fn() => view('pages.mro-case-study'))->name('pages.mro-case-study');
 Route::redirect('/mro-case-study.html', '/mro-case-study');

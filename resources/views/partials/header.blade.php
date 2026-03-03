@@ -4,16 +4,32 @@
             aria-label="AI Heroes Home">AI Heroes</a>
         <nav class="flex-1 hidden md:block">
             <ul class="flex gap-8">
-                <li><a href="/#services"
-                        class="text-sm font-medium text-text hover:opacity-80 transition-opacity">Services</a></li>
-                <li><a href="/#features"
-                        class="text-sm font-medium text-text hover:opacity-80 transition-opacity">Features</a></li>
-                <li><a href="/#faq" class="text-sm font-medium text-text hover:opacity-80 transition-opacity">FAQ</a>
-                </li>
-                <li><a href="{{ route('ai-news.index') }}"
-                        class="text-sm font-medium text-text hover:opacity-80 transition-opacity">News</a></li>
-                <li><a href="/#contact"
-                        class="text-sm font-medium text-text hover:opacity-80 transition-opacity">Contact</a></li>
+                @foreach ($menuItems as $menuItem)
+                    @if ($menuItem->children->isEmpty())
+                        <li><a href="{{ url($menuItem->url) }}"
+                                class="text-sm font-medium text-text hover:opacity-80 transition-opacity">{{ $menuItem->title }}</a></li>
+                    @else
+                        <li class="relative" x-data="{ dropdownOpen: false }" @click.outside="dropdownOpen = false">
+                             <button @click="dropdownOpen = !dropdownOpen"
+                                     class="text-sm font-medium text-text hover:opacity-80 transition-opacity flex items-center">
+                                 {{ $menuItem->title }}
+                                 <svg class="ml-1 w-4 h-4 transform transition-transform"
+                                      :class="{ 'rotate-180': dropdownOpen }" fill="currentColor" viewBox="0 0 20 20">
+                                     <path fill-rule="evenodd"
+                                           d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
+                                           clip-rule="evenodd"></path>
+                                 </svg>
+                             </button>
+                             <div x-show="dropdownOpen" x-transition x-cloak
+                                  class="absolute left-0 mt-2 w-48 bg-white border border-border rounded-md shadow-lg py-1 z-20">
+                                 @foreach ($menuItem->children as $child)
+                                     <a href="{{ url($child->url) }}"
+                                        class="block px-4 py-2 text-sm text-text hover:bg-slate-50 transition-colors">{{ $child->title }}</a>
+                                 @endforeach
+                             </div>
+                        </li>
+                    @endif
+                @endforeach
             </ul>
         </nav>
         <div class="flex items-center gap-4">
