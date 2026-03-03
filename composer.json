@@ -21,7 +21,7 @@
         }
     ],
     "require": {
-        "php": "^8.3",
+        "php": "^8.4",
         "awcodes/filament-tiptap-editor": "^3.5",
         "doctrine/dbal": "^4.3",
         "filament/filament": "^3.2",
