@@ -308,6 +308,61 @@
                     class="inline-flex mt-10 bg-slate-900 text-white font-medium text-[0.95rem] px-8 py-3 rounded-lg hover:bg-slate-800 transition-colors">Read Case Study &rarr;</a>
             </div>
         </div>
+
+        <!-- Handyman CRM Case Study -->
+        <div class="mt-8 bg-white border border-border rounded-2xl overflow-hidden flex flex-wrap md:flex-nowrap items-stretch shadow-sm hover:shadow-md transition-shadow">
+            <div class="flex-1 min-w-[300px] p-8 md:p-12">
+                <div class="flex items-center flex-wrap gap-4 mb-6">
+                    <span class="font-bold text-[1.1rem] text-slate-900">Handyman Lead CRM</span>
+                    <span class="bg-[#f0fdf4] text-[#166534] text-xs px-3 py-1 rounded-full font-semibold border border-[#bbf7d0]">TALL Stack CRM</span>
+                </div>
+                <h3 class="text-[1.75rem] mb-6 leading-tight font-semibold text-slate-900">Intelligent Service Operations & Routing</h3>
+
+                <div class="flex gap-8 mb-8 pb-8 border-b border-border flex-wrap">
+                    <div class="flex flex-col">
+                        <span class="text-2xl font-bold text-[#166534]">Automated</span>
+                        <span class="text-sm text-text-light mt-1">Lead Workflows</span>
+                    </div>
+                    <div class="flex flex-col">
+                        <span class="text-2xl font-bold text-[#166534]">Filament v3</span>
+                        <span class="text-sm text-text-light mt-1">Admin Architecture</span>
+                    </div>
+                </div>
+
+                <div class="flex flex-col gap-6 mb-8">
+                    <div>
+                        <h4 class="text-[0.85rem] uppercase tracking-wider text-slate-500 mb-2 font-bold">The Challenge</h4>
+                        <p class="text-[0.95rem] text-text-light leading-relaxed">Inefficient, fragmented communication channels causing lost leads and inaccurate preliminary estimates for service businesses.</p>
+                    </div>
+                    <div>
+                        <h4 class="text-[0.85rem] uppercase tracking-wider text-slate-500 mb-2 font-bold">The Solution</h4>
+                        <p class="text-[0.95rem] text-text-light leading-relaxed">A bespoke Laravel 12 platform uniting dynamic front-end lead capture to a powerful backend command center.</p>
+                    </div>
+                </div>
+
+                <div class="flex flex-wrap gap-3 mb-8">
+                    <span class="bg-slate-100 text-slate-600 px-3 py-1 rounded-md text-[0.85rem] font-medium border border-slate-200">Laravel 12</span>
+                    <span class="bg-slate-100 text-slate-600 px-3 py-1 rounded-md text-[0.85rem] font-medium border border-slate-200">Livewire / Alpine</span>
+                    <span class="bg-slate-100 text-slate-600 px-3 py-1 rounded-md text-[0.85rem] font-medium border border-slate-200">Job Queues</span>
+                </div>
+
+                <a href="{{ route('pages.handyman-crm-case-study') }}"
+                    class="inline-flex mt-10 bg-slate-900 text-white font-medium text-[0.95rem] px-8 py-3 rounded-lg hover:bg-slate-800 transition-colors">Read
+                    Case Study &rarr;</a>
+            </div>
+
+            <div class="flex-1 min-w-[300px] border-t md:border-t-0 md:border-l border-border flex flex-col items-center justify-center p-0 bg-slate-50 relative overflow-hidden group">
+                 <div class="absolute inset-0 bg-gradient-to-tr from-emerald-100/30 to-blue-50/30 opacity-80 mix-blend-multiply group-hover:opacity-100 transition-opacity duration-500"></div>
+                 <div class="relative z-10 text-center p-8 transform group-hover:scale-105 transition-transform duration-500">
+                      <div class="w-24 h-24 bg-gradient-to-br from-emerald-500 to-emerald-600 rounded-2xl shadow-xl flex items-center justify-center mx-auto mb-6 transform -rotate-3 hover:rotate-0 transition-all duration-300">
+                           <svg class="w-12 h-12 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"></path></svg>
+                      </div>
+                      <h4 class="text-2xl font-bold text-slate-800 tracking-tight">Handyman CRM</h4>
+                      <p class="text-[0.95rem] text-slate-500 mt-2 font-medium">Bespoke Process Automation</p>
+                 </div>
+            </div>
+        </div>
+
     </div>
 </section>
 

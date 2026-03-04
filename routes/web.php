@@ -23,8 +23,18 @@ Route::get('/orange-county-drywall-handyman', fn() => redirect('/'))->name('page
 Route::get('/orange-county-furniture-handyman', fn() => redirect('/'))->name('pages.furniture');
 Route::get('/orange-county-tile-handyman', fn() => redirect('/'))->name('pages.tile');
 
-Route::get('/mro-case-study', fn() => view('pages.mro-case-study'))->name('pages.mro-case-study');
+Route::get('/mro-case-study', function () {
+    return view('pages.mro-case-study');
+})->name('pages.mro-case-study');
 Route::redirect('/mro-case-study.html', '/mro-case-study');
+
+Route::get('/ask-chatgpt-case-study', function () {
+    return view('pages.ask-chatgpt-case-study');
+})->name('pages.ask-chatgpt-case-study');
+
+Route::get('/handyman-crm-case-study', function () {
+    return view('pages.handyman-crm-case-study');
+})->name('pages.handyman-crm-case-study');
 
 Route::get('/news', [AiNewsController::class, 'index'])->name('ai-news.index');
 
