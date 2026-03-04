@@ -40,7 +40,7 @@
                     <p>To leverage Large Language Models (LLMs) like ChatGPT for this data, users are forced into costly context switching: manually highlighting, copying, navigating away from the source tab, pasting data into a chat interface, and reformating prompts. This manual data pipeline introduces unnecessary operational friction, leading to significant productivity hemorrhage and broken cognitive flow for enterprise teams.</p>
 
                     <h3 class="cs-heading-sm">The Engineering Solution</h3>
-                    <p>I architected the <strong>Ask-ChatGPT</strong> enterprise browser extension specifically to eradicate this operational friction. Rather than relying on clunky API layers that attempt to duplicate the native ChatGPT interface, this solution deploys a direct, secure browser bridge from any digital context straight to the user's active OpenAI session.</p>
+                    <p>We architected the <strong>Ask-ChatGPT</strong> enterprise browser extension specifically to eradicate this operational friction. Rather than relying on clunky API layers that attempt to duplicate the native ChatGPT interface, this solution deploys a direct, secure browser bridge from any digital context straight to the user's active OpenAI session.</p>
                     
                     <ul class="cs-list">
                         <li><strong>Dynamic Tab Management:</strong> Utilizing asynchronous Chrome background Service Workers to manage tab states intelligently.</li>
@@ -121,7 +121,7 @@
     <section class="section bottom-cta w-full">
         <div class="max-w-[1200px] mx-auto px-8 text-center">
             <h2 class="section-title">Let's architect your competitive advantage.</h2>
-            <p class="section-subtitle max-w-[800px] mx-auto">This system exemplifies lightweight, high-leverage software. If your enterprise is constrained by manual data shuttling, isolated system silos, or inefficient AI workflows, we can design custom integrations that operate invisibly.</p>
+            <p class="section-subtitle max-w-[800px] mx-auto">This system exemplifies the caliber of lightweight, high-leverage software we construct. If your enterprise is constrained by manual data shuttling, isolated system silos, or inefficient AI workflows, we can design custom integrations that operate invisibly.</p>
             <a href="/#contact" class="btn btn--primary" style="margin-top: 20px;">Build Your Custom Solution</a>
         </div>
     </section>
