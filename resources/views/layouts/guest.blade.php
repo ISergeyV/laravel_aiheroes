@@ -63,19 +63,24 @@ This is a more robust method than relying on the global helper.
     ])>
         <div class="container mx-auto flex items-center justify-between">
             <!-- Logo -->
-            <a class="flex flex-col" href="{{ route('home') }}">
-                @if($siteSettings->company_name)
-                    <div class="flex items-baseline">
-                        <span class="text-white text-lg font-bold">{{ $siteSettings->company_name }}</span>
-                        <span class="text-xs text-gray-400 ml-1">®</span>
+            <a class="flex items-center gap-3" href="{{ route('home') }}">
+                @if($siteSettings->company_logo)
+                    <img src="{{ asset('storage/' . $siteSettings->company_logo) }}" alt="{{ $siteSettings->company_name }} Logo" class="h-10 w-auto object-contain">
+                @endif
+                <div class="flex flex-col">
+                    @if($siteSettings->company_name)
+                        <div class="flex items-baseline">
+                            <span class="text-white text-lg font-bold">{{ $siteSettings->company_name }}</span>
+                            <span class="text-xs text-gray-400 ml-1">®</span>
+                        </div>
+                    @endif
+                    @if($siteSettings->company_slogan)
+                    <div class="mt-1">
+                        <div class="h-0.5 bg-brand-orange w-full"></div>
+                        <div class="text-xs text-gray-400 mt-1">{{ $siteSettings->company_slogan }}</div>
                     </div>
-                @endif
-                @if($siteSettings->company_slogan)
-                <div class="mt-1">
-                    <div class="h-0.5 bg-brand-orange w-full"></div>
-                    <div class="text-xs text-gray-400 mt-1">{{ $siteSettings->company_slogan }}</div>
+                    @endif
                 </div>
-                @endif
             </a>
             <div class="hidden lg:flex items-center ml-auto mr-6">
                 <x-protected-phone
@@ -212,7 +217,7 @@ This is a more robust method than relying on the global helper.
 
 <!-- Footer -->
 <footer class="bg-gray-900 text-blue-200 text-center py-6">
-    <p>&copy; {{ date('Y') }} Mr. EuroFix. All rights reserved.</p>
+    <p>&copy; {{ date('Y') }} {{ $siteSettings->company_name ?: 'AI Heroes' }}. All rights reserved.</p>
 </footer>
 <div
     x-data="{

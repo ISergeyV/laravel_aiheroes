@@ -1,7 +1,16 @@
+@inject('siteSettings', 'App\Settings\SiteSettings')
 <header class="sticky top-0 z-[1000] bg-white border-b border-transparent transition-colors duration-300">
     <div class="max-w-[1200px] mx-auto px-8 w-full flex items-center justify-between h-20">
-        <a href="{{ url('/') }}" class="font-bold text-2xl tracking-tight lg:mr-8 hover:opacity-80 transition-opacity"
-            aria-label="AI Heroes Home">AI Heroes</a>
+        <a href="{{ url('/') }}" class="flex items-center gap-3 lg:mr-8 hover:opacity-80 transition-opacity" aria-label="Home">
+            @if($siteSettings->company_logo)
+                <img src="{{ asset('storage/' . $siteSettings->company_logo) }}" alt="{{ $siteSettings->company_name }} Logo" class="h-10 w-auto object-contain">
+            @endif
+            @if($siteSettings->company_name)
+                <span class="font-bold text-2xl tracking-tight">{{ $siteSettings->company_name }}</span>
+            @else
+                <span class="font-bold text-2xl tracking-tight">AI Heroes</span>
+            @endif
+        </a>
         <nav class="flex-1 hidden md:block">
             <ul class="flex gap-8">
                 @foreach ($menuItems as $menuItem)

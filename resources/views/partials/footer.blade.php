@@ -1,9 +1,9 @@
+@inject('siteSettings', 'App\Settings\SiteSettings')
 <footer class="bg-white pt-20 pb-10 border-t border-border text-[14px]">
     <div class="max-w-[1200px] mx-auto px-8 w-full">
         <div class="grid grid-cols-1 md:grid-cols-[2fr_1fr_1fr_1fr] md:gap-8 gap-6 mb-16">
             <div class="flex flex-col">
-                <a href="{{ url('/') }}" class="inline-block font-bold text-[24px] tracking-[-0.5px] mb-4 text-slate-900">AI
-                    Heroes</a>
+                <a href="{{ url('/') }}" class="inline-block font-bold text-[24px] tracking-[-0.5px] mb-4 text-slate-900">{{ $siteSettings->company_name ?: 'AI Heroes' }}</a>
                 <p class="text-text-light max-w-[280px]">Empowering the future with AI. We tailor your application
                     to your
                     organization's exact needs.</p>
@@ -43,7 +43,7 @@
         </div>
         <div
             class="flex flex-col md:flex-row justify-between items-center gap-4 pt-6 border-t border-border text-text-light text-center md:text-left">
-            <p>&copy; {{ date('Y') }} AI Heroes. All rights reserved.</p>
+            <p>&copy; {{ date('Y') }} {{ $siteSettings->company_name ?: 'AI Heroes' }}. All rights reserved.</p>
             <div class="flex gap-4 justify-center">
                 <a href="#" class="hover:text-slate-900 transition-colors">Twitter</a>
                 <a href="#" class="hover:text-slate-900 transition-colors">LinkedIn</a>

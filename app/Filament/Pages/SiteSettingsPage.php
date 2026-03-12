@@ -23,8 +23,15 @@ class SiteSettingsPage extends SettingsPage
                 Forms\Components\Section::make('Site Branding')
                     ->description('Settings for the company logo, slogan, and Homepage image.')
                     ->schema([
+                        Forms\Components\FileUpload::make('company_logo')
+                            ->label('Company Logo')
+                            ->image()
+                            ->disk('public')
+                            ->directory('site-assets')
+                            ->visibility('public')
+                            ->helperText('Upload a company logo to display in the navigation bar.'),
                         Forms\Components\TextInput::make('company_name')
-                            ->label('Company Name / LOGO')
+                            ->label('Company Name')
                             ->required(),
                         Forms\Components\TextInput::make('company_slogan')
                             ->label('Company Slogan')

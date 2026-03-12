@@ -19,13 +19,13 @@
                 organization's exact needs, using
                 robust frameworks and best practices for long-term success.</p>
 
-            <form x-data @submit.prevent="$dispatch('open-estimate-modal', { email: $el.querySelector('input').value })" class="flex flex-col sm:flex-row mb-8 max-w-[450px] bg-white p-1.5 rounded-[100px] shadow-lg">
+            <form x-data @submit.prevent="$dispatch('open-estimate-modal', { email: $el.querySelector('input').value })" class="flex flex-col sm:flex-row mb-8 max-w-[450px] bg-white p-2 px-4 sm:p-1.5 sm:px-1.5 rounded-[100px] shadow-lg gap-2 sm:gap-0">
                 <label for="hero_email" class="sr-only">Enter your email</label>
                 <input id="hero_email" type="email" placeholder="Enter your email"
-                    class="flex-1 border-none px-6 py-3 text-[1.05rem] outline-none text-slate-900 bg-transparent min-w-0 appearance-none m-0 focus:ring-0 placeholder:text-slate-400"
+                    class="flex-1 border-none px-2 sm:px-6 py-2 sm:py-3 text-[1.05rem] outline-none text-slate-900 bg-transparent min-w-0 appearance-none m-0 focus:ring-0 placeholder:text-slate-400"
                     >
                 <button type="submit"
-                    class="bg-accent text-slate-950 font-medium text-[1.05rem] px-8 py-3 rounded-[100px] hover:bg-accent-hover transition-colors whitespace-nowrap">
+                    class="bg-accent text-slate-950 font-medium text-[1.05rem] px-8 py-3 rounded-[100px] hover:bg-accent-hover transition-colors whitespace-nowrap w-full sm:w-auto">
                     Get an Estimate
                 </button>
             </form>
@@ -710,13 +710,13 @@
         <h2 class="text-[2rem] md:text-[2.5rem] mb-10 tracking-[-0.5px] leading-tight text-slate-900">Ready to
             transform your business?</h2>
         <div class="max-w-[480px] mx-auto mt-8">
-            <form x-data @submit.prevent="$dispatch('open-estimate-modal', { email: $el.querySelector('input').value })" class="flex flex-col sm:flex-row mb-8 w-full bg-white p-1.5 rounded-[100px] shadow-lg">
+            <form x-data @submit.prevent="$dispatch('open-estimate-modal', { email: $el.querySelector('input').value })" class="flex flex-col sm:flex-row mb-8 w-full bg-white p-2 px-4 sm:p-1.5 sm:px-1.5 rounded-[100px] shadow-lg gap-2 sm:gap-0">
                 <label for="footer_email" class="sr-only">Enter your email</label>
                 <input id="footer_email" type="email" placeholder="Enter your email"
-                    class="flex-1 border-none px-6 py-3 text-[1.05rem] outline-none text-slate-900 bg-transparent min-w-0 appearance-none m-0 focus:ring-0 placeholder:text-slate-400"
+                    class="flex-1 border-none px-2 sm:px-6 py-2 sm:py-3 text-[1.05rem] outline-none text-slate-900 bg-transparent min-w-0 appearance-none m-0 focus:ring-0 placeholder:text-slate-400"
                     >
                 <button type="submit"
-                    class="bg-accent text-slate-950 font-medium text-[1.05rem] px-8 py-3 rounded-[100px] hover:bg-accent-hover transition-colors whitespace-nowrap">
+                    class="bg-accent text-slate-950 font-medium text-[1.05rem] px-8 py-3 rounded-[100px] hover:bg-accent-hover transition-colors whitespace-nowrap w-full sm:w-auto">
                     Get an Estimate
                 </button>
             </form>

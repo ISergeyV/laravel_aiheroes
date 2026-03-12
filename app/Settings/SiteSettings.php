@@ -12,6 +12,7 @@ class SiteSettings extends Settings
     public string $contact_address = '';
     public string $site_url = '';
     public string $company_name = '';
+    public ?string $company_logo = null;
     public string $notification_recipient_email = '';
 
     public ?string $company_slogan = null;
