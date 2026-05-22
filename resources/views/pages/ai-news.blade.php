@@ -38,7 +38,7 @@
             @else
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                     @foreach($news as $item)
-                        <article class="bg-white rounded-2xl border border-slate-200 shadow-sm overflow-hidden hover:shadow-md transition-shadow duration-300 flex flex-col h-full">
+                        <article id="news-{{ $item->id }}" class="bg-white rounded-2xl border border-slate-200 shadow-sm overflow-hidden hover:shadow-md transition-shadow duration-300 flex flex-col h-full">
                             
                             @if($item->image_path)
                                 <div class="relative w-full overflow-hidden border-b border-slate-200 bg-slate-100 aspect-[4/5]">

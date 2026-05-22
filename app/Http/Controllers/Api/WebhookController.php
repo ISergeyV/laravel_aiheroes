@@ -25,6 +25,8 @@ class WebhookController extends Controller
 
         // Validate the extracted payload manually using the Validator facade
         $validator = \Illuminate\Support\Facades\Validator::make($payload, [
+            'title' => 'nullable|string',
+            'is_published' => 'nullable|boolean',
             'original_text' => 'nullable|string',
             'insight' => 'nullable|array',
             'insight.summary' => 'nullable|string',
@@ -46,6 +48,11 @@ class WebhookController extends Controller
 
         $validated = $validator->validated();
 
+        // Default to published unless explicitly specified otherwise
+        if (!isset($validated['is_published'])) {
+            $validated['is_published'] = true;
+        }
+
         // Handle the image file upload
         if ($request->hasFile('image')) {
             $request->validate(['image' => 'image|mimes:jpeg,png,jpg,webp|max:5120']); // 5MB max
@@ -65,6 +72,7 @@ class WebhookController extends Controller
         return response()->json([
             'message' => 'AI News received successfully',
             'id' => $aiNews->id,
+            'url' => route('ai-news.index') . '#news-' . $aiNews->id,
             'status' => 'success'
         ], 201);
     }

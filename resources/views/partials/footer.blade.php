@@ -45,8 +45,8 @@
             class="flex flex-col md:flex-row justify-between items-center gap-4 pt-6 border-t border-border text-text-light text-center md:text-left">
             <p>&copy; {{ date('Y') }} {{ $siteSettings->company_name ?: 'AI Heroes' }}. All rights reserved.</p>
             <div class="flex gap-4 justify-center">
-                <a href="#" class="hover:text-slate-900 transition-colors">Twitter</a>
-                <a href="#" class="hover:text-slate-900 transition-colors">LinkedIn</a>
+                <a href="https://x.com/AIHeroes124128" target="_blank" class="hover:text-slate-900 transition-colors">Twitter</a>
+                <a href="#" target="_blank" class="hover:text-slate-900 transition-colors">LinkedIn</a>
             </div>
         </div>
     </div>
