@@ -2,6 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\StartLeadRequest;
+use App\Http\Requests\UpdateLeadRequest;
+use App\Http\Requests\CompleteLeadRequest;
+use App\Http\Requests\StoreLeadRequest;
 use App\Models\Lead;
 use App\Jobs\GenerateAiResponse;
 use Illuminate\Http\Request;
@@ -16,22 +20,10 @@ class LeadController extends Controller
     }
 
     // Метод для обработки отправки формы
-    public function submit(Request $request)
+    public function submit(StoreLeadRequest $request)
     {
         // 1. Валидация данных
-        $validatedData = $request->validate([
-            'fullName' => 'nullable|string|max:255',
-            'phone' => 'required|string|max:20',
-            'email' => 'nullable|email|max:255',
-            'serviceType' => 'nullable|string',
-            'urgency' => 'nullable|string',
-            'jobDescription' => 'nullable|string',
-            'budget' => 'nullable|string|max:255',
-            'companyWebsite' => 'nullable|string|max:255',
-            'disclaimer' => 'required|accepted',
-            'fileUpload' => 'nullable|array',
-            'fileUpload.*' => 'file|mimes:jpg,jpeg,png,mp4,mov,avi|max:250600', // 250MB
-        ]);
+        $validatedData = $request->validated();
 
         // 2. БЕЗОПАСНАЯ Обработка загруженных файлов
         $filePaths = [];
@@ -67,12 +59,8 @@ class LeadController extends Controller
     /**
      * Step 1: Capture Email and Start Session
      */
-    public function startEstimate(Request $request)
+    public function startEstimate(StartLeadRequest $request)
     {
-        $request->validate([
-            'email' => 'required|email|max:255',
-        ]);
-
         $token = Str::random(60);
 
         $lead = Lead::create([
@@ -91,15 +79,8 @@ class LeadController extends Controller
     /**
      * Intermediate Steps: Update partial lead data
      */
-    public function updateEstimate(Request $request)
+    public function updateEstimate(UpdateLeadRequest $request)
     {
-        $request->validate([
-            'session_token' => 'required|string',
-            'serviceType' => 'nullable|string',
-            'jobDescription' => 'nullable|string',
-            'budget' => 'nullable|string',
-        ]);
-
         $lead = Lead::where('session_token', $request->session_token)
                     ->where('status', 'partial')
                     ->firstOrFail();
@@ -116,17 +97,8 @@ class LeadController extends Controller
     /**
      * Final Step: Complete the lead and trigger AI
      */
-    public function completeEstimate(Request $request)
+    public function completeEstimate(CompleteLeadRequest $request)
     {
-        $request->validate([
-            'session_token' => 'required|string',
-            'fullName' => 'nullable|string|max:255',
-            'companyWebsite' => 'nullable|string|max:255',
-            'phone' => 'nullable|string|max:20',
-            'fileUpload' => 'nullable|array',
-            'fileUpload.*' => 'file|mimes:jpg,jpeg,png,pdf,doc,docx,xls,xlsx,mp4,mov,avi|max:250600',
-        ]);
-
         $lead = Lead::where('session_token', $request->session_token)
                     ->where('status', 'partial')
                     ->firstOrFail();
@@ -152,30 +124,5 @@ class LeadController extends Controller
         GenerateAiResponse::dispatch($lead);
 
         return response()->json(['success' => true, 'redirect' => route('lead.thankyou')]);
-    }
-
-    /**
-     * Показывает страницу со списком всех заявок (для админ-панели).
-     */
-    public function index()
-    {
-        // 1. Получаем ВСЕ заявки из базы данных, сортируя по новым.
-        $leads = Lead::latest()->get();
-
-        // 2. Возвращаем представление и передаем в него все найденные заявки
-        //    в переменной с именем 'leads'.
-        return view('admin.leads.index', ['leads' => $leads]);
-    }
-
-    /**
-     * Показывает страницу с деталями одной конкретной заявки.
-     */
-    public function showDetails(Lead $lead)
-    {
-        // Laravel автоматически найдет заявку по ID из URL (например, /admin/leads/5)
-        // и передаст ее в виде объекта $lead. Это называется "Route Model Binding".
-
-        // 2. Возвращаем представление и передаем в него ОДНУ найденную заявку.
-        return view('admin.leads.show', ['lead' => $lead]);
     }
 }
