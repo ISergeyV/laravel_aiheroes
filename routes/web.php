@@ -37,6 +37,7 @@ Route::get('/handyman-crm-case-study', function () {
 })->name('pages.handyman-crm-case-study');
 
 Route::get('/news', [AiNewsController::class, 'index'])->name('ai-news.index');
+Route::get('/news/{id}', [AiNewsController::class, 'show'])->name('ai-news.show');
 
 Route::get('/estimate', [LeadController::class, 'show'])->name('lead.form');
 Route::post('/estimate', [LeadController::class, 'submit'])->name('lead.submit');

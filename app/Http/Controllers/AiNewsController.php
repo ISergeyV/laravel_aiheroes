@@ -8,11 +8,25 @@ use App\Models\AiNews;
 
 class AiNewsController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        // Fetch only published news, latest first
-        $news = AiNews::where('is_published', true)->latest()->get();
+        // Fetch published news, latest first, with pagination
+        $news = AiNews::where('is_published', true)->latest()->paginate(12);
+        
+        if ($request->ajax() || $request->wantsJson()) {
+            $html = view('pages.partials.news-items', compact('news'))->render();
+            return response()->json([
+                'html' => $html,
+                'next_page_url' => $news->nextPageUrl()
+            ]);
+        }
         
         return view('pages.ai-news', compact('news'));
+    }
+
+    public function show($id)
+    {
+        $newsItem = AiNews::findOrFail($id);
+        return view('pages.ai-news-show', compact('newsItem'));
     }
 }

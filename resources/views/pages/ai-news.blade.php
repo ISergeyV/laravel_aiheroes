@@ -36,85 +36,77 @@
                     <p class="text-slate-500">Check back later for the latest AI updates and videos.</p>
                 </div>
             @else
-                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                    @foreach($news as $item)
-                        <article id="news-{{ $item->id }}" class="bg-white rounded-2xl border border-slate-200 shadow-sm overflow-hidden hover:shadow-md transition-shadow duration-300 flex flex-col h-full">
-                            
-                            @if($item->image_path)
-                                <div class="relative w-full overflow-hidden border-b border-slate-200 bg-slate-100 aspect-[4/5]">
-                                    <img src="{{ Storage::url($item->image_path) }}" alt="{{ $item->title ?? 'AI News Image' }}" class="absolute inset-0 w-full h-full object-cover object-center transition-transform duration-700 hover:scale-[1.03]">
-                                </div>
-                            @else
-                                <div class="relative w-full overflow-hidden border-b border-slate-200 bg-slate-100 flex items-center justify-center text-slate-300 aspect-[4/5]">
-                                    <div class="absolute inset-0 flex items-center justify-center">
-                                        <svg class="w-12 h-12" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
-                                        </svg>
-                                    </div>
-                                </div>
-                            @endif
-
-                            <div class="p-6 flex flex-col flex-grow">
-                                <div class="flex items-center justify-between mb-4">
-                                    <div class="text-xs text-slate-400 font-medium uppercase tracking-wider">
-                                        {{ $item->published_at ? $item->published_at->format('M j, Y') : $item->created_at->format('M j, Y') }}
-                                    </div>
-                                    
-                                    <div class="flex gap-2">
-                                        @if(isset($item->insight['importance_score']))
-                                            @php
-                                                $score = (int)$item->insight['importance_score'];
-                                                $impactLevel = 'Notable';
-                                                $impactColor = 'bg-blue-100 text-blue-700';
-                                                if ($score >= 9) {
-                                                    $impactLevel = 'Critical';
-                                                    $impactColor = 'bg-red-100 text-red-700';
-                                                } elseif ($score >= 8) {
-                                                    $impactLevel = 'High';
-                                                    $impactColor = 'bg-orange-100 text-orange-700';
-                                                }
-                                            @endphp
-                                            <span class="inline-flex items-center px-2 py-0.5 rounded text-xs font-semibold {{ $impactColor }}">
-                                                {{ $impactLevel }}
-                                            </span>
-                                        @endif
-                                        
-                                        @if(isset($item->insight['category']))
-                                            <span class="inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-slate-100 text-slate-600 border border-slate-200">
-                                                {{ $item->insight['category'] }}
-                                            </span>
-                                        @endif
-                                    </div>
-                                </div>
-                                
-                                <h3 class="text-xl font-bold text-slate-800 mb-3 leading-tight">
-                                    {{ $item->title ?: ($item->insight['summary'] ?? 'AI News Update') }}
-                                </h3>
-                                
-                                <div class="text-slate-600 mb-6 flex-grow flex flex-col gap-4">
-                                    @if(isset($item->insight['key_thoughts']) && is_array($item->insight['key_thoughts']))
-                                        <ul class="list-disc list-outside ml-5 space-y-2 text-sm text-slate-700">
-                                            @foreach($item->insight['key_thoughts'] as $thought)
-                                                <li class="pl-1">{{ $thought }}</li>
-                                            @endforeach
-                                        </ul>
-                                    @else
-                                        <p class="line-clamp-4">{{ $item->original_text }}</p>
-                                    @endif
-
-                                    @if(!empty($item->insight['why_it_matters']))
-                                        <div class="mt-2 pl-4 border-l-4 border-indigo-400 bg-indigo-50/50 py-2 pr-2 text-sm italic text-slate-700">
-                                            <strong class="font-semibold text-indigo-900 not-italic block mb-1">Why it matters:</strong>
-                                            {{ $item->insight['why_it_matters'] }}
-                                        </div>
-                                    @endif
-                                </div>
-                                
-                            </div>
-                        </article>
-                    @endforeach
+                <div id="news-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    @include('pages.partials.news-items', ['news' => $news])
                 </div>
+
+                @if($news->hasMorePages())
+                    <div id="infinite-scroll-trigger" class="flex justify-center mt-12 py-8" data-next-page="{{ $news->nextPageUrl() }}">
+                        <div class="inline-flex flex-col items-center gap-3">
+                            <svg class="w-8 h-8 text-indigo-500 animate-spin" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                                <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                                <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                            </svg>
+                            <span class="text-sm font-medium text-slate-500">Loading more news...</span>
+                        </div>
+                    </div>
+                @endif
             @endif
         </div>
     </main>
+
+    @push('scripts')
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            let trigger = document.getElementById('infinite-scroll-trigger');
+            if (!trigger) return;
+
+            let loading = false;
+            let grid = document.getElementById('news-grid');
+
+            let observer = new IntersectionObserver(function (entries) {
+                if (entries[0].isIntersecting && !loading) {
+                    loadMore();
+                }
+            }, {
+                rootMargin: '0px 0px 400px 0px' // Load slightly before reaching the bottom
+            });
+
+            observer.observe(trigger);
+
+            function loadMore() {
+                let nextPageUrl = trigger.getAttribute('data-next-page');
+                if (!nextPageUrl) return;
+
+                loading = true;
+
+                fetch(nextPageUrl, {
+                    headers: {
+                        'X-Requested-With': 'XMLHttpRequest',
+                        'Accept': 'application/json'
+                    }
+                })
+                .then(response => response.json())
+                .then(data => {
+                    // Append HTML to grid
+                    grid.insertAdjacentHTML('beforeend', data.html);
+
+                    // Update next page url
+                    if (data.next_page_url) {
+                        trigger.setAttribute('data-next-page', data.next_page_url);
+                        loading = false;
+                    } else {
+                        // No more pages
+                        trigger.remove();
+                        observer.disconnect();
+                    }
+                })
+                .catch(error => {
+                    console.error('Error loading more news:', error);
+                    loading = false;
+                });
+            }
+        });
+    </script>
+    @endpush
 @endsection
