@@ -15,7 +15,7 @@ class VerifyWebhookToken
      */
     public function handle(Request $request, Closure $next): Response
     {
-        $expectedToken = config('services.webhook.secret') ?? env('WEBHOOK_SECRET');
+        $expectedToken = config('services.webhook.secret');
         
         if (!$expectedToken) {
             // If no secret is configured, consider the endpoint secured/disabled

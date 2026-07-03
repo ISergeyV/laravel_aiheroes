@@ -26,7 +26,7 @@ class AiNewsController extends Controller
 
     public function show($id)
     {
-        $newsItem = AiNews::findOrFail($id);
+        $newsItem = AiNews::where('is_published', true)->findOrFail($id);
         return view('pages.ai-news-show', compact('newsItem'));
     }
 }

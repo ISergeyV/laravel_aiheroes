@@ -40,7 +40,7 @@ Route::get('/news', [AiNewsController::class, 'index'])->name('ai-news.index');
 Route::get('/news/{id}', [AiNewsController::class, 'show'])->name('ai-news.show');
 
 Route::get('/estimate', [LeadController::class, 'show'])->name('lead.form');
-Route::post('/estimate', [LeadController::class, 'submit'])->name('lead.submit');
+Route::post('/estimate', [LeadController::class, 'submit'])->middleware('throttle:6,1')->name('lead.submit');
 
 Route::get('/estimate/thank-you', function () {
     return view('pages.thank-you');

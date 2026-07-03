@@ -10,9 +10,9 @@ Route::get('/user', function (Request $request) {
 })->middleware('auth:sanctum');
 
 // Multi-step form API endpoints
-Route::post('/leads/start', [LeadController::class, 'startEstimate'])->name('api.lead.start');
-Route::post('/leads/update', [LeadController::class, 'updateEstimate'])->name('api.lead.update');
-Route::post('/leads/complete', [LeadController::class, 'completeEstimate'])->name('api.lead.complete');
+Route::post('/leads/start', [LeadController::class, 'startEstimate'])->middleware('throttle:10,1')->name('api.lead.start');
+Route::post('/leads/update', [LeadController::class, 'updateEstimate'])->middleware('throttle:30,1')->name('api.lead.update');
+Route::post('/leads/complete', [LeadController::class, 'completeEstimate'])->middleware('throttle:10,1')->name('api.lead.complete');
 
 // Webhooks
 Route::post('/webhooks/ai-news', [\App\Http\Controllers\Api\WebhookController::class, 'handleAiNews'])
