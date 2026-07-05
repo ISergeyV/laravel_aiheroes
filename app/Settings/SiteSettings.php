@@ -22,6 +22,16 @@ class SiteSettings extends Settings
     public bool $promo_banner_enabled = true;
     public string $promo_banner_text = '';
 
+    // Social Media Links
+    public ?string $twitter_url = null;
+    public bool $twitter_enabled = true;
+    public ?string $linkedin_url = null;
+    public bool $linkedin_enabled = true;
+    public ?string $instagram_url = null;
+    public bool $instagram_enabled = true;
+    public ?string $youtube_url = null;
+    public bool $youtube_enabled = true;
+
     /**
      * This static method defines the group key under which the settings are stored.
      */

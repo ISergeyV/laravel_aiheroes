@@ -86,6 +86,27 @@ class SiteSettingsPage extends SettingsPage
                             ->label('Banner Text')
                             ->required(),
                     ]),
+
+                Forms\Components\Section::make('Social Media')
+                    ->description('Configure the social media links in the footer.')
+                    ->schema([
+                        Forms\Components\Group::make([
+                            Forms\Components\Toggle::make('twitter_enabled')->label('Enable Twitter')->default(true),
+                            Forms\Components\TextInput::make('twitter_url')->label('Twitter URL')->url()->nullable(),
+                        ])->columns(2),
+                        Forms\Components\Group::make([
+                            Forms\Components\Toggle::make('linkedin_enabled')->label('Enable LinkedIn')->default(true),
+                            Forms\Components\TextInput::make('linkedin_url')->label('LinkedIn URL')->url()->nullable(),
+                        ])->columns(2),
+                        Forms\Components\Group::make([
+                            Forms\Components\Toggle::make('instagram_enabled')->label('Enable Instagram')->default(true),
+                            Forms\Components\TextInput::make('instagram_url')->label('Instagram URL')->url()->nullable(),
+                        ])->columns(2),
+                        Forms\Components\Group::make([
+                            Forms\Components\Toggle::make('youtube_enabled')->label('Enable YouTube')->default(true),
+                            Forms\Components\TextInput::make('youtube_url')->label('YouTube URL')->url()->nullable(),
+                        ])->columns(2),
+                    ]),
             ]);
     }
 }
