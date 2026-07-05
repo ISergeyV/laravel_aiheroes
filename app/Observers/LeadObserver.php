@@ -15,6 +15,29 @@ class LeadObserver
      */
     public function created(Lead $lead): void
     {
+        // Only trigger for complete leads. Partial leads (from multi-step forms)
+        // will be handled in the 'updated' event when their status changes.
+        if ($lead->status !== 'partial') {
+            $this->processNewLead($lead);
+        }
+    }
+
+    /**
+     * Handle the Lead "updated" event.
+     */
+    public function updated(Lead $lead): void
+    {
+        // If a lead just graduated from 'partial' to 'new' (e.g. multi-step form completed)
+        if ($lead->wasChanged('status') && $lead->status === 'new') {
+            $this->processNewLead($lead);
+        }
+    }
+
+    /**
+     * Centralized logic to trigger AI and send email notifications.
+     */
+    protected function processNewLead(Lead $lead): void
+    {
         // Dispatch AI response generation job
         GenerateAiResponse::dispatch($lead);
 
@@ -24,14 +47,6 @@ class LeadObserver
             Notification::route('mail', $siteSettings->notification_recipient_email)
                 ->notify(new NewLeadSubmitted($lead));
         }
-    }
-
-    /**
-     * Handle the Lead "updated" event.
-     */
-    public function updated(Lead $lead): void
-    {
-        //
     }
 
     /**
